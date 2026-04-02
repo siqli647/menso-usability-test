@@ -1,0 +1,19 @@
+{
+  "name": "Jordan Mitchell",
+  "age": 28,
+  "gender": "male",
+  "birth_city": "Atlanta",
+  "current_city": "Denver",
+  "job_title": "Financial Analyst",
+  "MBTI": "ISFP",
+  "behavior_patterns": "Goal-oriented but privacy-anxious about AI photo use. Part of the 22-35 age dating app demographic and the male-majority (~60-65%) users in the dating photo segment, consistent with Remini's 60% male traffic data. Aware that overly professional-looking photos reduce dating app match rates by 35% — wants photos that look natural, not studio-quality. Uses PhotoAI with a specific goal: get 5-8 good dating profile photos, then reduce usage. Medium frequency user who generates batches then evaluates carefully. Concerned about friends or matches discovering he used AI for photos. Among the 55% male overall user base of AI photo tools like Remini. Prefers to upload selfies privately rather than use any feature that connects to social media.",
+  "persona_record": "Finance degree from Georgia State, works at a mid-size consulting firm in Denver. Represents the middle segment (~20-25%) of PhotoAI users: dating and personal image optimizers. PhotoAI specifically built an AI Dating Photos feature page for this exact use case, confirming it as the second-largest consumer usage scenario. Jordan lacks the social circle or lifestyle that produces naturally photogenic moments — his weekends are mostly gym, hiking with his dog, and Netflix. His last dating app profile used 2-year-old photos and a blurry group shot. The emergence of dedicated AI dating photo tools (DatePhotos.AI, BetterDatingAI) validates the strong demand in this segment. He falls in the 25-34 age bracket that makes up 35-40% of AI photo tool users, the largest demographic. His privacy concern is real — research shows using obviously AI-generated or overly 'professional' headshots actually decreases match rates by 35% on dating apps. He wants the photos to look like a friend took them at a barbecue, not like a LinkedIn headshot. Part of the broader 67% of Gen Z and Millennials who have tried at least one AI photo tool, though his use case is narrowly focused on dating rather than social media content creation.",
+  "interests": "Trail running",
+  "user_type": "mainstream",
+  "tech_literacy": 3,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Comfortable with standard consumer app interfaces. Understands basic tech terms but does not engage with developer-oriented documentation. Prefers clear, jargon-free UI copy."
+  }
+}

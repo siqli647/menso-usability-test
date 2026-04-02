@@ -1,0 +1,19 @@
+{
+  "name": "Carlos Medina",
+  "age": 35,
+  "gender": "male",
+  "birth_city": "Bogota",
+  "current_city": "Miami",
+  "job_title": "Freelance Web Developer",
+  "MBTI": "ENTJ",
+  "behavior_patterns": "Results-driven and efficiency-focused. Part of the 13% of developers who work as independent/freelancers (Developer Nation survey). Uses boilerplates to accelerate client project delivery — charges clients $5K-15K per project while ShipFast at $199 cuts his setup time by 70%. Evaluates every tool purchase as a direct ROI calculation against billable hours. Maintains a portfolio of 3-4 active client projects simultaneously. Among the 84% of developers using AI tools — leverages Cursor heavily for client work. Prefers battle-tested solutions over cutting-edge experiments because client projects cannot afford bugs. Reads ShipFast documentation thoroughly before starting each project to identify which modules to use.",
+  "persona_record": "Computer engineering degree from Universidad de los Andes in Bogota, moved to Miami 5 years ago to tap into the US freelance market. Represents the smallest but high-potential ShipFast segment (~15-20%): freelance and agency developers who use boilerplates to scale their client delivery capacity. Unlike solo founders who build for themselves, Carlos builds for clients — and every hour saved on boilerplate directly converts to profit margin. Has delivered 20+ client projects in the past 3 years, primarily for small businesses and startups needing MVPs. His typical client is a non-technical founder who needs a web app built in 2-4 weeks — exactly the timeline ShipFast enables. The Next.js + Supabase + Stripe stack aligns with what his clients need: auth, payments, and a database. Bought ShipFast after a client project ran over deadline because he spent 2 weeks just on authentication and payment integration. Now uses ShipFast as his base template for every new client project, customizing from there. The micro-SaaS market growth ($15.7B to $59.6B by 2030) means his pipeline of 'build me a SaaS' client requests keeps growing. Tracks every tool expense against revenue — ShipFast's $199 one-time cost paid for itself on the first client project.",
+  "interests": "Salsa dancing",
+  "user_type": "power user",
+  "tech_literacy": 5,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 4,
+    "english_description": "Professionally fluent English — reads all technical documentation and client-facing UI without difficulty. Native Spanish speaker. Occasionally needs to re-read dense legal or financial copy. No issues with standard SaaS product interfaces."
+  }
+}

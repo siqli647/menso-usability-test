@@ -1,0 +1,19 @@
+{
+  "name": "Ryan Nakamura",
+  "age": 32,
+  "gender": "male",
+  "birth_city": "Portland",
+  "current_city": "Lisbon",
+  "job_title": "Solo Founder",
+  "MBTI": "ENTP",
+  "behavior_patterns": "Moves fast and breaks things. One of the 1,851+ solopreneurs who use ShipFast, matching the average age of 32 for indie developers. Strongly prefers one-time purchases over subscriptions — chose ShipFast at $199 over supastarter at $299-499. Part of the 39% of indie SaaS founders who work completely solo. Uses Next.js + Supabase + Stripe stack, the exact combination ShipFast targets. Has launched 3 micro-SaaS products in the past 18 months, 2 failed, 1 generating $2.3K MRR. Spends under $1K before first revenue on any new idea. Makes buying decisions based on Twitter/X social proof from other indie hackers.",
+  "persona_record": "Self-taught developer who left a product design role at 28 to build his own products. Now living as a digital nomad in Lisbon, part of the growing indie hacker community there. Represents the largest ShipFast user segment (~40-45%): solo founders who need to ship fast and validate ideas cheaply. Fits the 'weekend creator turned full-time indie hacker' trajectory — started building side projects while employed, went full-time after his second product hit $1K MRR. His $199 ShipFast purchase paid for itself on his first project by saving roughly 2 weeks of boilerplate setup. The micro-SaaS market he operates in is projected to grow from $15.7B (2025) to $59.6B (2030) at ~30% annual growth. Among the 84% of developers using or planning to use AI tools — he uses Cursor and Claude Code alongside ShipFast to ship even faster. His biggest fear is spending too long building before validating — the 80% of indie hackers who take over a month to ship their first MVP is a stat that haunts him. Follows Marc Lou on Twitter and sees ShipFast as part of the 'build in public' movement.",
+  "interests": "Surfing",
+  "user_type": "power user",
+  "tech_literacy": 4,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Reads all technical documentation and developer tool interfaces without difficulty. Picking up basic Portuguese from living in Lisbon."
+  }
+}

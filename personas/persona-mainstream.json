@@ -1,0 +1,19 @@
+{
+  "name": "王丽华",
+  "age": 42,
+  "gender": "female",
+  "birth_city": "成都",
+  "current_city": "上海",
+  "job_title": "市场营销经理",
+  "MBTI": "ESFJ",
+  "behavior_patterns": "习惯用熟悉的工具，换新工具前会仔细比较，重视同事推荐，愿意花时间学习但需要清晰引导，经常在手机和电脑间切换",
+  "persona_record": "在4A广告公司工作15年后跳到甲方做市场。日常用飞书、钉钉、Excel处理工作。对新工具持开放态度但不会主动去找，通常是团队里有人推荐才会试用。",
+  "interests": "烘焙",
+  "user_type": "主流用户",
+  "tech_literacy": 3,
+  "language_proficiency": {
+    "primary": "zh-CN",
+    "english_level": 3,
+    "english_description": "大学英语四级水平。能读懂简单的英文UI（Sign In, Search, Home, Price），但长句和专业术语需要反复看。偶尔用手机翻译APP辅助。"
+  }
+}

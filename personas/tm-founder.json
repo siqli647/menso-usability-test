@@ -1,0 +1,19 @@
+{
+  "name": "Derek Huang",
+  "age": 38,
+  "gender": "male",
+  "birth_city": "Taipei",
+  "current_city": "San Francisco",
+  "job_title": "Co-founder & CEO",
+  "MBTI": "ENTP",
+  "behavior_patterns": "Fast-moving and ROI-driven. Part of the 78% of founders who report positive ROI from AI tools — the highest across all roles. Among the 72.1% of founders who use ChatGPT, with Claude as his second choice. Tests multiple AI tools simultaneously to find the best fit for his 12-person team. Makes purchasing decisions in under 15 minutes — either the value is obvious or he moves on. Impatient with complex setup but tolerant if the payoff is clear. Frequently delegates tool evaluation to his CTO but makes final call himself. Interested in TypingMind Teams for deploying custom AI agents across his company.",
+  "persona_record": "Former software engineer turned serial entrepreneur. Built and sold a developer tools startup in 2021, now running his second company — a B2B analytics platform with 12 employees. Represents the smallest but highest-potential TypingMind segment (~15-20%): founders and executives. His team currently pays for 8 separate ChatGPT Plus subscriptions ($160/mo) plus 3 Claude Pro subscriptions ($60/mo), totaling $220/mo. Discovered TypingMind when ChatGPT's market share dropped from 86.7% to 64.5% and his team started requesting access to Claude and Gemini. The BYOK model appealed to him because of cost control — JetBrains, GitHub Copilot, and other developer tools he uses have already adopted BYOK, validating the model's shift from power users to mainstream. Estimates switching to TypingMind Teams with shared API keys could cut his team's AI costs by 40% while giving everyone access to all models. His tech literacy (4/5) means he understands the technical concepts but prefers not to configure things himself. The 78% positive ROI stat among founders resonates — he tracks tool ROI quarterly.",
+  "interests": "Angel investing",
+  "user_type": "power user",
+  "tech_literacy": 4,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Fluent English speaker, educated and working in the US for 15+ years. Native Mandarin speaker. Reads all English UI without difficulty. Occasionally switches to Chinese when reading tech news from Taiwan."
+  }
+}

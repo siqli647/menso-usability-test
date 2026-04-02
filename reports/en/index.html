@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Menso Usability Test Reports</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFAFA;color:#1E1E1E;line-height:1.6;}
+.page{max-width:960px;margin:0 auto;padding:40px 24px;}
+.brand{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:#2145F3;}
+.brand-name{font-size:14px;font-weight:600;color:#757575;letter-spacing:0.5px;}
+.card{background:#fff;border:1px solid #F3F3F3;border-radius:12px;padding:24px;margin-bottom:16px;}
+.card-lg{padding:32px;}
+h1{font-size:28px;font-weight:700;margin-bottom:8px;line-height:1.3;}
+h2{font-size:20px;font-weight:600;margin-bottom:16px;color:#1E1E1E;}
+h3{font-size:16px;font-weight:600;margin-bottom:12px;}
+.subtitle{font-size:15px;color:#757575;margin-bottom:24px;}
+.body-text{font-size:14px;color:#555;line-height:1.7;}
+.secondary{color:#757575;font-size:13px;}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{background:#fff;border:1px solid #F3F3F3;border-radius:12px;padding:16px;text-align:center;}
+.stat-number{font-size:28px;font-weight:700;color:#1E1E1E;}
+.stat-label{font-size:12px;color:#757575;margin-top:4px;}
+.emotion-pill{display:inline-block;padding:4px 12px;border-radius:100px;font-size:12px;font-weight:600;white-space:nowrap;}
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.meta-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;background:#F5F5F5;border-radius:6px;font-size:12px;color:#757575;}
+.screenshot{width:100%;border-radius:8px;border:1px solid #F3F3F3;margin:12px 0;}
+.step-card{margin-bottom:20px;}
+.step-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.step-num{width:32px;height:32px;border-radius:50%;background:#2145F3;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;flex-shrink:0;}
+.step-title{font-size:15px;font-weight:600;}
+.think-aloud{background:#F9FAFB;border-left:3px solid #2145F3;padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:#444;font-style:italic;line-height:1.7;}
+.friction-box{background:#FFF5F5;border-left:3px solid #EF4444;padding:12px 16px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13px;color:#7F1D1D;}
+.confidence-bar{height:6px;background:#F3F3F3;border-radius:3px;margin-top:8px;overflow:hidden;}
+.confidence-fill{height:100%;background:#2145F3;border-radius:3px;transition:width 0.3s;}
+.page-nav{display:flex;gap:0;margin-bottom:24px;border-bottom:1px solid #F3F3F3;}
+.page-nav a{padding:10px 20px;text-decoration:none;color:#757575;font-size:13px;font-weight:500;border-bottom:2px solid transparent;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
+.page-nav a:hover{color:#2145F3;}
+.verdict-badge{display:inline-block;padding:6px 16px;border-radius:8px;font-weight:600;font-size:14px;margin-bottom:16px;}
+.verdict-positive{background:#D1FAE5;color:#166534;}
+.verdict-negative{background:#FEE2E2;color:#991B1B;}
+.verdict-neutral{background:#FFF5D2;color:#854D0E;}
+.friction-table{width:100%;border-collapse:collapse;font-size:13px;}
+.friction-table th{text-align:left;padding:8px 12px;background:#F9FAFB;border-bottom:1px solid #F3F3F3;font-weight:600;color:#757575;font-size:12px;}
+.friction-table td{padding:8px 12px;border-bottom:1px solid #F3F3F3;vertical-align:top;}
+.severity-critical{color:#DC2626;font-weight:600;}
+.severity-major{color:#EA580C;font-weight:600;}
+.severity-minor{color:#CA8A04;font-weight:600;}
+.chart-container{width:100%;overflow-x:auto;padding:16px 0;}
+.screenshots-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.screenshots-grid img{width:100%;border-radius:8px;border:1px solid #F3F3F3;}
+.report-footer{text-align:center;padding:24px 0;color:#999;font-size:12px;}
+
+a.report-link{text-decoration:none;color:inherit;display:block;}
+a.report-link .card:hover{box-shadow:0 2px 12px rgba(0,0,0,0.08);border-color:#2145F3;}
+.hero{text-align:center;padding:48px 24px;margin-bottom:32px;}
+.hero h1{font-size:32px;margin-bottom:8px;}
+.hero .subtitle{font-size:16px;}
+.product-count{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:#EEF2FF;color:#2145F3;border-radius:6px;font-size:13px;font-weight:600;margin:0 4px;}
+</style>
+</head>
+<body>
+<div class="page">
+    <div class="brand"><div class="brand-dot"></div><span class="brand-name">MENSO</span></div>
+    <div class="hero">
+        <h1>Usability Test Reports</h1>
+        <p class="subtitle">
+            <span class="product-count">11 Reports</span> across
+            <span class="product-count">3 Products</span>
+        </p>
+    </div>
+    
+    <div style="margin-bottom:32px;">
+        <h2 style="margin-bottom:16px;">ShipFast</h2>
+        
+        <a href="2026-03-25_shipfast_maria.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Maria Santos</h3>
+                        <p class="secondary">Indie Founder</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ENFP</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 92%</span>
+                    <span class="meta-pill">6 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_shipfast_founder.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Ryan Nakamura</h3>
+                        <p class="secondary">Solo Founder</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ENTP</span>
+                    <span class="meta-pill">11 steps</span>
+                    <span class="meta-pill">Confidence: 95%</span>
+                    <span class="meta-pill">6 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_shipfast_freelancer.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Carlos Medina</h3>
+                        <p class="secondary">Freelance Web Developer</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ENTJ</span>
+                    <span class="meta-pill">7 steps</span>
+                    <span class="meta-pill">Confidence: 95%</span>
+                    <span class="meta-pill">1 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_shipfast_indie.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Kai Petersen</h3>
+                        <p class="secondary">Full-Stack Developer &amp; Indie Hacker</p>
+                    </div>
+                    <span class="verdict-badge verdict-neutral">Partial</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">INTP</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 75%</span>
+                    <span class="meta-pill">10 friction pts</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="margin-bottom:32px;">
+        <h2 style="margin-bottom:16px;">TypingMind</h2>
+        
+        <a href="2026-03-25_typingmind_jake.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Jake Rivera</h3>
+                        <p class="secondary">Full-Stack Developer</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">INTJ</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 95%</span>
+                    <span class="meta-pill">9 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_typingmind_engineer.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Marcus Lin</h3>
+                        <p class="secondary">Senior Backend Engineer</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">INTJ</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 95%</span>
+                    <span class="meta-pill">10 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_typingmind_founder.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Derek Huang</h3>
+                        <p class="secondary">Co-founder &amp; CEO</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ENTP</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 92%</span>
+                    <span class="meta-pill">10 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-29_typingmind_pm.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Sarah Kowalski</h3>
+                        <p class="secondary">Senior Product Manager</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ENFJ</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 90%</span>
+                    <span class="meta-pill">10 friction pts</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div style="margin-bottom:32px;">
+        <h2 style="margin-bottom:16px;">PhotoAI</h2>
+        
+        <a href="2026-03-29_photoai_creator.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Jasmine Torres</h3>
+                        <p class="secondary">Social Media Content Creator</p>
+                    </div>
+                    <span class="verdict-badge verdict-positive">Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ESFP</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 90%</span>
+                    <span class="meta-pill">5 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-30_photoai_dating.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Jordan Mitchell</h3>
+                        <p class="secondary">Financial Analyst (Dating Profile Optimization)</p>
+                    </div>
+                    <span class="verdict-badge verdict-negative">Not Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ISFP</span>
+                    <span class="meta-pill">7 steps</span>
+                    <span class="meta-pill">Confidence: 45%</span>
+                    <span class="meta-pill">7 friction pts</span>
+                </div>
+            </div>
+        </a>
+        <a href="2026-03-30_photoai_ecommerce.html" class="report-link">
+            <div class="card" style="cursor:pointer;transition:box-shadow 0.2s;">
+                <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+                    <div>
+                        <h3 style="margin-bottom:4px;">Linda Park</h3>
+                        <p class="secondary">E-commerce Store Owner (Shopify)</p>
+                    </div>
+                    <span class="verdict-badge verdict-negative">Not Completed</span>
+                </div>
+                <div class="meta-row" style="margin-top:12px;">
+                    <span class="meta-pill">ISTJ</span>
+                    <span class="meta-pill">10 steps</span>
+                    <span class="meta-pill">Confidence: 30%</span>
+                    <span class="meta-pill">7 friction pts</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="report-footer">Generated by Menso Synthetic User Testing System &middot; Powered by Claude</div>
+</div>
+</body></html>

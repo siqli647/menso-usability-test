@@ -1,0 +1,19 @@
+{
+  "name": "Kai Petersen",
+  "age": 27,
+  "gender": "male",
+  "birth_city": "Copenhagen",
+  "current_city": "Berlin",
+  "job_title": "Full-Stack Developer & Indie Hacker",
+  "MBTI": "INTP",
+  "behavior_patterns": "Deeply technical, obsessed with code quality and architecture. Part of the 55% of indie developers who work solo. Builds side projects on evenings and weekends while holding a full-time dev job — fits the 'weekend creator' profile that makes up ~35% of ShipFast buyers. Evaluates boilerplates by reading the actual source code before purchasing. Cares about clean architecture even for MVPs — sometimes over-engineers at the cost of shipping speed. Among the 84% of developers using AI tools, primarily Cursor and GitHub Copilot. Prefers the Next.js + Supabase stack that ShipFast is built on. Has opinions about every dependency in package.json.",
+  "persona_record": "CS degree from the Technical University of Denmark, now working as a full-stack developer at a Berlin-based startup by day and building side projects by night. Represents the middle segment (~25-30%) of ShipFast users: technically skilled indie hackers who build micro-SaaS as side projects. Part of the 39% of indie SaaS founders who are completely solo. His current side project is a developer productivity tool at $800 MRR — below the success threshold but growing. Bought ShipFast after spending 3 weeks setting up auth, payments, and email from scratch on his previous project, exactly the pain point ShipFast addresses with its 'ship in days, not weeks' promise. Unlike the solo founder segment, Kai values code quality over speed — he spent two days refactoring ShipFast's codebase after purchasing before building any features. Lives frugally, total pre-revenue investment stays under $1K per project. The micro-SaaS market growth to $59.6B by 2030 gives him confidence that his side-project-to-full-time pipeline is viable. Reads Indie Hackers and Hacker News daily. Considers ShipFast 'battle-tested by thousands of indie hackers' as its strongest selling point.",
+  "interests": "Chess",
+  "user_type": "power user",
+  "tech_literacy": 5,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Fluent English — all work and coding done in English. Native Danish speaker. Also speaks conversational German from living in Berlin. Reads all technical UI and documentation in English without any difficulty."
+  }
+}

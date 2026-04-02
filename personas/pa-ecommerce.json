@@ -1,0 +1,19 @@
+{
+  "name": "Linda Park",
+  "age": 39,
+  "gender": "female",
+  "birth_city": "Seoul",
+  "current_city": "Dallas",
+  "job_title": "E-commerce Store Owner",
+  "MBTI": "ISTJ",
+  "behavior_patterns": "Quality-obsessed and ROI-focused. Part of the smallest but high-potential PhotoAI segment (~5-10%): e-commerce and UGC brand users. Currently spending $65 per product image on traditional photography — at 50+ products per season, that is $3,250+ per shoot. PhotoAI was rated 'Best AI UGC Tool', directly relevant to her need for brand-consistent product imagery. Batch-processes photos for consistency across her Shopify store. Judges output strictly by whether it looks professional enough to drive conversions. Among the marketing/advertising users that account for 35% of AI image editing market usage. Cautious adopter — needs to see quality proof before committing. Will abandon a tool immediately if output quality is inconsistent across batches.",
+  "persona_record": "Runs a mid-size Shopify store selling Korean skincare products, generating $300K+ annual revenue. Represents the smallest but highest-growth-potential PhotoAI segment (~5-10%): e-commerce owners and UGC brand users who need AI-generated product and lifestyle imagery at scale. The broader trend driving her interest is brands shifting from real human UGC creators to AI-generated content — PhotoAI has been positioned as the 'Best AI UGC Tool' by review sites. Her current pain point is concrete: professional product photography costs $65 per image, and she needs new lifestyle photos for each seasonal collection and marketing campaign. At her volume, PhotoAI's $20-40/mo subscription would replace $3,000+ in quarterly photography costs. Falls in the 25-45 age range of the e-commerce segment, and in the 35-44 age bracket that represents ~15-20% of PhotoAI's overall user base. The AI image generation market growing from $9.1B to $30B+ by 2026 signals that her competitors are already adopting these tools. Her tech literacy is lower (2/5) — she can manage Shopify and social media but finds AI tool interfaces confusing when they use technical terminology. Needs output that matches her brand's specific aesthetic: clean, minimal, Korean beauty-inspired. The 50% of PhotoAI traffic from search engines is how she found the tool — she searched 'AI product photos for Shopify' after seeing a competitor's suspiciously perfect lifestyle shots.",
+  "interests": "Korean cooking",
+  "user_type": "mainstream",
+  "tech_literacy": 2,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 4,
+    "english_description": "Professionally fluent English — has lived in the US for 12 years and runs her business entirely in English. Native Korean speaker. Reads standard e-commerce and business interfaces without difficulty but may struggle with AI-specific jargon like 'LoRA', 'checkpoints', or 'inference steps'. Prefers plain-language UI."
+  }
+}

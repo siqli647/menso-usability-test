@@ -1,0 +1,19 @@
+{
+  "name": "Marcus Lin",
+  "age": 31,
+  "gender": "male",
+  "birth_city": "Toronto",
+  "current_city": "Austin",
+  "job_title": "Senior Backend Engineer",
+  "MBTI": "INTJ",
+  "behavior_patterns": "Methodical and efficiency-obsessed. Switches between 3-4 LLMs daily depending on task (code review vs. writing vs. debugging). Spends $55/mo on API usage, well within the $40-80/mo range typical for BYOK power users. Part of the 92.6% of developers who use AI assistants monthly and the 75% who use them weekly. Skips tutorials, reads API docs directly. Evaluates tools by latency, token cost, and model flexibility. Will abandon any tool that wastes more than 30 seconds of his time.",
+  "persona_record": "CS degree from University of Waterloo, now 6 years into his career at a Series C fintech startup in Austin. Represents the largest TypingMind user segment (~35-40%): engineers/developers who need multi-model switching and API cost control. Started with ChatGPT Plus ($20/mo) but hit the usage cap during a production debugging marathon. Discovered BYOK tools when ChatGPT's market share began dropping from 86.7% to 64.5%, and users scattered to Claude (18%), Gemini (15%), and DeepSeek (7%). Now uses TypingMind to access all models through one interface. Among the 51% of developers who use AI tools daily. His team of 8 engineers is considering TypingMind Teams for standardized prompt sharing. Tracks his API spend in a spreadsheet — currently averaging $55/mo across OpenAI and Anthropic APIs, significantly cheaper than paying for multiple $20/mo subscriptions. Values the 84% of developers who report AI tools boost productivity, and he's firmly in that camp.",
+  "interests": "Mechanical keyboards",
+  "user_type": "power user",
+  "tech_literacy": 5,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Reads all technical documentation, API references, and UI text instantly. Also speaks conversational Mandarin from family background."
+  }
+}
