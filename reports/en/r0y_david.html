@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>r0y.xyz - David Chen | Usability Test Report</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#ffffff;color:#1E1E1E;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:url('cover-bg.png') center/cover no-repeat;pointer-events:none;z-index:0;}
+body>*{position:relative;z-index:1;}
+.header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);flex-shrink:0;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707;}
+.header-label{font-size:14px;font-weight:400;color:rgba(0,0,0,0.5);}
+.page-nav{display:flex;gap:0;padding:0 120px;border-bottom:1px solid rgba(0,0,0,0.05);background:#fff;flex-shrink:0;}
+.page-nav a{padding:10px 20px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all 0.15s;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
+.page-nav a:hover{color:#2145F3;}
+.cover-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 120px;gap:40px;}
+.url-pill{display:inline-block;padding:8px 20px;border:1px solid rgba(0,0,0,0.4);border-radius:9999px;font-size:14px;font-weight:500;color:rgba(0,0,0,0.8);width:fit-content;}
+.persona-hero{display:flex;flex-direction:column;gap:20px;}
+.persona-name-block{display:flex;flex-direction:column;gap:2px;}
+.persona-name{font-family:'Raleway',sans-serif;font-size:58px;font-weight:700;color:#000000;line-height:1.15;}
+.persona-title-row{display:flex;align-items:center;gap:12px;}
+.persona-title{font-size:18px;font-weight:500;color:rgba(0,0,0,0.6);}
+.mbti-badge{display:inline-block;padding:3px 12px;border-radius:6px;background:#2145F3;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.5px;}
+.persona-desc{font-size:16px;font-weight:400;color:rgba(0,0,0,0.66);line-height:1.6;max-width:700px;}
+.stats-row{display:flex;gap:32px;}
+.stat-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 20px;border-radius:20px;background:rgba(255,255,255,0.55);min-width:110px;border-bottom:3px solid transparent;}
+.stat-card.green{border-bottom-color:#35cd4c;}
+.stat-card.dark{border-bottom-color:#000000;}
+.stat-card.red{border-bottom-color:#ff0000;}
+.stat-number{font-size:40px;font-weight:600;color:rgba(0,0,0,0.85);line-height:1.2;}
+.stat-label{font-size:13px;font-weight:400;color:rgba(0,0,0,0.5);letter-spacing:-0.5px;}
+.report-footer{text-align:center;padding:16px 0;color:rgba(0,0,0,0.25);font-size:12px;flex-shrink:0;}
+@media(max-width:960px){.header{padding:16px 24px;}.page-nav{padding:0 24px;}.cover-content{padding:40px 24px;justify-content:flex-start;}.persona-name{font-size:36px;}.stat-number{font-size:28px;}.stats-row{flex-wrap:wrap;gap:16px;}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div>
+      <span class="logo-text">Menso</span>
+    </a>
+    <span class="header-label">Synthetic Usability Report</span>
+  </div>
+  <nav class="page-nav">
+    <a href="r0y_david.html" class="active">Cover</a>
+    <a href="r0y_david_steps.html">Step Details</a>
+    <a href="r0y_david_journey.html">Journey &amp; Conclusion</a>
+  </nav>
+  <div class="cover-content">
+    <div class="url-pill">r0y.xyz</div>
+    <div class="persona-hero">
+      <div class="persona-name-block">
+        <div class="persona-name">David Chen</div>
+        <div class="persona-title-row">
+          <span class="persona-title">Senior Software Engineer, 35</span>
+          <span class="mbti-badge">INTJ</span>
+        </div>
+      </div>
+      <div class="persona-desc">David Chen is a 35-year-old senior software engineer at a fintech startup in San Francisco, originally from Seattle. He invests on the side using a self-directed portfolio scattered across Yahoo Finance, TradingView, and Google Sheets. He heard about R0Y on Product Hunt and wants to see if it can replace his messy spreadsheet-based analysis. Price sensitive &mdash; compares against free alternatives but would pay $20-30/mo for something that saves hours.</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card green">
+        <div class="stat-number">0.90</div>
+        <div class="stat-label">Final Confidence</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Steps Taken</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Friction Points</div>
+      </div>
+    </div>
+  </div>
+  <div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</body>
+</html>
