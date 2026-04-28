@@ -6,7 +6,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#ffffff;color:#1E1E1E;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#ffffff;color:#1E1E1E;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:auto;}
 body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:url('cover-bg.png') center/cover no-repeat;pointer-events:none;z-index:0;}
 body>*{position:relative;z-index:1;}
 .header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);flex-shrink:0;}
@@ -19,7 +19,7 @@ body>*{position:relative;z-index:1;}
 .page-nav a{padding:10px 20px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all 0.15s;}
 .page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
 .page-nav a:hover{color:#2145F3;}
-.cover-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 120px;gap:40px;}
+.cover-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:32px 120px;gap:28px;}
 .url-pill{display:inline-block;padding:8px 20px;border:1px solid rgba(0,0,0,0.4);border-radius:9999px;font-size:14px;font-weight:500;color:rgba(0,0,0,0.8);width:fit-content;}
 .persona-hero{display:flex;flex-direction:column;gap:20px;}
 .persona-name-block{display:flex;flex-direction:column;gap:2px;}
@@ -28,13 +28,17 @@ body>*{position:relative;z-index:1;}
 .persona-title{font-size:18px;font-weight:500;color:rgba(0,0,0,0.6);}
 .mbti-badge{display:inline-block;padding:3px 12px;border-radius:6px;background:#2145F3;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.5px;}
 .persona-desc{font-size:16px;font-weight:400;color:rgba(0,0,0,0.66);line-height:1.6;max-width:830px;}
+.persona-details{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:14px;max-width:980px;}
+.detail-card{background:rgba(255,255,255,0.68);border:1px solid rgba(0,0,0,0.06);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,0.03);}
+.detail-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,0.38);margin-bottom:5px;}
+.detail-value{font-size:13px;font-weight:500;color:rgba(0,0,0,0.75);line-height:1.45;}
 .stats-row{display:flex;gap:32px;}
 .stat-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 20px;border-radius:20px;background:rgba(255,255,255,0.55);min-width:122px;border-bottom:3px solid transparent;}
 .stat-card.green{border-bottom-color:#35cd4c;}.stat-card.dark{border-bottom-color:#000000;}.stat-card.red{border-bottom-color:#ff0000;}.stat-card.yellow{border-bottom-color:#f59e0b;}
 .stat-number{font-size:40px;font-weight:600;color:rgba(0,0,0,0.85);line-height:1.2;}
 .stat-label{font-size:13px;font-weight:400;color:rgba(0,0,0,0.5);letter-spacing:-0.5px;text-align:center;}
 .report-footer{text-align:center;padding:16px 0;color:rgba(0,0,0,0.25);font-size:12px;flex-shrink:0;}
-@media(max-width:960px){body{overflow:auto}.header{padding:16px 24px;}.page-nav{padding:0 24px;}.cover-content{padding:40px 24px;justify-content:flex-start;}.persona-name{font-size:36px;}.stat-number{font-size:28px;}.stats-row{flex-wrap:wrap;gap:16px;}}
+@media(max-width:960px){.header{padding:16px 24px;}.page-nav{padding:0 24px;overflow:auto;}.cover-content{padding:40px 24px;justify-content:flex-start;}.persona-name{font-size:36px;}.stat-number{font-size:28px;}.stats-row{flex-wrap:wrap;gap:16px;}.persona-details{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -46,6 +50,7 @@ body>*{position:relative;z-index:1;}
     <span class="header-label">Synthetic Usability Report</span>
   </div>
   <nav class="page-nav">
+    <a href="painbase.html">All Personas</a>
     <a href="painbase_priya.html" class="active">Cover</a>
     <a href="painbase_priya_steps.html">Step Details</a>
     <a href="painbase_priya_journey.html">Journey &amp; Conclusion</a>
@@ -61,6 +66,12 @@ body>*{position:relative;z-index:1;}
         </div>
       </div>
       <div class="persona-desc">Priya owns roadmap discovery for a small but growing B2B SaaS product team. She already triangulates evidence from Gong calls, support tickets, sales notes, product analytics, and competitor research. PainBase wins her only if it can produce credible external market evidence she can defend in a roadmap discussion, not just polished startup ideas or generic MVP copy.</div>
+    </div>
+    <div class="persona-details">
+      <div class="detail-card"><div class="detail-label">Segment</div><div class="detail-value">Mid-sized professional buyer who needs defensible product discovery evidence.</div></div>
+      <div class="detail-card"><div class="detail-label">Context</div><div class="detail-value">Senior PM balancing stakeholder pressure, roadmap bets, and limited research time.</div></div>
+      <div class="detail-card"><div class="detail-label">Workflow</div><div class="detail-value">Triangulates market signals against sales calls, support tickets, analytics, and competitors.</div></div>
+      <div class="detail-card"><div class="detail-label">Success Criteria</div><div class="detail-value">Exportable source-backed insight she can use in roadmap and prioritization discussions.</div></div>
     </div>
     <div class="stats-row">
       <div class="stat-card yellow"><div class="stat-number">0.64</div><div class="stat-label">Final Confidence</div></div>

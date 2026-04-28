@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>PainBase | Menso Usability Test Reports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
+.page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
+.brand{display:flex;align-items:center;gap:8px;margin-bottom:30px;color:#757575;font-size:14px;font-weight:700;letter-spacing:.06em}
+.brand-dot{width:10px;height:10px;border-radius:50%;background:#2145f3}
+.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
+.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
+.eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
+h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-bottom:12px;letter-spacing:-.03em}
+.subtitle{max-width:760px;color:#666;font-size:16px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.nav a{display:inline-flex;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.16);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700}
+.section{margin-top:24px}
+.section h2{font-size:20px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{display:flex;flex-direction:column;gap:16px;background:#fff;border:1px solid #f0f0f0;border-radius:22px;padding:22px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.08);border-color:#2145f3}
+.persona-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.persona-name{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.persona-role{color:#666;font-size:13px;margin-top:4px}
+.badge{font-size:12px;font-weight:800;color:#fff;background:#2145f3;border-radius:8px;padding:4px 9px;white-space:nowrap}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:5px 10px}
+.desc{font-size:14px;color:#4f4f4f}
+.cta{margin-top:auto;font-size:13px;font-weight:800;color:#2145f3}
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.insight{background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:18px}
+.insight strong{display:block;font-size:14px;margin-bottom:6px}
+.insight p{font-size:13px;color:#5f5f5f}
+.footer{text-align:center;color:#999;font-size:12px;margin-top:32px}
+@media(max-width:900px){.grid,.insights{grid-template-columns:1fr}.hero{padding:30px}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="brand"><div class="brand-dot"></div><span>MENSO</span></div>
+
+  <section class="hero">
+    <div class="eyebrow">PainBase synthetic usability study</div>
+    <h1>Three user lenses for one product decision.</h1>
+    <p class="subtitle">Menso tested PainBase through a majority indie-hacker persona, a professional product manager persona, and a high-potential studio buyer persona. The goal is not to satisfy every user equally, but to reveal which product promises matter most to each segment.</p>
+    <div class="nav">
+      <a href="index.html">All Reports</a>
+      <a href="painbase_marcus.html">Marcus Cover</a>
+      <a href="painbase_priya.html">Priya Cover</a>
+      <a href="painbase_elena.html">Elena Cover</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Persona Reports</h2>
+    <div class="grid">
+      <a class="card" href="painbase_marcus.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Marcus Webb</div><div class="persona-role">Software Engineer &amp; aspiring indie hacker, 27</div></div>
+          <span class="badge">ENTP</span>
+        </div>
+        <div class="meta"><span class="pill">Majority user</span><span class="pill">Idea discovery</span><span class="pill">Source trust</span></div>
+        <p class="desc">Marcus wants PainBase to replace weekend Reddit/X pain mining with a fast, credible micro-SaaS validation loop.</p>
+        <div class="cta">Open Marcus report -></div>
+      </a>
+
+      <a class="card" href="painbase_priya.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Priya Raman</div><div class="persona-role">Senior Product Manager, Series A B2B SaaS</div></div>
+          <span class="badge">ESTJ</span>
+        </div>
+        <div class="meta"><span class="pill">Professional buyer</span><span class="pill">Roadmap evidence</span><span class="pill">Exportability</span></div>
+        <p class="desc">Priya evaluates whether PainBase can produce evidence strong enough to support product roadmap and stakeholder decisions.</p>
+        <div class="cta">Open Priya report -></div>
+      </a>
+
+      <a class="card" href="painbase_elena.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Elena Morozova</div><div class="persona-role">Startup studio partner &amp; fractional GTM advisor, 41</div></div>
+          <span class="badge">INTJ</span>
+        </div>
+        <div class="meta"><span class="pill">High-potential minority</span><span class="pill">Studio workflow</span><span class="pill">Multi-project</span></div>
+        <p class="desc">Elena tests whether PainBase can become a repeatable validation pipeline for multiple founders and projects.</p>
+        <div class="cta">Open Elena report -></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Cross-Persona Takeaways</h2>
+    <div class="insights">
+      <div class="insight"><strong>Primary value is trust, not generation.</strong><p>All three personas reacted strongly to source quality. PainBase should make evidence provenance, source context, and confidence easier to inspect before pushing users into generated assets.</p></div>
+      <div class="insight"><strong>Marcus defines the core ICP.</strong><p>The main workflow should optimize for fast idea discovery and validation. Advanced studio/project management should not slow the first-time indie-hacker path.</p></div>
+      <div class="insight"><strong>Power users need workspace depth.</strong><p>Priya and Elena expose the same expansion path: saved projects, cleanup, exports, comparison, and reusable evidence artifacts for teams or clients.</p></div>
+    </div>
+  </section>
+
+  <div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</main>
+</body>
+</html>
