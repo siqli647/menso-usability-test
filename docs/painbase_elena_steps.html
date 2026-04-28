@@ -7,23 +7,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFAFF;color:#1E1E1E;line-height:1.6;min-height:100vh;}
-.header{display:flex;align-items:center;justify-content:space-between;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,.05);background:#fff;}
-.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}.logo-icon{width:34px;height:34px;flex-shrink:0}.logo-icon img{width:100%;height:100%;object-fit:contain}.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707}.header-label{font-size:14px;color:rgba(0,0,0,.5);}
-.page-nav{display:flex;gap:0;padding:0 120px;border-bottom:1px solid rgba(0,0,0,.05);background:#fff}.page-nav a{padding:10px 20px;text-decoration:none;color:rgba(0,0,0,.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent}.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3}.page-nav a:hover{color:#2145F3}
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,.05);background:transparent;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}.logo-icon{width:34px;height:34px;flex-shrink:0}.logo-icon img{width:100%;height:100%;object-fit:contain}.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707}.header-label{font-size:14px;color:rgba(0,0,0,.5);white-space:nowrap;}
+.page-nav{display:flex;justify-content:center;gap:0;padding:0;border-bottom:0;background:transparent;min-width:0}.page-nav a{padding:8px 16px;text-decoration:none;color:rgba(0,0,0,.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;white-space:nowrap}.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3}.page-nav a:hover{color:#2145F3}
 .content{max-width:1320px;margin:0 auto;padding:40px 60px}.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.step-card{background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px}.step-head{display:flex;align-items:baseline;gap:10px}.step-num{font-size:18px;font-weight:700;color:#000}.step-title{font-size:20px;font-weight:600;color:#1E1E1E}.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.step-img{width:100%;height:260px;object-fit:cover;border-radius:8px;border:1px solid #F3F3F3}.step-img.single{grid-column:1/-1}.divider{height:.5px;background:rgba(0,0,0,.1);width:100%}.step-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.emotion-pill{display:inline-block;padding:4px 10px;border-radius:9999px;font-size:12px;font-weight:500}.think-aloud{font-size:14px;color:#1E1E1E;line-height:1.6}.verdict-bar{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5}.verdict-bar.warning{background:#FEF3C7;color:#92400E}.verdict-bar.positive{background:#DCFCE7;color:#166534}.verdict-bar.risk{background:#FFE4E6;color:#9F1239}.verdict-bar.neutral{background:#EEF2FF;color:#3730A3}.report-footer{text-align:center;padding:24px 0;color:rgba(0,0,0,.25);font-size:12px}
-@media(max-width:960px){.header{padding:16px 24px}.page-nav{padding:0 24px}.content{padding:24px 16px}.steps-grid{grid-template-columns:1fr}.step-img{height:200px}}
+@media(max-width:960px){.header{grid-template-columns:1fr;padding:16px 24px;gap:12px}.page-nav{justify-content:flex-start;overflow:auto;width:100%}.content{padding:24px 16px}.steps-grid{grid-template-columns:1fr}.step-img{height:200px}}
 </style>
 </head>
 <body>
   <div class="header">
     <div class="logo" aria-label="Menso"><div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div><span class="logo-text">Menso</span></div>
-    <span class="header-label">Step-by-Step Walkthrough</span>
+    <nav class="page-nav">
+      <a href="painbase.html">All Personas</a>
+      <a href="painbase_elena.html">Cover</a>
+      <a href="painbase_elena_steps.html" class="active">Step Details</a>
+      <a href="painbase_elena_journey.html">Journey &amp; Conclusion</a>
+    </nav>
+    <span class="header-label">Synthetic Usability Report</span>
   </div>
-  <nav class="page-nav">
-    <a href="painbase_elena.html">Cover</a>
-    <a href="painbase_elena_steps.html" class="active">Step Details</a>
-    <a href="painbase_elena_journey.html">Journey &amp; Conclusion</a>
-  </nav>
   <div class="content">
     <div class="steps-grid">
       <div class="step-card">
