@@ -8,8 +8,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
 .page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
-.brand{display:flex;align-items:center;gap:8px;margin-bottom:30px;color:#757575;font-size:14px;font-weight:700;letter-spacing:.06em}
-.brand-dot{width:10px;height:10px;border-radius:50%;background:#2145f3}
+.brand{display:flex;align-items:center;margin-bottom:30px}
+.brand-logo{width:44px;height:44px;object-fit:contain;display:block}
 .hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
 .hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
 .eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
@@ -40,14 +40,13 @@ h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-botto
 </head>
 <body>
 <main class="page">
-  <div class="brand"><div class="brand-dot"></div><span>MENSO</span></div>
+  <div class="brand"><img class="brand-logo" src="menso-brand-logo.png" alt="Menso"></div>
 
   <section class="hero">
     <div class="eyebrow">PainBase synthetic usability study</div>
     <h1>Three user lenses for one product decision.</h1>
     <p class="subtitle">Menso tested PainBase through a majority indie-hacker persona, a professional product manager persona, and a high-potential studio buyer persona. The goal is not to satisfy every user equally, but to reveal which product promises matter most to each segment.</p>
     <div class="nav">
-      <a href="index.html">All Reports</a>
       <a href="painbase_marcus.html">Marcus Cover</a>
       <a href="painbase_priya.html">Priya Cover</a>
       <a href="painbase_elena.html">Elena Cover</a>
