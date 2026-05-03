@@ -2,71 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SDR Jarvis | Daniel Kowalski</title>
+<title>SDR Jarvis - Daniel Kowalski | Usability Test Report</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
-.page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
-.brand{display:flex;align-items:center;margin-bottom:30px}
-.brand-logo{width:44px;height:44px;object-fit:contain;display:block}
-.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
-.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
-.eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
-h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-bottom:12px;letter-spacing:-.03em}
-.subtitle{max-width:780px;color:#666;font-size:16px}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.nav a{display:inline-flex;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.16);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700}
-.section{margin-top:24px}
-.section h2{font-size:20px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
-.card,.panel{display:flex;flex-direction:column;gap:16px;background:#fff;border:1px solid #f0f0f0;border-radius:22px;padding:22px;text-decoration:none;color:inherit}
-a.card{transition:transform .18s,box-shadow .18s,border-color .18s}
-a.card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.08);border-color:#2145f3}
-.persona-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.persona-name{font-size:22px;font-weight:800;letter-spacing:-.02em}
-.persona-role{color:#666;font-size:13px;margin-top:4px}
-.badge{font-size:12px;font-weight:800;color:#fff;background:#2145f3;border-radius:8px;padding:4px 9px;white-space:nowrap}
-.meta{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:5px 10px}
-.desc,li{font-size:14px;color:#4f4f4f}
-.cta{margin-top:auto;font-size:13px;font-weight:800;color:#2145f3}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.insight{background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:18px}
-.insight strong{display:block;font-size:14px;margin-bottom:6px}
-.insight p{font-size:13px;color:#5f5f5f}
-video{width:100%;border-radius:16px;border:1px solid #e9e9e9;background:#111}
-.stat{font-size:30px;font-weight:800;letter-spacing:-.03em}
-.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #f0f0f0;border-radius:18px;overflow:hidden}
-td,th{padding:14px;border-bottom:1px solid #f1f1f1;text-align:left;vertical-align:top;font-size:13px}
-th{color:#666;background:#f8f8f8;font-weight:800}
-tr:last-child td{border-bottom:0}
-ul{padding-left:18px}
-.step-card{display:grid;grid-template-columns:360px 1fr;gap:18px;background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:16px;margin-bottom:14px}
-.step-shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid #e9e9e9;background:#111}
-.step-kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.step-num{font-size:12px;font-weight:800;color:#2145f3;background:#eef2ff;border-radius:999px;padding:4px 9px}
-.route{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:4px 9px;word-break:break-all}
-.quote{font-size:14px;color:#333;font-style:italic}
-.friction{font-size:13px;color:#8a3f00;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:10px}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:32px}
-@media(max-width:900px){.grid,.insights,.two,.step-card{grid-template-columns:1fr}.hero{padding:30px}h1{font-size:34px}}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#ffffff;color:#1E1E1E;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:auto;}
+body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:url('cover-bg.png') center/cover no-repeat;pointer-events:none;z-index:0;}
+body>*{position:relative;z-index:1;}
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);flex-shrink:0;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707;}
+.header-label{font-size:14px;font-weight:400;color:rgba(0,0,0,0.5);white-space:nowrap;}
+.page-nav{display:flex;justify-content:center;gap:0;padding:0;border-bottom:0;background:transparent;min-width:0;}
+.page-nav a{padding:8px 16px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
+.page-nav a:hover{color:#2145F3;}
+.cover-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:32px 120px;gap:28px;}
+.url-pill{display:inline-block;padding:8px 20px;border:1px solid rgba(0,0,0,0.4);border-radius:9999px;font-size:14px;font-weight:500;color:rgba(0,0,0,0.8);width:fit-content;}
+.persona-hero{display:flex;flex-direction:column;gap:20px;}
+.persona-name-block{display:flex;flex-direction:column;gap:2px;}
+.persona-name{font-family:'Raleway',sans-serif;font-size:58px;font-weight:700;color:#000000;line-height:1.15;}
+.persona-title-row{display:flex;align-items:center;gap:12px;}
+.persona-title{font-size:18px;font-weight:500;color:rgba(0,0,0,0.6);}
+.mbti-badge{display:inline-block;padding:3px 12px;border-radius:6px;background:#2145F3;color:#fff;font-size:12px;font-weight:700;letter-spacing:0.5px;}
+.persona-desc{font-size:16px;font-weight:400;color:rgba(0,0,0,0.66);line-height:1.6;max-width:790px;}
+.persona-details{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:14px;max-width:980px;}
+.detail-card{background:rgba(255,255,255,0.68);border:1px solid rgba(0,0,0,0.06);border-radius:16px;padding:14px 16px;box-shadow:0 10px 30px rgba(0,0,0,0.03);}
+.detail-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(0,0,0,0.38);margin-bottom:5px;}
+.detail-value{font-size:13px;font-weight:500;color:rgba(0,0,0,0.75);line-height:1.45;}
+.stats-row{display:flex;gap:32px;}
+.stat-card{display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 20px;border-radius:20px;background:rgba(255,255,255,0.55);min-width:122px;border-bottom:3px solid transparent;}
+.stat-card.green{border-bottom-color:#35cd4c;}.stat-card.dark{border-bottom-color:#000000;}.stat-card.red{border-bottom-color:#ff0000;}.stat-card.yellow{border-bottom-color:#f59e0b;}
+.stat-number{font-size:40px;font-weight:600;color:rgba(0,0,0,0.85);line-height:1.2;}
+.stat-label{font-size:13px;font-weight:400;color:rgba(0,0,0,0.5);letter-spacing:-0.5px;text-align:center;}
+.report-footer{text-align:center;padding:16px 0;color:rgba(0,0,0,0.25);font-size:12px;flex-shrink:0;}
+@media(max-width:960px){.header{grid-template-columns:1fr;padding:16px 24px;gap:12px;}.page-nav{justify-content:flex-start;overflow:auto;width:100%;}.cover-content{padding:40px 24px;justify-content:flex-start;}.persona-name{font-size:36px;}.stat-number{font-size:28px;}.stats-row{flex-wrap:wrap;gap:16px;}.persona-details{grid-template-columns:1fr;}}
 </style>
 </head>
-<body><main class="page">
-<div class="brand"><img class="brand-logo" src="menso-brand-logo.png" alt="Menso"></div>
-<section class="hero">
-<div class="eyebrow">SDR Jarvis · Majority user</div>
-<h1>Daniel Kowalski</h1>
-<p class="subtitle">Solo Founder &amp; CTO of a B2B Dev Tools Startup. Founder-led outbound demand is real, but auditability blocks trust.</p>
-<div class="nav"><a href="sdrjarvis.html">Overview</a><a href="sdrjarvis_daniel_steps.html">Step Evidence</a><a href="sdrjarvis_daniel_journey.html">Journey</a></div>
-</section>
-<section class="section two">
-<div class="panel"><h2>Frontend Recording</h2><video controls muted playsinline preload="metadata" src="sdrjarvis_daniel/sdrjarvis-daniel-frontend-under1min.mp4"></video><p class="desc">Compressed frontend test recording with persona/task panel, live product area, step cards, and think-aloud transcript.</p></div>
-<div class="panel"><h2>Decision Snapshot</h2><div class="meta"><span class="pill">Status: failed</span><span class="pill">Task completed: False</span><span class="pill">Steps: 28</span></div><p class="desc"><strong>User need:</strong> Daniel launched a CLI-based developer analytics tool 6 months ago and has 40 paying customers, all from personal network and Hacker News posts. He needs to scale beyond warm leads and start cold outbound to engineering managers at mid-size companies. He tried...</p><p class="desc"><strong>Outcome:</strong> Daniel Kowalski did not complete the task in 28 steps. Key persona insight: Non-clickable approval history undermines trust by preventing users from understanding why emails were rejected, which is critical for evaluating lead quality and personalization. Recommendation: Make each history item clickable to open a detail view showing the email draft content, lead name/title, and any rejection reason.</p></div>
-</section>
-<section class="section"><h2>Top Findings</h2><div class="insights"><div class="insight"><strong>Non-clickable approval history undermines trust by preventing users from understanding why emails were rejected, which is critical for evaluating lead quality and personalization.</strong><p>Make each history item clickable to open a detail view showing the email draft content, lead name/title, and any rejection reason.</p></div><div class="insight"><strong>The email icon only opens a mailto link instead of previewing the generated draft, blocking the user from assessing personalization quality, which is essential for founder-led outbound.</strong><p>Add a &#x27;preview&#x27; option next to each lead that shows the generated email draft in a modal or inline, even in read-only mode.</p></div><div class="insight"><strong>The persona needed clearer product-visible evidence before making the next decision.</strong><p>Ensure all navigation links consistently lead to the correct sections and consider adding visual feedback (e.g., active state) to confirm the navigation action.</p></div></div></section>
-<section class="section"><h2>Observed Frictions</h2><div class="panel"><ul><li>In the Approvals history, I see a list of rejected and approved drafts, but none are clickable. I expected to be able to click into an item to see the full email copy and the lead it was sent to. Without this, I cannot assess whether the rejections were due to poor personalization or bad lead targeting — the very things I&#x27;m trying to evaluate. This feels like a half-baked feature that undermines my trust in the product&#x27;s transparency.</li><li>When I view leads in the campaign, clicking the email icon only opens my default mail client (mailto link) instead of showing me the generated draft within the app. As a skeptical founder, I need to see the actual personalized content to judge if it&#x27;s good enough for cold outbound. Only seeing a mailto link makes me feel the product is hiding the email quality — it triggers my &#x27;trust but verify&#x27; instinct and increases anxiety about value.</li></ul></div></section>
-<div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
-</main></body></html>
+<body>
+  <div class="header">
+    <div class="logo" aria-label="Menso">
+      <div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div>
+      <span class="logo-text">Menso</span>
+    </div>
+    <nav class="page-nav">
+      <a href="sdrjarvis.html">All Personas</a>
+      <a href="sdrjarvis_daniel.html" class="active">Cover</a>
+      <a href="sdrjarvis_daniel_steps.html">Step Details</a>
+      <a href="sdrjarvis_daniel_journey.html">Journey &amp; Conclusion</a>
+    </nav>
+    <span class="header-label">Synthetic Usability Report</span>
+  </div>
+  <div class="cover-content">
+    <div class="url-pill">sdrjarvis.com</div>
+    <div class="persona-hero">
+      <div class="persona-name-block">
+        <div class="persona-name">Daniel Kowalski</div>
+        <div class="persona-title-row">
+          <span class="persona-title">Solo Founder &amp; CTO of a B2B Dev Tools Startup, 36</span>
+          <span class="mbti-badge">INTJ</span>
+        </div>
+      </div>
+      <div class="persona-desc">Daniel launched a CLI-based developer analytics tool 6 months ago and has 40 paying customers, all from personal network and Hacker News posts. He needs to scale beyond warm leads and start cold outbound to engineering managers at mid-size companies. He tried Instantly.ai but found it too complex to set up lead lists manually. A YC founder friend mentioned SDR Jarvis finds leads from HN/PH automatically, which is exactly his ICP source. Budget: $0-50/month — bootstrapped with 8 months of runway left.</div>
+    </div>
+    <div class="persona-details">
+      <div class="detail-card"><div class="detail-label">Segment</div><div class="detail-value">Majority founder buyer</div></div>
+      <div class="detail-card"><div class="detail-label">Context</div><div class="detail-value">Bootstrapped B2B dev-tools founder scaling beyond warm leads.</div></div>
+      <div class="detail-card"><div class="detail-label">Workflow</div><div class="detail-value">Review campaigns, lead relevance, approval history, and generated email quality.</div></div>
+      <div class="detail-card"><div class="detail-label">Success Criteria</div><div class="detail-value">Trust SDR Jarvis only if lead fit and personalization evidence are inspectable.</div></div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-card yellow"><div class="stat-number">0.80</div><div class="stat-label">Final Confidence</div></div>
+      <div class="stat-card dark"><div class="stat-number">28</div><div class="stat-label">Steps Taken</div></div>
+      <div class="stat-card green"><div class="stat-number">4</div><div class="stat-label">Product Insights</div></div>
+      <div class="stat-card red"><div class="stat-number">2</div><div class="stat-label">Friction Points</div></div>
+    </div>
+  </div>
+  <div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</body>
+</html>

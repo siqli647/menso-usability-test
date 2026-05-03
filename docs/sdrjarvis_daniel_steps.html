@@ -2,234 +2,330 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>SDR Jarvis | Daniel Kowalski Steps</title>
+<title>SDR Jarvis - Daniel Kowalski | Step Details</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
-.page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
-.brand{display:flex;align-items:center;margin-bottom:30px}
-.brand-logo{width:44px;height:44px;object-fit:contain;display:block}
-.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
-.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
-.eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
-h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-bottom:12px;letter-spacing:-.03em}
-.subtitle{max-width:780px;color:#666;font-size:16px}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.nav a{display:inline-flex;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.16);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700}
-.section{margin-top:24px}
-.section h2{font-size:20px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.two{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
-.card,.panel{display:flex;flex-direction:column;gap:16px;background:#fff;border:1px solid #f0f0f0;border-radius:22px;padding:22px;text-decoration:none;color:inherit}
-a.card{transition:transform .18s,box-shadow .18s,border-color .18s}
-a.card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.08);border-color:#2145f3}
-.persona-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.persona-name{font-size:22px;font-weight:800;letter-spacing:-.02em}
-.persona-role{color:#666;font-size:13px;margin-top:4px}
-.badge{font-size:12px;font-weight:800;color:#fff;background:#2145f3;border-radius:8px;padding:4px 9px;white-space:nowrap}
-.meta{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:5px 10px}
-.desc,li{font-size:14px;color:#4f4f4f}
-.cta{margin-top:auto;font-size:13px;font-weight:800;color:#2145f3}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.insight{background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:18px}
-.insight strong{display:block;font-size:14px;margin-bottom:6px}
-.insight p{font-size:13px;color:#5f5f5f}
-video{width:100%;border-radius:16px;border:1px solid #e9e9e9;background:#111}
-.stat{font-size:30px;font-weight:800;letter-spacing:-.03em}
-.table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #f0f0f0;border-radius:18px;overflow:hidden}
-td,th{padding:14px;border-bottom:1px solid #f1f1f1;text-align:left;vertical-align:top;font-size:13px}
-th{color:#666;background:#f8f8f8;font-weight:800}
-tr:last-child td{border-bottom:0}
-ul{padding-left:18px}
-.step-card{display:grid;grid-template-columns:360px 1fr;gap:18px;background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:16px;margin-bottom:14px}
-.step-shot{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid #e9e9e9;background:#111}
-.step-kicker{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.step-num{font-size:12px;font-weight:800;color:#2145f3;background:#eef2ff;border-radius:999px;padding:4px 9px}
-.route{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:4px 9px;word-break:break-all}
-.quote{font-size:14px;color:#333;font-style:italic}
-.friction{font-size:13px;color:#8a3f00;background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:10px}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:32px}
-@media(max-width:900px){.grid,.insights,.two,.step-card{grid-template-columns:1fr}.hero{padding:30px}h1{font-size:34px}}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFAFF;color:#1E1E1E;line-height:1.6;min-height:100vh;}
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);background:transparent;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707;}
+.header-label{font-size:14px;color:rgba(0,0,0,0.5);white-space:nowrap;}
+.page-nav{display:flex;justify-content:center;gap:0;padding:0;border-bottom:0;background:transparent;min-width:0;}
+.page-nav a{padding:8px 16px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;white-space:nowrap;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}.page-nav a:hover{color:#2145F3;}
+.content{max-width:1320px;margin:0 auto;padding:40px 60px;}
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.step-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;}
+.step-head{display:flex;align-items:baseline;gap:10px;}.step-num{font-size:18px;font-weight:700;color:#000;}.step-title{font-size:20px;font-weight:600;color:#1E1E1E;}
+.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:cover;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
+.divider{height:0.5px;background:rgba(0,0,0,0.1);width:100%;}.step-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.emotion-pill{display:inline-block;padding:4px 10px;border-radius:9999px;font-size:12px;font-weight:500;}.conf-label{font-size:13px;color:#757575;}.conf-value{font-size:13px;font-weight:600;color:#1E1E1E;}
+.think-aloud{font-size:14px;color:#1E1E1E;line-height:1.6;font-style:normal;}.verdict-bar{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5;}.verdict-bar.warning{background:#FEF3C7;color:#92400E;}.verdict-bar.positive{background:#DCFCE7;color:#166534;}.verdict-bar.risk{background:#FFE4E6;color:#9F1239;}.verdict-bar.neutral{background:#EEF2FF;color:#3730A3;}
+.report-footer{text-align:center;padding:24px 0;color:rgba(0,0,0,0.25);font-size:12px;}
+@media(max-width:960px){.header{grid-template-columns:1fr;padding:16px 24px;gap:12px;}.page-nav{justify-content:flex-start;overflow:auto;width:100%;}.content{padding:24px 16px;}.steps-grid{grid-template-columns:1fr;}.step-img{height:200px;}}
 </style>
 </head>
-<body><main class="page">
-<div class="brand"><img class="brand-logo" src="menso-brand-logo.png" alt="Menso"></div>
-<section class="hero">
-<div class="eyebrow">Step evidence</div>
-<h1>Daniel Kowalski: screenshots were restored.</h1>
-<p class="subtitle">Each step below now references the actual screenshot captured during the clean run, alongside route, think-aloud, and friction evidence.</p>
-<div class="nav"><a href="sdrjarvis_daniel.html">Cover</a><a href="sdrjarvis_daniel_journey.html">Journey</a><a href="sdrjarvis.html">Overview</a></div>
-</section>
-<section class="section"><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step1.png" alt="Step 1 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 1</span><span class="route">/dashboard</span></div>
-<p class="quote">"I&#x27;m at the beginning of my read-only review. I&#x27;ve understood the product&#x27;s stated purpose and seen the high-level metrics. My next step is to dive into the &#x27;Campaigns&#x27; section to understand how outreach is structured and if it aligns with my needs."</p>
-<p class="desc"><strong>Page read:</strong> This is the main dashboard page, showing a quick start guide, an onboarding checklist, and summary statistics for leads, emails, approvals, and reply rate. It also lists recent activity, including rejected drafts.</p>
+<body>
+  <div class="header">
+    <div class="logo" aria-label="Menso">
+      <div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div>
+      <span class="logo-text">Menso</span>
+    </div>
+    <nav class="page-nav">
+      <a href="sdrjarvis.html">All Personas</a>
+      <a href="sdrjarvis_daniel.html">Cover</a>
+      <a href="sdrjarvis_daniel_steps.html" class="active">Step Details</a>
+      <a href="sdrjarvis_daniel_journey.html">Journey &amp; Conclusion</a>
+    </nav>
+    <span class="header-label">Synthetic Usability Report</span>
+  </div>
+  <div class="content">
+    <div class="steps-grid">
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step2.png" alt="Step 2 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 2</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"Okay, I&#x27;m on the Campaigns page. I see three campaigns listed, and one is &#x27;ACTIVE&#x27;. I&#x27;ll start by clicking on the active campaign, &#x27;Dev Analytics EM Outbound Q3&#x27;, to see how it&#x27;s configured and if it aligns with my needs for cold outbound to engineering managers."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of outbound campaigns, showing their status (Active or Draft) and a brief description. There&#x27;s also an option to create a new campaign.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">1</span><span class="step-title">Dashboard &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step1.png" alt="SDR Jarvis Dashboard"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;m at the beginning of my read-only review. I&#x27;ve understood the product&#x27;s stated purpose and seen the high-level metrics. My next step is to dive into the &#x27;Campaigns&#x27; section to understand how outreach is structured and if it aligns with my needs.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step3.png" alt="Step 3 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 3</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;m on the campaign overview. The ICP looks spot on for my developer analytics tool. I need to dive into these leads to see the actual personalization and how well they match. I&#x27;ll start with Paul Ba***s, the first one in the list."</p>
-<p class="desc"><strong>Page read:</strong> This page displays an overview of a specific outbound campaign, including its description, status, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of the leads in the campaign with their status and actions.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">2</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step2.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Campaigns page. I see three campaigns listed, and one is &#x27;ACTIVE&#x27;. I&#x27;ll start by clicking on the active campaign, &#x27;Dev Analytics EM Outbound Q3&#x27;, to see how it&#x27;s configured and if it aligns with my needs for cold outbound to engineering managers.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step4.png" alt="Step 4 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 4</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;m looking at the campaign details. The ICP looks pretty spot on for my developer analytics tool. Now I need to check the actual leads to see if they&#x27;re relevant and how personalized the outreach is. I&#x27;ll start by inspecting the first lead, Paul Ba***s, to see what details are available."</p>
-<p class="desc"><strong>Page read:</strong> This page displays the details of a specific campaign, including its status, a summary of leads (total, researched, sent, replied, pending), the target ICP, and a table listing the individual leads with their roles, companies, status, and an &#x27;84%&#x27; score with an email icon.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">3</span><span class="step-title">Campaign Detail &mdash; Loading Check</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step3.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the campaign overview. The ICP looks spot on for my developer analytics tool. I need to dive into these leads to see the actual personalization and how well they match. I&#x27;ll start with Paul Ba***s, the first one in the list.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step5.png" alt="Step 5 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 5</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;ve clicked an email link before, that was a mistake. I need to stay in the product. These leads look mostly relevant, though one is a designer, which is not my ICP. I need to understand what this &#x27;84%&#x27; means and see the personalization. I&#x27;ll check &#x27;Approvals&#x27; next to see the workflow and email drafts."</p>
-<p class="desc"><strong>Page read:</strong> This page displays the details of a specific campaign, including its description, status, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of individual leads with their status and an &#x27;Actions&#x27; column.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">4</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step4.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m looking at the campaign details. The ICP looks pretty spot on for my developer analytics tool. Now I need to check the actual leads to see if they&#x27;re relevant and how personalized the outreach is. I&#x27;ll start by inspecting the first lead, Paul Ba***s, to see what details are available.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step6.png" alt="Step 6 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 6</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m in the Approvals section. Nothing pending, which makes sense. The history shows a lot of rejections, which is a bit concerning. I need to understand the campaign strategy and who these leads are. I&#x27;ll go back to the Campaigns page to get the bigger picture."</p>
-<p class="desc"><strong>Page read:</strong> This is the &#x27;Approvals&#x27; page, showing an empty inbox for pending email drafts and a history of previously approved or rejected drafts. The history lists several rejected leads and one approved lead.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">5</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step5.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;ve clicked an email link before, that was a mistake. I need to stay in the product. These leads look mostly relevant, though one is a designer, which is not my ICP. I need to understand what this &#x27;84%&#x27; means and see the personalization. I&#x27;ll check &#x27;Approvals&#x27; next to see the workflow and email drafts.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step7.png" alt="Step 7 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 7</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"It&#x27;s strange, clicking on the campaign cards or even the &#x27;Campaigns&#x27; link again didn&#x27;t do anything. I need to see the details of these campaigns to evaluate them. Maybe the navigation links on the left are the way to go. I&#x27;ll try &#x27;Leads&#x27; next, as that&#x27;s where I&#x27;d expect to see the actual people being targeted."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of three outbound campaigns, one active and two in draft status, along with a brief description for each. The left sidebar contains navigation links to other sections like Dashboard, Leads, Discover, Approvals, Replies, and Analytics.</p>
-<p class="friction"><strong>Friction:</strong> The page is not responding to clicks on the campaign cards or the navigation links. This is a significant blocker, as I can&#x27;t access any details or other sections of the product to perform my review.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step8.png" alt="Step 8 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 8</span><span class="route">/dashboard/leads</span></div>
-<p class="quote">"This page displays a table of leads with columns for Name, Company, Title, Campaign, Status, Score, and Added date. It shows 15 contacts across campaigns, but individual lead details are not accessible from this view."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a table of leads with columns for Name, Company, Title, Campaign, Status, Score, and Added date. It shows 15 contacts across campaigns, but individual lead details are not accessible from this view.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">6</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step6.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B7;color:#374151">apprehension</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m in the Approvals section. Nothing pending, which makes sense. The history shows a lot of rejections, which is a bit concerning. I need to understand the campaign strategy and who these leads are. I&#x27;ll go back to the Campaigns page to get the bigger picture.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step9.png" alt="Step 9 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 9</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m on the Approvals page, but there&#x27;s nothing pending. The history shows a lot of rejected emails, which is a bit concerning. I need to see the actual campaigns and leads to understand why these were rejected and if the targeting is even relevant for my product."</p>
-<p class="desc"><strong>Page read:</strong> This is the Approvals inbox page, displaying a &#x27;Pending (0)&#x27; section and a &#x27;History&#x27; section with past email approval/rejection statuses.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">7</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step7.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.4</span></div>
+        <p class="think-aloud">It&#x27;s strange, clicking on the campaign cards or even the &#x27;Campaigns&#x27; link again didn&#x27;t do anything. I need to see the details of these campaigns to evaluate them. Maybe the navigation links on the left are the way to go. I&#x27;ll try &#x27;Leads&#x27; next, as that&#x27;s where I&#x27;d expect to see the actual people being targeted.</p>
+        <div class="verdict-bar risk">The page is not responding to clicks on the campaign cards or the navigation links. This is a significant blocker, as I can&#x27;t access any details or other sections of the product to perform my review.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step10.png" alt="Step 10 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 10</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"Okay, I&#x27;m on the Campaigns page. I see three campaigns, and the descriptions seem relevant to my DevMetrics product. I need to review them, so I&#x27;ll start by clicking on the &#x27;Dev Analytics EM Outbound Q3&#x27; campaign since it&#x27;s active."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of outbound campaigns, showing their status (Active or Draft) and a brief description. There&#x27;s a navigation sidebar on the left with links to other sections like Dashboard, Leads, Approvals, and Analytics.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">8</span><span class="step-title">Leads &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step8.png" alt="SDR Jarvis Leads"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#CEBFE7;color:#374151">pensiveness</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">This page displays a table of leads with columns for Name, Company, Title, Campaign, Status, Score, and Added date. It shows 15 contacts across campaigns, but individual lead details are not accessible from this view.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step11.png" alt="Step 11 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 11</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;m on the campaign overview. I see the target ICP matches what I need, which is good. Now I need to check the actual leads and see how personalized the emails are. I&#x27;ll click on one of these mail icons to see a draft."</p>
-<p class="desc"><strong>Page read:</strong> This page displays the details of a specific campaign, including its description, status, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of individual leads with their roles, companies, and a relevance score.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">9</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step9.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Approvals page, but there&#x27;s nothing pending. The history shows a lot of rejected emails, which is a bit concerning. I need to see the actual campaigns and leads to understand why these were rejected and if the targeting is even relevant for my product.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step12.png" alt="Step 12 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 12</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, the leads listed here are not exactly the &#x27;Engineering Manager&#x27; or &#x27;CTO&#x27; roles I&#x27;m targeting, which is a bit concerning for lead relevance. Clicking the email icon just opens a mailto link, which isn&#x27;t helpful for reviewing the lead profile or email drafts. I need to check the &#x27;Approvals&#x27; section to see the actual email content and personalization."</p>
-<p class="desc"><strong>Page read:</strong> This page displays an overview of a running campaign, including its target ICP, key metrics (total leads, researched, sent, replied, pending), and a list of 5 leads with their roles, companies, and email actions.</p>
-<p class="friction"><strong>Friction:</strong> The lead table doesn&#x27;t offer a direct way to view lead details or generated email drafts within the app; only a mailto link is provided, which is not ideal for a review workflow.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step13.png" alt="Step 13 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 13</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m on the approvals page. It seems most drafts are being rejected, which is a bit concerning. The one approved lead seems to be in marketing, which is not my target audience. I need to understand the campaign strategy and see the actual email copy to judge if this is working. I&#x27;ll check the &#x27;Campaigns&#x27; section next."</p>
-<p class="desc"><strong>Page read:</strong> This is the &#x27;Approvals&#x27; page, showing an empty queue of pending email drafts and a history of previously approved and rejected drafts. The majority of recent drafts were rejected.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">10</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step10.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Campaigns page. I see three campaigns, and the descriptions seem relevant to my DevMetrics product. I need to review them, so I&#x27;ll start by clicking on the &#x27;Dev Analytics EM Outbound Q3&#x27; campaign since it&#x27;s active.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step14.png" alt="Step 14 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 14</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"I&#x27;m trying to perform a read-only review of the workspace. I need to inspect the details of existing campaigns, leads, and approvals to assess the product&#x27;s value for founder-led outbound. I will try to click into a campaign to view its details."</p>
-<p class="desc"><strong>Page read:</strong> The current product page is available for evaluation.</p>
-<p class="friction"><strong>Friction:</strong> Clicking on the campaign card didn&#x27;t lead to a detail page previously, which is not intuitive for a power user expecting to drill down into an item.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step15.png" alt="Step 15 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 15</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;m looking at the campaign overview. The ICP looks pretty good, targeting engineering managers and developer tools which is exactly what I need. The leads listed here, like &#x27;Cloud Developer&#x27; and &#x27;Software Developer&#x27;, are also relevant for my product. Now I need to check the actual email drafts and approval history to see how personalized they are."</p>
-<p class="desc"><strong>Page read:</strong> This page displays the overview of a specific outbound campaign, showing its status, description, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of leads with their roles, companies, status, and email links.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">11</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step11.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the campaign overview. I see the target ICP matches what I need, which is good. Now I need to check the actual leads and see how personalized the emails are. I&#x27;ll click on one of these mail icons to see a draft.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step16.png" alt="Step 16 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 16</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"I&#x27;m reviewing the existing workspace. I&#x27;ve seen the approval history, which is part of the task. Next, I need to look at the campaigns to understand lead relevance and personalization."</p>
-<p class="desc"><strong>Page read:</strong> The current page is the &#x27;Approvals&#x27; section, showing no pending drafts but a history of past email approvals/rejections with recipient names and companies.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">12</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step12.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">Okay, the leads listed here are not exactly the &#x27;Engineering Manager&#x27; or &#x27;CTO&#x27; roles I&#x27;m targeting, which is a bit concerning for lead relevance. Clicking the email icon just opens a mailto link, which isn&#x27;t helpful for reviewing the lead profile or email drafts. I need to check the &#x27;Approvals&#x27; section to see the actual email content and personalization.</p>
+        <div class="verdict-bar risk">The lead table doesn&#x27;t offer a direct way to view lead details or generated email drafts within the app; only a mailto link is provided, which is not ideal for a review workflow.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step17.png" alt="Step 17 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 17</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"Okay, I&#x27;m back on the Campaigns page. I need to dive into one of these to see how it&#x27;s actually set up. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign is active, so I&#x27;ll start there to see what it&#x27;s doing."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of outbound campaigns, showing their status (Active or Draft) and a brief description. It also provides navigation to other sections like Leads, Discover, Approvals, Replies, and Analytics.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">13</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step13.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B7;color:#374151">apprehension</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the approvals page. It seems most drafts are being rejected, which is a bit concerning. The one approved lead seems to be in marketing, which is not my target audience. I need to understand the campaign strategy and see the actual email copy to judge if this is working. I&#x27;ll check the &#x27;Campaigns&#x27; section next.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step18.png" alt="Step 18 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 18</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"Okay, I&#x27;m on the campaign overview. The ICP looks good, but the listed leads like &#x27;Cloud Developer&#x27; and &#x27;Software Developer&#x27; aren&#x27;t exactly Engineering Managers. I need to see more details for each lead to understand if they are truly relevant and how personalized the outreach would be. I&#x27;ll scroll down to see the full list of leads and if there are any &#x27;view details&#x27; options."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a campaign&#x27;s summary, including its description, status, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of individual leads with their names, roles, companies, status, and email action buttons.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">14</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step14.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">I&#x27;m trying to perform a read-only review of the workspace. I need to inspect the details of existing campaigns, leads, and approvals to assess the product&#x27;s value for founder-led outbound. I will try to click into a campaign to view its details.</p>
+        <div class="verdict-bar warning">Clicking on the campaign card didn&#x27;t lead to a detail page previously, which is not intuitive for a power user expecting to drill down into an item.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step19.png" alt="Step 19 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 19</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"I&#x27;m looking at the leads generated for this campaign. Most of them seem relevant to my target of engineering roles, which is good, but one is a designer, which is a bit off. I need to see the actual email drafts to evaluate personalization and quality, so I&#x27;ll try navigating to &#x27;Approvals&#x27; again."</p>
-<p class="desc"><strong>Page read:</strong> This page displays an overview of a specific campaign, showing its description, key metrics (total leads, researched, sent, replied, pending), target ICP, and a list of generated leads with their status and actions.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">15</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step15.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m looking at the campaign overview. The ICP looks pretty good, targeting engineering managers and developer tools which is exactly what I need. The leads listed here, like &#x27;Cloud Developer&#x27; and &#x27;Software Developer&#x27;, are also relevant for my product. Now I need to check the actual email drafts and approval history to see how personalized they are.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step20.png" alt="Step 20 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 20</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m in the approvals inbox. Nothing pending, but the history shows a lot of rejections and one approval. I need to understand why. Was the copy bad? Were the leads irrelevant? I can&#x27;t click these history items, so I&#x27;ll start by checking the campaign setup itself."</p>
-<p class="desc"><strong>Page read:</strong> This is the &#x27;Approvals&#x27; page. It shows a &#x27;Pending (0)&#x27; status, indicating no email drafts are waiting for review. Below, a &#x27;History&#x27; section lists recently rejected and approved emails without providing further details.</p>
-<p class="friction"><strong>Friction:</strong> The history items on the approvals page aren&#x27;t clickable. I can&#x27;t see the rejected email copy or the lead it was for, which makes it hard to learn from past actions. I have to go hunt for that context elsewhere.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step21.png" alt="Step 21 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 21</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"I&#x27;m back on the Campaigns page, which is a bit confusing as I thought I clicked Approvals. I need to properly navigate to the different sections to review them. The campaigns listed here look relevant, but I need to see the actual approval history to gauge the quality of the outreach."</p>
-<p class="desc"><strong>Page read:</strong> The page displays a list of three outbound campaigns, one active and two in draft, along with a navigation sidebar for different sections like Dashboard, Leads, Discover, Approvals, Replies, and Analytics.</p>
-<p class="friction"><strong>Friction:</strong> The navigation doesn&#x27;t seem to be working as expected; clicking a sidebar item should take me to that section, but I&#x27;m still seeing the Campaigns list.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step22.png" alt="Step 22 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 22</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m on the Approvals page, but there&#x27;s nothing pending, which is a bit annoying. I need to see how the drafts look. I see a history of rejected and approved emails, but they aren&#x27;t clickable. I&#x27;ll check the Campaigns section next to see how the outbound is set up and if I can find any personalization evidence there."</p>
-<p class="desc"><strong>Page read:</strong> This page is the &#x27;Approvals&#x27; inbox, showing no pending drafts but a history of past approvals and rejections. It also has a &#x27;Run pipeline&#x27; button.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">16</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step16.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;m reviewing the existing workspace. I&#x27;ve seen the approval history, which is part of the task. Next, I need to look at the campaigns to understand lead relevance and personalization.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step23.png" alt="Step 23 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 23</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"Okay, I&#x27;m on the Campaigns page again. I need to actually get inside one of these campaigns to see what SDR Jarvis is doing. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign looks like it&#x27;s active and relevant to my product, so I&#x27;ll check that one first."</p>
-<p class="desc"><strong>Page read:</strong> The page displays a list of outbound campaigns, showing their names, status (Active or Draft), and a brief description. There are also navigation links for Dashboard, Leads, Discover, Approvals, Replies, and Analytics.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">17</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step17.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m back on the Campaigns page. I need to dive into one of these to see how it&#x27;s actually set up. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign is active, so I&#x27;ll start there to see what it&#x27;s doing.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step24.png" alt="Step 24 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 24</span><span class="route">/dashboard/campaigns/19bf7c23-9f0e-4ca4-868a-ac6df28d70b9</span></div>
-<p class="quote">"I&#x27;m on the campaign details page, and I can see the target ICP and a list of leads. The ICP looks good, but I need to see the actual email drafts to evaluate personalization. The &#x27;Approvals&#x27; section on the left sidebar seems like the right place to find those drafts."</p>
-<p class="desc"><strong>Page read:</strong> This page displays the details of a specific campaign, including its description, status, key metrics (total leads, researched, sent, replied, pending), target ICP, and a table of individual leads with their status and email action links.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">18</span><span class="step-title">Campaign Detail &mdash; Evidence Scan</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step18.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the campaign overview. The ICP looks good, but the listed leads like &#x27;Cloud Developer&#x27; and &#x27;Software Developer&#x27; aren&#x27;t exactly Engineering Managers. I need to see more details for each lead to understand if they are truly relevant and how personalized the outreach would be. I&#x27;ll scroll down to see the full list of leads and if there are any &#x27;view details&#x27; options.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step25.png" alt="Step 25 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 25</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"Okay, I&#x27;m on the Approvals page, and it seems there&#x27;s nothing pending. I can see a history of rejected and approved emails, which is good for understanding the workflow. But to really assess lead relevance and personalization, I need to check the actual campaigns and leads. I&#x27;ll go to Campaigns next."</p>
-<p class="desc"><strong>Page read:</strong> This page is the &#x27;Approvals&#x27; inbox, showing no pending drafts but a history of past email approval decisions (rejected/approved) with recipient names and company details.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">19</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step19.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;m looking at the leads generated for this campaign. Most of them seem relevant to my target of engineering roles, which is good, but one is a designer, which is a bit off. I need to see the actual email drafts to evaluate personalization and quality, so I&#x27;ll try navigating to &#x27;Approvals&#x27; again.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step26.png" alt="Step 26 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 26</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"I&#x27;m back on the campaigns list. Clicking on the campaigns themselves doesn&#x27;t seem to open a detailed view, which is a bit frustrating. I need to review the workspace, so I&#x27;ll try &#x27;Approvals&#x27; again to see if I can find any personalization evidence there."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of outbound campaigns, including their status (Active or Draft) and a brief description. There are three campaigns listed, two of which are drafts.</p>
-<p class="friction"><strong>Friction:</strong> The campaign list items are clickable links, but clicking them doesn&#x27;t navigate to a detail page. This is confusing and breaks the expected interaction pattern for a list of items.</p>
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step27.png" alt="Step 27 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 27</span><span class="route">/dashboard/approvals</span></div>
-<p class="quote">"I&#x27;ve reviewed the approval history. Now I need to investigate the campaigns themselves to understand the lead targeting and personalization efforts. I&#x27;ll navigate to the Campaigns section."</p>
-<p class="desc"><strong>Page read:</strong> This page is the &#x27;Approvals&#x27; inbox, showing no pending drafts but a history of past approved and rejected email drafts, along with the recipient and their company/role.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">20</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step20.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m in the approvals inbox. Nothing pending, but the history shows a lot of rejections and one approval. I need to understand why. Was the copy bad? Were the leads irrelevant? I can&#x27;t click these history items, so I&#x27;ll start by checking the campaign setup itself.</p>
+        <div class="verdict-bar risk">The history items on the approvals page aren&#x27;t clickable. I can&#x27;t see the rejected email copy or the lead it was for, which makes it hard to learn from past actions. I have to go hunt for that context elsewhere.</div>
+      </div>
 
-</div></article><article class="step-card">
-<img class="step-shot" src="sdrjarvis_daniel/screenshots/7a8909d5_step28.png" alt="Step 28 screenshot">
-<div><div class="step-kicker"><span class="step-num">Step 28</span><span class="route">/dashboard/campaigns</span></div>
-<p class="quote">"Okay, I&#x27;m back on the Campaigns page. I need to actually open one of these campaigns to review it, not just click the sidebar. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign is active and seems most relevant to my product, so I will click on that to see its details."</p>
-<p class="desc"><strong>Page read:</strong> This page displays a list of outbound campaigns, showing their status (Active/Draft) and a brief description. It&#x27;s the main campaigns dashboard.</p>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">21</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step21.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;m back on the Campaigns page, which is a bit confusing as I thought I clicked Approvals. I need to properly navigate to the different sections to review them. The campaigns listed here look relevant, but I need to see the actual approval history to gauge the quality of the outreach.</p>
+        <div class="verdict-bar risk">The navigation doesn&#x27;t seem to be working as expected; clicking a sidebar item should take me to that section, but I&#x27;m still seeing the Campaigns list.</div>
+      </div>
 
-</div></article></section>
-<div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
-</main></body></html>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">22</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step22.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Approvals page, but there&#x27;s nothing pending, which is a bit annoying. I need to see how the drafts look. I see a history of rejected and approved emails, but they aren&#x27;t clickable. I&#x27;ll check the Campaigns section next to see how the outbound is set up and if I can find any personalization evidence there.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">23</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step23.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Campaigns page again. I need to actually get inside one of these campaigns to see what SDR Jarvis is doing. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign looks like it&#x27;s active and relevant to my product, so I&#x27;ll check that one first.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">24</span><span class="step-title">Campaign Detail &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step24.png" alt="SDR Jarvis Campaign Detail"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;m on the campaign details page, and I can see the target ICP and a list of leads. The ICP looks good, but I need to see the actual email drafts to evaluate personalization. The &#x27;Approvals&#x27; section on the left sidebar seems like the right place to find those drafts.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">25</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step25.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">Okay, I&#x27;m on the Approvals page, and it seems there&#x27;s nothing pending. I can see a history of rejected and approved emails, which is good for understanding the workflow. But to really assess lead relevance and personalization, I need to check the actual campaigns and leads. I&#x27;ll go to Campaigns next.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">26</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step26.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D3;color:#374151">annoyance</span><span class="conf-label">Confidence</span><span class="conf-value">0.6</span></div>
+        <p class="think-aloud">I&#x27;m back on the campaigns list. Clicking on the campaigns themselves doesn&#x27;t seem to open a detailed view, which is a bit frustrating. I need to review the workspace, so I&#x27;ll try &#x27;Approvals&#x27; again to see if I can find any personalization evidence there.</p>
+        <div class="verdict-bar risk">The campaign list items are clickable links, but clicking them doesn&#x27;t navigate to a detail page. This is confusing and breaks the expected interaction pattern for a list of items.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">27</span><span class="step-title">Approvals &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step27.png" alt="SDR Jarvis Approvals"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#92400E">interest</span><span class="conf-label">Confidence</span><span class="conf-value">0.7</span></div>
+        <p class="think-aloud">I&#x27;ve reviewed the approval history. Now I need to investigate the campaigns themselves to understand the lead targeting and personalization efforts. I&#x27;ll navigate to the Campaigns section.</p>
+        <div class="verdict-bar positive">Value signal: the visible product state gave the persona enough evidence to keep evaluating SDR Jarvis.</div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">28</span><span class="step-title">Campaigns &mdash; Navigation Attempt</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="sdrjarvis_daniel/screenshots/7a8909d5_step28.png" alt="SDR Jarvis Campaigns"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF9671;color:#374151">vigilance</span><span class="conf-label">Confidence</span><span class="conf-value">0.8</span></div>
+        <p class="think-aloud">Okay, I&#x27;m back on the Campaigns page. I need to actually open one of these campaigns to review it, not just click the sidebar. The &#x27;Dev Analytics EM Outbound Q3&#x27; campaign is active and seems most relevant to my product, so I will click on that to see its details.</p>
+        <div class="verdict-bar neutral">Interpretation note: this step records the visible evidence the persona used during the read-only review.</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</body>
+</html>
