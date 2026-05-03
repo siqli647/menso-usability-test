@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Docsio Jake Rivera | Menso Usability Test</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;background:#f7f8fb;color:#15171a;line-height:1.55}.page{max-width:1080px;margin:0 auto;padding:34px 22px 60px}.hero,.section{background:#fff;border:1px solid #e8ebf0;border-radius:18px}.hero{padding:34px;margin-bottom:18px}.eyebrow{display:inline-flex;background:#e9f2ff;color:#0f5cc0;border:1px solid #cfe2ff;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:800;margin-bottom:14px}h1{font-size:40px;line-height:1.08;letter-spacing:-.02em;max-width:820px;margin-bottom:12px}.subtitle{max-width:790px;color:#5c6675;font-size:16px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.pill{background:#f2f4f7;color:#475467;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}.section{padding:24px;margin-top:16px}h2{font-size:21px;margin-bottom:14px}.video{width:100%;border-radius:12px;border:1px solid #d7dce4;background:#111}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{border:1px solid #e8ebf0;background:#fbfcfe;border-radius:14px;padding:17px}.card strong{display:block;font-size:15px;margin-bottom:7px}.card p,.section li{color:#526070;font-size:14px}.quote{border-left:4px solid #0f5cc0;background:#f4f8ff;padding:14px 16px;border-radius:10px;color:#334155}.findings{display:grid;gap:12px}.finding{border:1px solid #e8ebf0;border-radius:14px;padding:16px}.severity{display:inline-flex;font-size:11px;font-weight:800;text-transform:uppercase;color:#fff;background:#d92d20;border-radius:7px;padding:4px 7px;margin-bottom:8px}.severity.major{background:#f79009}.footer{font-size:12px;color:#98a2b3;text-align:center;margin-top:22px}@media(max-width:820px){h1{font-size:31px}.grid{grid-template-columns:1fr}.hero,.section{padding:20px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="eyebrow">Docsio usability test · Jake Rivera</div>
+    <h1>Docsio promises instant docs, but Jake got blocked before a fresh project could start.</h1>
+    <p class="subtitle">Menso tested Docsio with Jake Rivera, a solo SaaS founder replacing a rough Docusaurus setup. The clean run did not complete the intended task because the dashboard showed only an existing draft, no visible new-project action, and the AI editor was already at its monthly limit.</p>
+    <div class="meta">
+      <span class="pill">Persona: solo SaaS founder</span>
+      <span class="pill">Run: 18d8eb84</span>
+      <span class="pill">Status: product-side failed</span>
+      <span class="pill">Clean: no harness pollution</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Frontend Recording</h2>
+    <video class="video" controls preload="metadata" src="docsio_jake/docsio-jake-frontend-under1min.mp4"></video>
+  </section>
+
+  <section class="section">
+    <h2>What Docsio Solves</h2>
+    <div class="grid">
+      <div class="card"><strong>Time-to-docs for founders</strong><p>Jake wants to paste a product/docs URL and avoid spending hours maintaining Docusaurus structure, styling, and deployment.</p></div>
+      <div class="card"><strong>AI-assisted maintenance</strong><p>The core promise is not only first generation, but ongoing changes through chat: colors, new pages, rewritten guides, and publishing.</p></div>
+      <div class="card"><strong>Docs infrastructure removal</strong><p>The buyer wants generated structure, hosted preview, GitHub sync, and publish settings without assembling a docs stack by hand.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Core Evidence</h2>
+    <div class="quote">"I expected to paste my URL and see generated docs within minutes. Instead, I wasted time navigating and feeling misled."</div>
+  </section>
+
+  <section class="section">
+    <h2>Top Findings</h2>
+    <div class="findings">
+      <div class="finding"><span class="severity">Critical</span><h3>AI editing limit blocks evaluation</h3><p>The existing project immediately showed "Monthly limit reached (5/5)", so Jake could not test the key proof points: adding an API Reference page or rewriting Getting Started. For a $60/month decision, this removes the trial evidence he needs.</p></div>
+      <div class="finding"><span class="severity major">Major</span><h3>No visible new-project action after login</h3><p>The dashboard showed one draft project and no obvious "New Project" or URL input. That contradicts the landing-page promise of a fast URL-to-docs workflow.</p></div>
+      <div class="finding"><span class="severity major">Major</span><h3>Marketing promise and logged-in state diverge</h3><p>The homepage sells "30-second setup"; the returning-user dashboard made Jake hunt across dashboard, project editor, and settings without finding the expected starting point.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Product Recommendations</h2>
+    <ul>
+      <li>Add a persistent "New docs site" button and URL input on the dashboard, even when a draft already exists.</li>
+      <li>Show plan limits before users enter a project, and reserve one end-to-end generation/edit path for evaluation.</li>
+      <li>When limits are reached, offer a read-only demo or resettable sandbox so buyers can still inspect the core workflow.</li>
+      <li>Route returning users to the fastest next action, not only to their most recent draft.</li>
+    </ul>
+  </section>
+
+  <div class="footer">Generated by Menso · AI Synthetic User Testing</div>
+</main>
+</body>
+</html>
