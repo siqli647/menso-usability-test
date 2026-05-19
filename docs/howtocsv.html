@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HowToCSV | Menso Usability Test Reports</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
+.page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
+.brand{display:flex;align-items:center;margin-bottom:30px}
+.brand-logo{width:44px;height:44px;object-fit:contain;display:block}
+.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
+.hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
+.eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
+h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-bottom:12px;letter-spacing:-.03em}
+.subtitle{max-width:760px;color:#666;font-size:16px}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.nav a{display:inline-flex;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.16);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700}
+.section{margin-top:24px}
+.section h2{font-size:20px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{display:flex;flex-direction:column;gap:16px;background:#fff;border:1px solid #f0f0f0;border-radius:22px;padding:22px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s}
+.card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.08);border-color:#2145f3}
+.persona-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.persona-name{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.persona-role{color:#666;font-size:13px;margin-top:4px}
+.badge{font-size:12px;font-weight:800;color:#fff;background:#2145f3;border-radius:8px;padding:4px 9px;white-space:nowrap}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:5px 10px}
+.desc{font-size:14px;color:#4f4f4f}
+.cta{margin-top:auto;font-size:13px;font-weight:800;color:#2145f3}
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.insight{background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:18px}
+.insight strong{display:block;font-size:14px;margin-bottom:6px}
+.insight p{font-size:13px;color:#5f5f5f}
+.footer{text-align:center;color:#999;font-size:12px;margin-top:32px}
+@media(max-width:900px){.grid,.insights{grid-template-columns:1fr}.hero{padding:30px}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="brand"><img class="brand-logo" src="menso-brand-logo.png" alt="Menso"></div>
+
+  <section class="hero">
+    <div class="eyebrow">HowToCSV synthetic usability study</div>
+    <h1>Three CSV user lenses for one trust decision.</h1>
+    <p class="subtitle">Menso tested HowToCSV through a data operations analyst, a nontechnical e-commerce operator, and a technical analytics engineer. The question is not whether the cleaner can be clicked through once, but whether different users get enough visible evidence to trust cleaned CSV output.</p>
+    <div class="nav">
+      <a href="howtocsv_priya.html">Priya Cover</a>
+      <a href="howtocsv_miguel.html">Miguel Cover</a>
+      <a href="howtocsv_hannah.html">Hannah Cover</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Persona Reports</h2>
+    <div class="grid">
+      <a class="card" href="howtocsv_priya.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Priya Shah</div><div class="persona-role">Data Operations Analyst, 32</div></div>
+          <span class="badge">ISTJ</span>
+        </div>
+        <div class="meta"><span class="pill">Majority data operations user</span><span class="pill">Try</span><span class="pill">10 steps</span></div>
+        <p class="desc">Priya cleans messy CRM, support, and ad-platform exports before handing them to business teams. She will try HowToCSV if a public cleaner produces understandable results without signup or exposing private data.</p>
+        <div class="cta">Open Priya report -></div>
+      </a>
+    
+      <a class="card" href="howtocsv_miguel.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Miguel Rojas</div><div class="persona-role">E-commerce Operations Owner, 38</div></div>
+          <span class="badge">ESFP</span>
+        </div>
+        <div class="meta"><span class="pill">Nontechnical operator</span><span class="pill">Adopt</span><span class="pill">8 steps</span></div>
+        <p class="desc">Miguel runs a small online parts store and receives supplier CSVs with messy spacing and inconsistent product fields. He wants a tool that proves it can clean sample data safely before he uploads anything private.</p>
+        <div class="cta">Open Miguel report -></div>
+      </a>
+    
+      <a class="card" href="howtocsv_hannah.html">
+        <div class="persona-top">
+          <div><div class="persona-name">Hannah Kim</div><div class="persona-role">Analytics Engineer, 29</div></div>
+          <span class="badge">INTJ</span>
+        </div>
+        <div class="meta"><span class="pill">Technical high-intent evaluator</span><span class="pill">Reject</span><span class="pill">8 steps</span></div>
+        <p class="desc">Hannah prepares CSVs for analytics pipelines and stakeholder requests. She is comfortable scripting, so HowToCSV must show exactly what changed before she would trust it over pandas or DuckDB.</p>
+        <div class="cta">Open Hannah report -></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Cross-Persona Takeaways</h2>
+    <div class="insights">
+      <div class="insight"><strong>The public cleaner path is discoverable.</strong><p>All three personas found Quick CSV Cleaner, loaded sample data, imported it, ran Auto-Cleaner, and reached an output or export state without signup.</p></div>
+      <div class="insight"><strong>Privacy copy is doing real trust work.</strong><p>Local-processing language reassured both operations and business users before they risked sample or supplier-style data.</p></div>
+      <div class="insight"><strong>Technical adoption depends on audit evidence.</strong><p>The same flow that Miguel would adopt was rejected by Hannah because the product did not show before/after diffs, changed-cell highlights, or rule counts.</p></div>
+    </div>
+  </section>
+
+  <div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</main>
+</body>
+</html>
