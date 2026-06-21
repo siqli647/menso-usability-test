@@ -246,6 +246,11 @@ body[data-theme="light"] .lens-focus::before {
   text-transform: uppercase;
   white-space: nowrap;
 }
+body[data-theme="light"] .emotion-chip {
+  border-color: color-mix(in srgb, var(--hud-color) 58%, #0f172a 42%);
+  background: color-mix(in srgb, var(--hud-color) 26%, #ffffff 74%);
+  color: color-mix(in srgb, var(--hud-color) 30%, #0f172a 70%);
+}
 .emotion-chip::before {
   content: "";
   width: 8px;
@@ -325,6 +330,12 @@ body[data-theme="light"] .think-lyric-panel { background: rgba(255,255,255,.28);
   font-weight: 650;
   letter-spacing: .02em;
   white-space: nowrap;
+}
+body[data-theme="light"] .confidence-emotion-pill {
+  border-color: color-mix(in srgb, var(--hud-color) 58%, #0f172a 42%);
+  background: color-mix(in srgb, var(--hud-color) 26%, #ffffff 74%);
+  color: color-mix(in srgb, var(--hud-color) 30%, #0f172a 70%);
+  font-weight: 800;
 }
 .lyric-list { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 12px; }
 .lyric-row { width: 100%; border: 0; padding: 0; background: transparent; text-align: left; opacity: .58; transition: opacity .18s ease; cursor: pointer; }
@@ -710,15 +721,24 @@ function contrastInk(hex) {
   const luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
   return luminance < 0.55 ? "#FFFFFF" : "#111827";
 }
+function cueEmotionKey(cue) {
+  return String(cue.plutchikEmotion || cue.actorEmotion || cue.mensoEmotionLabel || cue.actorEmotionLabel || "").toLowerCase();
+}
+function cueEmotionLabel(cue) {
+  return cue.plutchikLabel || cue.plutchikEmotion || cue.actorEmotionLabel || cue.actorEmotion || "Emotion";
+}
+function cueEmotionColor(cue) {
+  return cue.color || cue.actorEmotionColor || "#ff9e6d";
+}
 function emotionGlyph(cue) {
-  const label = String(cue.actorEmotion || cue.plutchikEmotion || "").toLowerCase();
+  const label = cueEmotionKey(cue);
   if (label.includes("joy") || label.includes("trust") || label.includes("delight")) return "+";
   if (label.includes("anger") || label.includes("frustrat") || label.includes("disgust")) return "!";
   if (label.includes("fear") || label.includes("surprise") || label.includes("confus")) return "?";
   return ">";
 }
 function emotionFace(cue) {
-  const label = String(cue.actorEmotion || cue.plutchikEmotion || cue.actorEmotionLabel || "").toLowerCase();
+  const label = cueEmotionKey(cue);
   if (label.includes("joy") || label.includes("delight") || label.includes("ecstasy") || label.includes("serenity")) return "😊";
   if (label.includes("trust") || label.includes("admiration") || label.includes("acceptance") || label.includes("love")) return "🙂";
   if (label.includes("interest") || label.includes("anticipation") || label.includes("optimism") || label.includes("vigilance")) return "✨";
@@ -1119,8 +1139,8 @@ function renderCue(index, pulse = false) {
   activeIndex = clamp(index, 0, personaTimeline.length - 1);
   const cue = personaTimeline[activeIndex];
   setSyncColor(cue);
-  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
-  const emotionLabel = cue.actorEmotionLabel || cue.actorEmotion || cue.plutchikEmotion || "Emotion";
+  const color = cueEmotionColor(cue);
+  const emotionLabel = cueEmotionLabel(cue);
   emotionChip.textContent = emotionLabel;
   if (cue.avatar) topbarAvatar.src = cue.avatar;
   topbarAvatar.alt = "Alex Rivera";
