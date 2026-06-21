@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="rage emotion emoji">
+  <title>rage emotion emoji</title>
+  <defs>
+    <filter id="emoji-shadow" x="-20%" y="-20%" width="140%" height="145%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F172A" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="27.5" fill="#F8FAFC" filter="url(#emoji-shadow)"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#F8FAFC" stroke-opacity="0.32" stroke-width="2"/>
+  <circle cx="24" cy="19" r="9" fill="#FFFFFF" opacity=".72"/>
+  <path d="M14 13q-4 4 0 8M50 13q4 4 0 8" fill="none" stroke="#F8FAFC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M17 20l10 5" stroke="#172033" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M47 20l-10 5" stroke="#172033" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="29" r="2.6" fill="#172033"/><circle cx="42" cy="29" r="2.6" fill="#172033"/>
+  <rect x="21" y="37" width="22" height="9" rx="3" fill="#FFFFFF" stroke="#172033" stroke-width="1.2"/><path d="M21 41.5h22M28 37v9M36 37v9" stroke="#172033" stroke-width="1.4" opacity=".7"/>
+</svg>

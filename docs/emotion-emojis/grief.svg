@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="grief emotion emoji">
+  <title>grief emotion emoji</title>
+  <defs>
+    <filter id="emoji-shadow" x="-20%" y="-20%" width="140%" height="145%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F172A" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="27.5" fill="#F8FAFC" filter="url(#emoji-shadow)"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#F8FAFC" stroke-opacity="0.32" stroke-width="2"/>
+  <circle cx="24" cy="19" r="9" fill="#FFFFFF" opacity=".72"/>
+  <path d="M22 33c3 4 4 6 4 8a4 4 0 01-8 0c0-2 1-4 4-8z" fill="#DDF6FF" stroke="#172033" stroke-width="1" opacity=".95"/><path d="M42 33c3 4 4 6 4 8a4 4 0 01-8 0c0-2 1-4 4-8z" fill="#DDF6FF" stroke="#172033" stroke-width="1" opacity=".95"/>
+  <path d="M18 28q4 4 8 0" fill="none" stroke="#172033" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M38 28q4 4 8 0" fill="none" stroke="#172033" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 45q12-12 24 0" fill="none" stroke="#172033" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

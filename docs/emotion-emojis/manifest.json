@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "source": "menso-test-service/browser_prompts.py Emotion-Color Mapping",
+  "usage": "SVG files have transparent backgrounds. Use the color field as the surrounding emotion background.",
+  "publicBasePath": "/static/emotion-emojis",
+  "emotions": [
+    {
+      "id": "ecstasy",
+      "label": "Ecstasy",
+      "color": "#FFC75F",
+      "backgroundColor": "#FFC75F",
+      "file": "ecstasy.svg",
+      "path": "/static/emotion-emojis/ecstasy.svg"
+    },
+    {
+      "id": "joy",
+      "label": "Joy",
+      "color": "#FFD27F",
+      "backgroundColor": "#FFD27F",
+      "file": "joy.svg",
+      "path": "/static/emotion-emojis/joy.svg"
+    },
+    {
+      "id": "love",
+      "label": "Love",
+      "color": "#FCFDD1",
+      "backgroundColor": "#FCFDD1",
+      "file": "love.svg",
+      "path": "/static/emotion-emojis/love.svg"
+    },
+    {
+      "id": "serenity",
+      "label": "Serenity",
+      "color": "#FFE9BF",
+      "backgroundColor": "#FFE9BF",
+      "file": "serenity.svg",
+      "path": "/static/emotion-emojis/serenity.svg"
+    },
+    {
+      "id": "terror",
+      "label": "Terror",
+      "color": "#008F7A",
+      "backgroundColor": "#008F7A",
+      "file": "terror.svg",
+      "path": "/static/emotion-emojis/terror.svg"
+    },
+    {
+      "id": "fear",
+      "label": "Fear",
+      "color": "#33A36E",
+      "backgroundColor": "#33A36E",
+      "file": "fear.svg",
+      "path": "/static/emotion-emojis/fear.svg"
+    },
+    {
+      "id": "awe",
+      "label": "Awe",
+      "color": "#E2F7E4",
+      "backgroundColor": "#E2F7E4",
+      "file": "awe.svg",
+      "path": "/static/emotion-emojis/awe.svg"
+    },
+    {
+      "id": "apprehension",
+      "label": "Apprehension",
+      "color": "#99D1B7",
+      "backgroundColor": "#99D1B7",
+      "file": "apprehension.svg",
+      "path": "/static/emotion-emojis/apprehension.svg"
+    },
+    {
+      "id": "grief",
+      "label": "Grief",
+      "color": "#845EC2",
+      "backgroundColor": "#845EC2",
+      "file": "grief.svg",
+      "path": "/static/emotion-emojis/grief.svg"
+    },
+    {
+      "id": "sadness",
+      "label": "Sadness",
+      "color": "#9D7ECE",
+      "backgroundColor": "#9D7ECE",
+      "file": "sadness.svg",
+      "path": "/static/emotion-emojis/sadness.svg"
+    },
+    {
+      "id": "remorse",
+      "label": "Remorse",
+      "color": "#E4E6F5",
+      "backgroundColor": "#E4E6F5",
+      "file": "remorse.svg",
+      "path": "/static/emotion-emojis/remorse.svg"
+    },
+    {
+      "id": "pensiveness",
+      "label": "Pensiveness",
+      "color": "#CEBFE7",
+      "backgroundColor": "#CEBFE7",
+      "file": "pensiveness.svg",
+      "path": "/static/emotion-emojis/pensiveness.svg"
+    },
+    {
+      "id": "rage",
+      "label": "Rage",
+      "color": "#FF6F91",
+      "backgroundColor": "#FF6F91",
+      "file": "rage.svg",
+      "path": "/static/emotion-emojis/rage.svg"
+    },
+    {
+      "id": "anger",
+      "label": "Anger",
+      "color": "#FF8CA7",
+      "backgroundColor": "#FF8CA7",
+      "file": "anger.svg",
+      "path": "/static/emotion-emojis/anger.svg"
+    },
+    {
+      "id": "aggressiveness",
+      "label": "Aggressiveness",
+      "color": "#FEF0D3",
+      "backgroundColor": "#FEF0D3",
+      "file": "aggressiveness.svg",
+      "path": "/static/emotion-emojis/aggressiveness.svg"
+    },
+    {
+      "id": "annoyance",
+      "label": "Annoyance",
+      "color": "#FFC5D3",
+      "backgroundColor": "#FFC5D3",
+      "file": "annoyance.svg",
+      "path": "/static/emotion-emojis/annoyance.svg"
+    },
+    {
+      "id": "anticipation",
+      "label": "Anticipation",
+      "color": "#FFAB8D",
+      "backgroundColor": "#FFAB8D",
+      "file": "anticipation.svg",
+      "path": "/static/emotion-emojis/anticipation.svg"
+    },
+    {
+      "id": "interest",
+      "label": "Interest",
+      "color": "#FFD5C6",
+      "backgroundColor": "#FFD5C6",
+      "file": "interest.svg",
+      "path": "/static/emotion-emojis/interest.svg"
+    },
+    {
+      "id": "admiration",
+      "label": "Admiration",
+      "color": "#00DA82",
+      "backgroundColor": "#00DA82",
+      "file": "admiration.svg",
+      "path": "/static/emotion-emojis/admiration.svg"
+    },
+    {
+      "id": "trust",
+      "label": "Trust",
+      "color": "#33E19B",
+      "backgroundColor": "#33E19B",
+      "file": "trust.svg",
+      "path": "/static/emotion-emojis/trust.svg"
+    },
+    {
+      "id": "submission",
+      "label": "Submission",
+      "color": "#F6FCD8",
+      "backgroundColor": "#F6FCD8",
+      "file": "submission.svg",
+      "path": "/static/emotion-emojis/submission.svg"
+    },
+    {
+      "id": "acceptance",
+      "label": "Acceptance",
+      "color": "#99F0CD",
+      "backgroundColor": "#99F0CD",
+      "file": "acceptance.svg",
+      "path": "/static/emotion-emojis/acceptance.svg"
+    },
+    {
+      "id": "amazement",
+      "label": "Amazement",
+      "color": "#0081CF",
+      "backgroundColor": "#0081CF",
+      "file": "amazement.svg",
+      "path": "/static/emotion-emojis/amazement.svg"
+    },
+    {
+      "id": "surprise",
+      "label": "Surprise",
+      "color": "#339AD9",
+      "backgroundColor": "#339AD9",
+      "file": "surprise.svg",
+      "path": "/static/emotion-emojis/surprise.svg"
+    },
+    {
+      "id": "disapproval",
+      "label": "Disapproval",
+      "color": "#DCF5F2",
+      "backgroundColor": "#DCF5F2",
+      "file": "disapproval.svg",
+      "path": "/static/emotion-emojis/disapproval.svg"
+    },
+    {
+      "id": "distraction",
+      "label": "Distraction",
+      "color": "#99CDEC",
+      "backgroundColor": "#99CDEC",
+      "file": "distraction.svg",
+      "path": "/static/emotion-emojis/distraction.svg"
+    },
+    {
+      "id": "loathing",
+      "label": "Loathing",
+      "color": "#D65DB1",
+      "backgroundColor": "#D65DB1",
+      "file": "loathing.svg",
+      "path": "/static/emotion-emojis/loathing.svg"
+    },
+    {
+      "id": "disgust",
+      "label": "Disgust",
+      "color": "#DE7DC1",
+      "backgroundColor": "#DE7DC1",
+      "file": "disgust.svg",
+      "path": "/static/emotion-emojis/disgust.svg"
+    },
+    {
+      "id": "contempt",
+      "label": "Contempt",
+      "color": "#FFE4E0",
+      "backgroundColor": "#FFE4E0",
+      "file": "contempt.svg",
+      "path": "/static/emotion-emojis/contempt.svg"
+    },
+    {
+      "id": "boredom",
+      "label": "Boredom",
+      "color": "#EFBEE0",
+      "backgroundColor": "#EFBEE0",
+      "file": "boredom.svg",
+      "path": "/static/emotion-emojis/boredom.svg"
+    },
+    {
+      "id": "vigilance",
+      "label": "Vigilance",
+      "color": "#FF9671",
+      "backgroundColor": "#FF9671",
+      "file": "vigilance.svg",
+      "path": "/static/emotion-emojis/vigilance.svg"
+    },
+    {
+      "id": "optimism",
+      "label": "Optimism",
+      "color": "#FFF5D2",
+      "backgroundColor": "#FFF5D2",
+      "file": "optimism.svg",
+      "path": "/static/emotion-emojis/optimism.svg"
+    }
+  ]
+}

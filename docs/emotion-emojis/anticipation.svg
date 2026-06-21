@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="anticipation emotion emoji">
+  <title>anticipation emotion emoji</title>
+  <defs>
+    <filter id="emoji-shadow" x="-20%" y="-20%" width="140%" height="145%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F172A" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="27.5" fill="#F8FAFC" filter="url(#emoji-shadow)"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#1E293B" stroke-opacity="0.2" stroke-width="2"/>
+  <circle cx="24" cy="19" r="9" fill="#FFFFFF" opacity=".72"/>
+  <path d="M10 18l2-5 2 5 5 2-5 2-2 5-2-5-5-2z" fill="#1E293B" opacity=".82"/><path d="M51 13l1.5-3.5L54 13l3.5 1.5L54 16l-1.5 3.5L51 16l-3.5-1.5z" fill="#1E293B" opacity=".7"/>
+  <circle cx="22" cy="26" r="3.6" fill="#fff"/><circle cx="42" cy="26" r="3.6" fill="#fff"/><circle cx="22" cy="26" r="2" fill="#172033"/><circle cx="42" cy="26" r="2" fill="#172033"/><path d="M19 19h6M39 19h6" stroke="#172033" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26 39q6 4 12 0" fill="none" stroke="#172033" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

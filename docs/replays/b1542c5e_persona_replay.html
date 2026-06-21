@@ -1,0 +1,1218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persona Replay - Alex Rivera</title>
+<style>
+* { box-sizing: border-box; }
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+:root {
+  --hud-color: #ff9e6d;
+  --hud-ink: #ffffff;
+  --app-bg: radial-gradient(1200px 600px at 20% -10%, #1b1f3a 0%, #07090f 55%, #04060b 100%);
+  --grid-color: rgba(255,255,255,0.6);
+  --brand-text: rgba(255,255,255,0.92);
+  --brand-sub: rgba(255,255,255,0.40);
+  --panel-bg: rgba(10,15,28,0.72);
+  --panel-border: rgba(255,255,255,0.10);
+  --divider: rgba(255,255,255,0.10);
+  --text-strong: #ffffff;
+  --text-body: rgba(255,255,255,0.92);
+  --text-sub: rgba(255,255,255,0.78);
+  --text-faint: rgba(255,255,255,0.62);
+  --track-dim: rgba(255,255,255,0.22);
+  --track-mid: rgba(255,255,255,0.65);
+  --stage-shadow: 0 30px 120px -20px rgba(0,0,0,0.9);
+  --stage-ring: rgba(255,255,255,0.10);
+  --live-dot: #fb7185;
+}
+body[data-theme="light"] {
+  --app-bg: radial-gradient(1200px 600px at 20% -10%, #e9ecff 0%, #f5f6fb 55%, #eef0f7 100%);
+  --grid-color: rgba(15,23,42,0.45);
+  --brand-text: rgba(15,23,42,0.92);
+  --brand-sub: rgba(15,23,42,0.45);
+  --panel-bg: rgba(255,255,255,0.78);
+  --panel-border: rgba(15,23,42,0.10);
+  --divider: rgba(15,23,42,0.10);
+  --text-strong: #0f172a;
+  --text-body: rgba(15,23,42,0.85);
+  --text-sub: rgba(15,23,42,0.60);
+  --text-faint: rgba(15,23,42,0.40);
+  --track-dim: rgba(15,23,42,0.18);
+  --track-mid: rgba(15,23,42,0.55);
+  --stage-shadow: 0 30px 80px -24px rgba(15,23,42,0.25);
+  --stage-ring: rgba(15,23,42,0.10);
+  --live-dot: #ef4444;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--app-bg);
+  color: var(--text-strong);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.persona-replay-shell {
+  position: relative;
+  height: 100vh;
+  padding: 24px;
+  overflow: hidden;
+}
+.persona-replay-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: .06;
+  pointer-events: none;
+}
+.replay-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(1480px, calc(100vw - 48px));
+  height: calc(100vh - 48px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.brand-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 16px;
+  color: var(--brand-text);
+}
+.brand-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: visible;
+}
+.brand-mark-logo {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(37, 99, 235, .24));
+}
+.brand-title { color: var(--brand-text); font-size: 15px; font-weight: 650; letter-spacing: 0; }
+.brand-subtitle {
+  color: var(--brand-sub);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.live-observer, .microcopy, .hud-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--brand-sub);
+}
+.live-observer { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.live-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--live-dot); box-shadow: 0 0 14px var(--live-dot); animation: livePulse 1.4s ease-in-out infinite; }
+@keyframes livePulse { 50% { opacity: .45; } }
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+}
+.theme-button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-faint);
+  padding: 5px 9px;
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.theme-button.is-active {
+  background: rgba(255,255,255,0.10);
+  color: var(--text-strong);
+}
+body[data-theme="light"] .theme-button.is-active { background: rgba(15,23,42,0.08); }
+.broadcast-stage {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0b1020;
+  box-shadow: var(--stage-shadow);
+  border: 0;
+}
+.product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+}
+.stage-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.18));
+  z-index: 3;
+}
+.lens-focus {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  backdrop-filter: blur(5px);
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 6%, transparent 17%, transparent 83%, black 94%, black 100%);
+  mask-image: linear-gradient(to right, black 0%, black 6%, transparent 17%, transparent 83%, black 94%, black 100%);
+}
+.lens-focus::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(4,6,11,.62), transparent 19%, transparent 81%, rgba(4,6,11,.62));
+}
+body[data-theme="light"] .lens-focus::before {
+  background: linear-gradient(90deg, rgba(245,246,251,.72), transparent 19%, transparent 81%, rgba(245,246,251,.72));
+}
+.broadcast-topbar,
+.bottom-transport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  border-color: var(--panel-border);
+  background: var(--panel-bg);
+  backdrop-filter: blur(18px);
+}
+.broadcast-topbar { top: 0; border-bottom: 1px solid var(--panel-border); }
+.topbar-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 10px 18px;
+}
+.persona-tag { display: flex; align-items: center; gap: 10px; min-width: 210px; }
+.topbar-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 0 0 2px #6366f1, 0 0 0 4px rgba(10,15,28,.72);
+}
+.persona-name { color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.15; }
+.persona-type { color: var(--text-faint); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
+.topbar-divider { width: 1px; height: 28px; background: var(--divider); flex: 0 0 auto; }
+.task-title { min-width: 0; flex: 1; text-align: center; color: var(--text-sub); font-size: 12.5px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.emotion-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--hud-color) 60%, transparent);
+  background: color-mix(in srgb, var(--hud-color) 18%, transparent);
+  color: var(--hud-color);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.emotion-chip::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hud-color);
+  box-shadow: 0 0 10px var(--hud-color), 0 0 2px var(--hud-color);
+}
+.step-counter { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--text-sub); letter-spacing: .12em; white-space: nowrap; }
+.confidence-card,
+.think-lyric-panel {
+  position: absolute;
+  top: 68px;
+  z-index: 30;
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+}
+.confidence-card { left: 20px; width: 190px; padding: 0; background: rgba(10,15,28,.18); }
+body[data-theme="light"] .confidence-card { background: rgba(255,255,255,.22); }
+.confidence-card.is-collapsed { width: 190px; }
+.confidence-card.is-collapsed .confidence-body { display: none; }
+.think-lyric-panel { right: 20px; width: 320px; padding: 0; background: rgba(10,15,28,.22); }
+body[data-theme="light"] .think-lyric-panel { background: rgba(255,255,255,.28); }
+.think-lyric-panel.is-collapsed { width: 320px; }
+.think-lyric-panel.is-collapsed .lyric-list { display: none; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.panel-toggle {
+  display: flex; width: 100%; align-items: center; justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.panel-toggle, .panel-toggle * { white-space: nowrap; }
+.confidence-card .panel-toggle { padding: 10px 12px 6px; }
+.think-lyric-panel .panel-toggle { padding: 12px 16px 8px; }
+.panel-toggle .hud-kicker { pointer-events: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.panel-meta { display: inline-flex; align-items: center; gap: 8px; }
+.confidence-body { padding: 0 16px 16px; }
+.confidence-body-main { display: grid; place-items: center; }
+.confidence-ring { width: 106px; height: 106px; }
+.confidence-emotion-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text-strong);
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--hud-color) 35%, transparent));
+}
+.confidence-number {
+  margin-top: 8px;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-strong);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--hud-color) 45%, transparent);
+}
+.confidence-divider { height: 1px; margin: 12px 0; background: var(--divider); }
+.confidence-emotion-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.confidence-emotion-pill {
+  border: 1px solid color-mix(in srgb, var(--hud-color) 45%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--hud-color) 14%, transparent);
+  color: var(--hud-color);
+  padding: 2px 8px;
+  font-size: 10.5px;
+  font-weight: 650;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.lyric-list { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 12px; }
+.lyric-row { width: 100%; border: 0; padding: 0; background: transparent; text-align: left; opacity: .58; transition: opacity .18s ease; cursor: pointer; }
+.lyric-row.is-current { opacity: 1; }
+.lyric-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.lyric-row.is-current .lyric-step { color: var(--hud-color); }
+.lyric-step-dot { width: 4px; height: 4px; border-radius: 999px; background: var(--hud-color); box-shadow: 0 0 8px var(--hud-color); }
+.lyric-text { margin-top: 4px; color: var(--text-sub); font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lyric-row.is-current .lyric-text { color: var(--text-strong); white-space: normal; font-size: 14px; font-weight: 650; text-shadow: 0 0 18px color-mix(in srgb, var(--hud-color) 30%, transparent); }
+.cursor-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 24;
+  pointer-events: none;
+}
+.mouse-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.cursor-group {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition: opacity .16s ease;
+}
+.cursor-group.is-visible { opacity: 1; }
+.recorded-cursor-scrub {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: rgba(246, 248, 252, .54);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 0 18px rgba(15,23,42,.12), inset 0 0 18px rgba(255,255,255,.32);
+  backdrop-filter: blur(7px) saturate(.85);
+}
+.recorded-cursor-scrub.is-visible { opacity: .96; }
+body[data-theme="dark"] .recorded-cursor-scrub {
+  background: rgba(15, 23, 42, .34);
+  box-shadow: 0 0 18px rgba(0,0,0,.24), inset 0 0 18px rgba(255,255,255,.12);
+}
+.menso-cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 24px;
+  height: 31px;
+  transform: translate(-2px, -2px);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.42));
+}
+.menso-cursor path {
+  fill: var(--hud-color);
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.cursor-tooltip {
+  position: absolute;
+  left: 30px;
+  top: 28px;
+  width: max-content;
+  max-width: min(420px, 34vw);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  background: rgba(10,15,28,.9);
+  color: #fff;
+  padding: 8px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.42;
+  white-space: normal;
+  word-break: break-word;
+  box-shadow: 0 14px 34px rgba(0,0,0,.32), 0 0 18px color-mix(in srgb, var(--hud-color) 24%, transparent);
+  backdrop-filter: blur(14px);
+}
+.cursor-tooltip.is-hidden { display: none; }
+.cursor-tooltip::before { content: "> "; opacity: .55; color: var(--hud-color); }
+.cursor-tooltip.is-left { left: auto; right: 8px; transform: translateX(-20px); }
+.cursor-tooltip.is-up { top: auto; bottom: 8px; transform: translateY(-20px); }
+.cursor-tooltip.is-left.is-up { transform: translate(-20px, -20px); }
+.click-ripple {
+  position: absolute;
+  left: 11px;
+  top: 14px;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid var(--hud-color);
+  opacity: 0;
+}
+.click-ripple.is-on { animation: prPulse 600ms ease-out forwards; }
+@keyframes prPulse {
+  0% { transform: translate(-50%, -50%) scale(.4); opacity: .9; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+.bottom-transport { bottom: 0; border-top: 1px solid var(--panel-border); }
+.transport-inner { display: flex; align-items: center; gap: 18px; padding: 12px 18px; }
+.transport-buttons { display: flex; align-items: center; gap: 8px; }
+.transport-btn, .play-btn {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-body);
+  cursor: pointer;
+}
+.transport-btn { width: 36px; height: 36px; }
+.play-btn {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: color-mix(in srgb, var(--hud-color) 72%, transparent);
+  color: #111827;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hud-color) 42%, transparent);
+}
+.timeline { position: relative; flex: 1; height: 48px; }
+.timeline-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.timeline-segment { stroke-width: 1.05; stroke-linecap: round; transition: opacity .16s ease, stroke-width .16s ease; }
+.timeline-segment.is-future { opacity: .34; }
+.timeline-segment.is-current { stroke-width: 1.45; filter: drop-shadow(0 0 5px var(--hud-color)); }
+.timeline-ticks { position: absolute; inset: 0; }
+.timeline-tick {
+  position: absolute;
+  bottom: 8px;
+  width: 28px;
+  height: 38px;
+  transform: translateX(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.timeline-tick span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--track-dim);
+}
+.timeline-tick.is-past span { background: var(--hud-color); box-shadow: 0 0 6px var(--hud-color); }
+.timeline-tick.is-current span { width: 4px; height: 28px; background: var(--hud-color); box-shadow: 0 0 14px var(--hud-color); }
+.time-readout {
+  min-width: 128px;
+  text-align: right;
+  color: var(--text-body);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .08em;
+}
+.time-readout strong { color: var(--hud-color); }
+.hud-link {
+  color: var(--text-body);
+  text-decoration: none;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.footer-hint {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .persona-replay-shell { padding: 12px; }
+  .replay-wrap { width: calc(100vw - 24px); height: calc(100vh - 24px); }
+  .brand-strip { align-items: flex-start; flex-direction: column; }
+  .topbar-inner { flex-wrap: wrap; align-items: flex-start; }
+  .task-title { order: 4; width: 100%; text-align: left; }
+  .confidence-card { left: 12px; top: 112px; width: 190px; }
+  .confidence-card.is-collapsed { width: 190px; }
+  .think-lyric-panel { right: 12px; top: 112px; width: min(300px, calc(100% - 176px)); }
+  .think-lyric-panel.is-collapsed { width: min(300px, calc(100% - 176px)); }
+  .confidence-ring { width: 82px; height: 82px; }
+  .cursor-tooltip { max-width: 260px; }
+  .transport-inner { gap: 10px; padding: 10px; }
+  .time-readout { display: none; }
+}
+</style>
+</head>
+<body data-theme="dark">
+<main class="persona-replay-shell">
+  <div class="replay-wrap">
+    <header class="brand-strip">
+      <div class="brand-left">
+        <div class="brand-mark"><img class="brand-mark-logo" src="../reports/menso-logo.png" alt="Menso"></div>
+        <div>
+          <div class="brand-title">Persona Replay</div>
+          <div class="brand-subtitle">Session / HTTPS://WWW.SCRIBELY.SITE / Observer Mode</div>
+        </div>
+      </div>
+      <div class="live-observer">
+        <div class="theme-toggle" id="themeToggle" aria-label="Theme">
+          <button id="darkThemeButton" class="theme-button is-active" type="button">Dark</button>
+          <button id="lightThemeButton" class="theme-button" type="button">Light</button>
+        </div>
+        <span class="live-dot"></span> Live Observer
+      </div>
+    </header>
+
+    <section class="broadcast-stage" id="frame" aria-label="Persona replay for Alex Rivera">
+      <video id="browserVideo" class="product-video" src="../videos/b1542c5e.webm" preload="metadata" muted playsinline></video>
+      <div class="stage-vignette"></div>
+      <div class="lens-focus" aria-hidden="true"></div>
+
+      <div class="broadcast-topbar">
+        <div class="topbar-inner">
+          <div class="persona-tag">
+            <img id="topbarAvatar" class="topbar-avatar" src="../assets/replay-persona-assets/avatars/student-m-neutral.webp" alt="Alex Rivera">
+            <div>
+              <div class="persona-name">Alex Rivera</div>
+              <div class="persona-type">Lecture-dependent student</div>
+            </div>
+          </div>
+          <div class="topbar-divider"></div>
+          <div id="taskTitle" class="task-title">Task / Generate handwritten notes from a biology lecture</div>
+          <div class="emotion-chip" id="emotionChip">Emotion</div>
+          <div class="step-counter" id="stepCounter">STEP 01 / 01</div>
+          <a class="hud-link" href="../reports/b1542c5e_journey.html" target="_blank" rel="noreferrer">Open report</a>
+        </div>
+      </div>
+
+      <aside class="confidence-card">
+        <button id="confidenceToggle" class="panel-toggle" type="button" aria-expanded="true">
+          <span class="hud-kicker">Confidence</span>
+          <span class="hud-kicker" id="confidenceToggleGlyph">-</span>
+        </button>
+        <div class="confidence-body">
+          <div class="confidence-body-main">
+            <svg class="confidence-ring" viewBox="0 0 108 108" aria-hidden="true">
+              <circle cx="54" cy="54" r="42" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="6"></circle>
+              <circle id="confidenceRingFg" cx="54" cy="54" r="42" fill="none" stroke="var(--hud-color)" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 264" transform="rotate(-90 54 54)"></circle>
+              <foreignObject x="39" y="39" width="30" height="30">
+                <div id="confidenceEmotionIcon" class="confidence-emotion-icon" role="img" aria-label=""></div>
+              </foreignObject>
+            </svg>
+          </div>
+          <div class="confidence-number" id="confidenceNumber">0.00</div>
+          <div class="confidence-divider"></div>
+          <div class="confidence-emotion-row">
+            <span class="hud-kicker">Emotion</span>
+            <span class="confidence-emotion-pill" id="confidenceEmotionPill">Emotion</span>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="think-lyric-panel">
+        <button id="thinkToggle" class="panel-toggle" type="button" aria-expanded="true">
+          <span class="hud-kicker">Think Aloud</span>
+          <span class="hud-kicker panel-meta"><span id="lyricCount">0/0</span><span id="thinkToggleGlyph">-</span></span>
+        </button>
+        <div class="lyric-list" id="lyricList"></div>
+      </aside>
+
+      <div class="cursor-layer" aria-hidden="true">
+        <svg id="evidence-cinematic-path" class="mouse-trail"></svg>
+        <div id="cursorGroup" class="cursor-group">
+          <div id="recordedCursorScrub" class="recorded-cursor-scrub"></div>
+          <div id="clickRipple" class="click-ripple"></div>
+          <svg id="mensoCursor" class="menso-cursor" viewBox="0 0 44 58" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 6 4 Q 2 2 3 8 L 6 48 Q 7 53 11 50 L 17 41 Q 19 39 22 39 L 36 39 Q 40 38 37 35 L 9 8 Q 7 5 6 4 Z"></path>
+          </svg>
+          <div id="cursorTooltip" class="cursor-tooltip"></div>
+        </div>
+      </div>
+
+      <div class="bottom-transport">
+        <div class="transport-inner">
+          <div class="transport-buttons">
+            <button id="prevButton" class="transport-btn" type="button" aria-label="Previous step">&#9664;</button>
+            <button id="playButton" class="play-btn" type="button" aria-label="Play replay">&#9654;</button>
+            <button id="nextButton" class="transport-btn" type="button" aria-label="Next step">&#9654;</button>
+          </div>
+          <div class="timeline">
+            <svg id="timelineSvg" class="timeline-svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+            <div id="timelineTicks" class="timeline-ticks"></div>
+          </div>
+          <div class="time-readout"><strong id="currentTimeLabel">00:00</strong> / <span id="durationLabel">00:00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-hint">
+      <span class="microcopy">Press left/right to step / Space to play or pause / click ticks to jump</span>
+      <span class="microcopy">Persona Replay / Observer Mode</span>
+    </div>
+  </div>
+</main>
+<script>
+const personaTimeline = [{"step": 1, "moment": "Login", "sourceTime": 8.0, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.72, "thought": "Alex is willing to log in, but she wants the path to feel lightweight before she invests effort in a study tool.", "thinkAloud": "I need to complete the configured account access before starting the product task.", "url": "https://www.scribely.site/", "actionType": "click", "actionTarget": 8, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step1.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp"}, {"step": 2, "moment": "Email", "sourceTime": 23.49, "duration": 3.0, "plutchikEmotion": "trust", "plutchikLabel": "Trust", "mensoEmotionLabel": "Confident interested", "color": "#99D1B7", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.78, "thought": "Alex is entering the account email and checking whether this feels like a normal student login rather than an obstacle.", "thinkAloud": "I need to complete the configured account access before starting the product task.", "url": "https://www.scribely.site/", "actionType": "click", "actionTarget": 8, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step2.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp"}, {"step": 3, "moment": "Password", "sourceTime": 44.51, "duration": 3.0, "plutchikEmotion": "trust", "plutchikLabel": "Trust", "mensoEmotionLabel": "Confident interested", "color": "#99D1B7", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.78, "thought": "Alex is entering the password; her attention is still on getting to the real note-generation workflow quickly.", "thinkAloud": "This field needs the account detail I was given, so I will fill it before submitting the form.", "url": "https://www.scribely.site/", "actionType": "type", "actionTarget": 2, "actionPoint": {"x": 640.0, "y": 500.0}, "screenshotPath": "/static/screenshots/b1542c5e_step3.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1162.7, "y": 50.4}}, {"step": 4, "moment": "Submit", "sourceTime": 70.07, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.74, "thought": "Alex submits login and expects either a clear signed-in state or a concise verification step she can finish once.", "thinkAloud": "This field needs the account detail I was given, so I will fill it before submitting the form.", "url": "https://www.scribely.site/", "actionType": "type", "actionTarget": 7, "actionPoint": {"x": 640.0, "y": 426.0}, "screenshotPath": "/static/screenshots/b1542c5e_step4.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1161.1, "y": 51.0}}, {"step": 5, "moment": "Attempt", "sourceTime": 95.75, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.58, "thought": "Alex hits the email-code gate; she can tolerate it once, but the tool has not earned much patience yet.", "thinkAloud": "I need to complete the configured account access before starting the product task.", "url": "https://www.scribely.site/", "actionType": "click", "actionTarget": 3, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step5.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 638.5, "y": 364.9}}, {"step": 6, "moment": "Attempt", "sourceTime": 243.23, "duration": 3.0, "plutchikEmotion": "joy", "plutchikLabel": "Joy", "mensoEmotionLabel": "Delighted/relieved", "color": "#FFF5D2", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.82, "thought": "Alex reaches the generate page and feels a real lift: this finally looks like the promised study-note workflow.", "thinkAloud": "Looks like I'm logged in now — I can see the Dashboard is locked behind a pro plan, but there's a 'Generate' button in the nav. That's probably where I paste the YouTube URL.", "url": "https://www.scribely.site/", "actionType": "click", "actionTarget": 2, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step6.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 638.5, "y": 531.3}}, {"step": 7, "moment": "Generator", "sourceTime": 267.51, "duration": 3.0, "plutchikEmotion": "trust", "plutchikLabel": "Trust", "mensoEmotionLabel": "Confident interested", "color": "#99D1B7", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.8, "thought": "Alex sees an entry point for the lecture material, so trust rises because the product value is now tangible.", "thinkAloud": "I'm on the Generate Notes page — this is exactly what I need. I can see the URL field and it already has Quick mode selected. Let me paste my biology video URL in there.", "url": "https://www.scribely.site/generate", "actionType": "type", "actionTarget": 1, "actionPoint": {"x": 640.0, "y": 426.0}, "screenshotPath": "/static/screenshots/b1542c5e_step7.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.2, "y": 47.9}}, {"step": 8, "moment": "Attempt", "sourceTime": 309.41, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "anticipation", "actorEmotionLabel": "Anticipation", "actorEmotionColor": "#FFAB8D", "emotionIcon": "../emotion-emojis/anticipation.svg", "confidence": 0.76, "thought": "Alex scans for mode and output clues because accuracy and structure matter more than the landing-page promise.", "thinkAloud": "The URL is in there and the Generate Notes button is now active. I need to make sure Quick Mode is selected before I hit generate.", "url": "https://www.scribely.site/generate", "actionType": "select_option", "actionTarget": 17, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step8.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.0, "y": 48.2}}, {"step": 9, "moment": "Attempt", "sourceTime": 327.62, "duration": 3.0, "plutchikEmotion": "surprise", "plutchikLabel": "Surprise", "mensoEmotionLabel": "Confused/questioning", "color": "#D9CBFF", "actorEmotion": "anticipation", "actorEmotionLabel": "Anticipation", "actorEmotionColor": "#FFAB8D", "emotionIcon": "../emotion-emojis/anticipation.svg", "confidence": 0.62, "thought": "Alex tries to focus the URL area and is surprised the page does not give a crisp accepted-input signal.", "thinkAloud": "The URL is in and Quick is the mode — I just need to scroll down and hit Generate Notes.", "url": "https://www.scribely.site/generate", "actionType": "set_checked", "actionTarget": 17, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step9.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.2, "y": 47.9}}, {"step": 10, "moment": "Inspect", "sourceTime": 342.09, "duration": 3.0, "plutchikEmotion": "surprise", "plutchikLabel": "Surprise", "mensoEmotionLabel": "Confused/questioning", "color": "#D9CBFF", "actorEmotion": "apprehension", "actorEmotionLabel": "Apprehension", "actorEmotionColor": "#99D1B7", "emotionIcon": "../emotion-emojis/apprehension.svg", "confidence": 0.58, "thought": "Alex switches to keyboard input, hoping the form will still accept the lecture material despite weak feedback.", "thinkAloud": "Wait — I see notes on the page but they're about Cloud Platforms, not biology. This looks like a sample/preview from a different video. I need to scroll up to find the actual generate form and see if my biology video was processed.", "url": "https://www.scribely.site/generate", "actionType": "scroll_up", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step10.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.2, "y": 47.9}}, {"step": 11, "moment": "Inspect", "sourceTime": 357.41, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "apprehension", "actorEmotionLabel": "Apprehension", "actorEmotionColor": "#99D1B7", "emotionIcon": "../emotion-emojis/apprehension.svg", "confidence": 0.64, "thought": "Alex makes another input attempt; she is still optimistic enough to believe the workflow can recover.", "thinkAloud": "I see the page is still showing that Cloud Platforms sample — my biology notes haven't appeared. Let me scroll up to find the actual generate form and see what happened with my URL submission.", "url": "https://www.scribely.site/generate", "actionType": "scroll_up", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step11.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 148.5, "y": 396.9}}, {"step": 12, "moment": "Attempt", "sourceTime": 370.65, "duration": 3.0, "plutchikEmotion": "anger", "plutchikLabel": "Anger", "mensoEmotionLabel": "Frustrated blocked", "color": "#FFC5D3", "actorEmotion": "annoyance", "actorEmotionLabel": "Annoyance", "actorEmotionColor": "#FFC5D3", "emotionIcon": "../emotion-emojis/annoyance.svg", "confidence": 0.44, "thought": "Alex sees the same state again and frustration starts to bite: the tool is asking for effort instead of saving time.", "thinkAloud": "I've been scrolling and nothing's changing — still seeing that Cloud Platforms sample. My biology notes aren't showing up. Let me navigate directly to the generate page fresh and try submitting the URL again.", "url": "https://www.scribely.site/generate", "actionType": "navigate_to", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step12.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 148.5, "y": 396.9}}, {"step": 13, "moment": "Attempt", "sourceTime": 389.57, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "anticipation", "actorEmotionLabel": "Anticipation", "actorEmotionColor": "#FFAB8D", "emotionIcon": "../emotion-emojis/anticipation.svg", "confidence": 0.52, "thought": "Alex tries one more route because exam-crammers will push through if the payoff looks close.", "thinkAloud": "The URL is already in there and Quick mode is selected. I see a 'Generate Notes' button — let me just click it and see what comes out.", "url": "https://www.scribely.site/generate", "actionType": "click", "actionTarget": 1, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step13.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.2, "y": 47.9}}, {"step": 14, "moment": "Inspect", "sourceTime": 410.6, "duration": 3.0, "plutchikEmotion": "anger", "plutchikLabel": "Anger", "mensoEmotionLabel": "Frustrated blocked", "color": "#FFC5D3", "actorEmotion": "joy", "actorEmotionLabel": "Joy", "actorEmotionColor": "#FFD27F", "emotionIcon": "../emotion-emojis/joy.svg", "confidence": 0.38, "thought": "Alex presses the apparent next action and expects generation to start; no transition now feels like a broken core path.", "thinkAloud": "Wait — the notes actually generated! I can see 'Cell Theory and Cell Types' with all these sections. This looks like the Crash Course biology video content. Let me scroll up to read from the top.", "url": "https://www.scribely.site/generate", "actionType": "scroll_up", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step14.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1193.5, "y": 47.8}}, {"step": 15, "moment": "Decision", "sourceTime": 426.62, "duration": 3.0, "plutchikEmotion": "anger", "plutchikLabel": "Anger", "mensoEmotionLabel": "Frustrated blocked", "color": "#FFC5D3", "actorEmotion": "joy", "actorEmotionLabel": "Joy", "actorEmotionColor": "#FFD27F", "emotionIcon": "../emotion-emojis/joy.svg", "confidence": 0.34, "thought": "Alex retries under pressure, but every repeated no-op makes the product feel less trustworthy.", "thinkAloud": "This is actually really solid. Cell Theory, prokaryotes vs eukaryotes, organelles, endosymbiosis, modern cell theory — that's basically the whole Crash Course video. This covers what I'd write by hand anyway.", "url": "https://www.scribely.site/generate", "actionType": "task_complete", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/b1542c5e_step15.png", "avatar": "../assets/replay-persona-assets/avatars/student-m-neutral.webp", "recordedCursorPoint": {"x": 1215.5, "y": 441.1}}];
+const browserVideo = document.getElementById("browserVideo");
+const frame = document.getElementById("frame");
+const trailSvg = document.getElementById("evidence-cinematic-path");
+const cursorGroup = document.getElementById("cursorGroup");
+const cursorTooltip = document.getElementById("cursorTooltip");
+const recordedCursorScrub = document.getElementById("recordedCursorScrub");
+const clickRipple = document.getElementById("clickRipple");
+const topbarAvatar = document.getElementById("topbarAvatar");
+const emotionChip = document.getElementById("emotionChip");
+const stepCounter = document.getElementById("stepCounter");
+const confidenceRingFg = document.getElementById("confidenceRingFg");
+const confidenceEmotionIcon = document.getElementById("confidenceEmotionIcon");
+const confidenceEmotionPill = document.getElementById("confidenceEmotionPill");
+const confidenceNumber = document.getElementById("confidenceNumber");
+const confidencePanel = document.querySelector(".confidence-card");
+const confidenceToggle = document.getElementById("confidenceToggle");
+const confidenceToggleGlyph = document.getElementById("confidenceToggleGlyph");
+const thinkPanel = document.querySelector(".think-lyric-panel");
+const thinkToggle = document.getElementById("thinkToggle");
+const thinkToggleGlyph = document.getElementById("thinkToggleGlyph");
+const lyricList = document.getElementById("lyricList");
+const lyricCount = document.getElementById("lyricCount");
+const timelineSvg = document.getElementById("timelineSvg");
+const timelineTicks = document.getElementById("timelineTicks");
+const currentTimeLabel = document.getElementById("currentTimeLabel");
+const durationLabel = document.getElementById("durationLabel");
+const playButton = document.getElementById("playButton");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+const darkThemeButton = document.getElementById("darkThemeButton");
+const lightThemeButton = document.getElementById("lightThemeButton");
+let activeIndex = 0;
+let playing = false;
+let leftCollapsed = false;
+let rightCollapsed = false;
+let rafId = null;
+let trailSamples = [];
+let detectedCursorPoint = null;
+let detectedCursorAt = 0;
+const cursorScanCanvas = document.createElement("canvas");
+const cursorScanContext = cursorScanCanvas.getContext("2d", { willReadFrequently: true });
+const cursorScanWidth = 420;
+const replayPlaybackRate = 9;
+const replayStartTime = personaTimeline.length ? Math.max(0, Number(personaTimeline[0].sourceTime || 0)) : 0;
+const replayEndTime = personaTimeline.length
+  ? Math.max(...personaTimeline.map((cue) => Number(cue.sourceTime || 0))) + 8
+  : 0;
+const ringCircumference = 2 * Math.PI * 42;
+
+function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+function formatClock(seconds) {
+  const safe = Math.max(0, Number(seconds || 0));
+  const mins = Math.floor(safe / 60);
+  const secs = Math.floor(safe % 60);
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+function hexToRgb(hex) {
+  const clean = String(hex || "").replace("#", "");
+  if (!/^[0-9a-fA-F]{6}$/.test(clean)) return { r: 255, g: 158, b: 109 };
+  return { r: parseInt(clean.slice(0, 2), 16), g: parseInt(clean.slice(2, 4), 16), b: parseInt(clean.slice(4, 6), 16) };
+}
+function contrastInk(hex) {
+  const rgb = hexToRgb(hex);
+  const luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
+  return luminance < 0.55 ? "#FFFFFF" : "#111827";
+}
+function emotionGlyph(cue) {
+  const label = String(cue.actorEmotion || cue.plutchikEmotion || "").toLowerCase();
+  if (label.includes("joy") || label.includes("trust") || label.includes("delight")) return "+";
+  if (label.includes("anger") || label.includes("frustrat") || label.includes("disgust")) return "!";
+  if (label.includes("fear") || label.includes("surprise") || label.includes("confus")) return "?";
+  return ">";
+}
+function emotionFace(cue) {
+  const label = String(cue.actorEmotion || cue.plutchikEmotion || cue.actorEmotionLabel || "").toLowerCase();
+  if (label.includes("joy") || label.includes("delight") || label.includes("ecstasy") || label.includes("serenity")) return "😊";
+  if (label.includes("trust") || label.includes("admiration") || label.includes("acceptance") || label.includes("love")) return "🙂";
+  if (label.includes("interest") || label.includes("anticipation") || label.includes("optimism") || label.includes("vigilance")) return "✨";
+  if (label.includes("annoy") || label.includes("anger") || label.includes("rage") || label.includes("aggress")) return "😒";
+  if (label.includes("disgust") || label.includes("loathing") || label.includes("contempt")) return "😖";
+  if (label.includes("sad") || label.includes("grief") || label.includes("remorse") || label.includes("pensiveness")) return "😔";
+  if (label.includes("fear") || label.includes("terror") || label.includes("apprehension")) return "😟";
+  if (label.includes("surprise") || label.includes("amazement") || label.includes("awe") || label.includes("distraction")) return "😮";
+  if (label.includes("confus")) return "🤔";
+  return "🙂";
+}
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  darkThemeButton.classList.toggle("is-active", theme === "dark");
+  lightThemeButton.classList.toggle("is-active", theme === "light");
+}
+function toggleTheme(theme) {
+  setTheme(theme);
+}
+function setThinkPanelCollapsed(collapsed) {
+  rightCollapsed = collapsed;
+  thinkPanel.classList.toggle("is-collapsed", rightCollapsed);
+  thinkToggle.setAttribute("aria-expanded", String(!rightCollapsed));
+  thinkToggleGlyph.textContent = rightCollapsed ? "+" : "-";
+  cursorTooltip.classList.toggle("is-hidden", !rightCollapsed);
+}
+function setConfidencePanelCollapsed(collapsed) {
+  leftCollapsed = collapsed;
+  confidencePanel.classList.toggle("is-collapsed", leftCollapsed);
+  confidenceToggle.setAttribute("aria-expanded", String(!leftCollapsed));
+  confidenceToggleGlyph.textContent = leftCollapsed ? "+" : "-";
+}
+function setSyncColor(cue) {
+  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
+  document.documentElement.style.setProperty("--hud-color", color);
+  document.documentElement.style.setProperty("--hud-ink", contrastInk(color));
+}
+function videoBoxForFrame(rect) {
+  const videoWidth = browserVideo.videoWidth || 1280;
+  const videoHeight = browserVideo.videoHeight || 800;
+  const frameAspect = rect.width / Math.max(1, rect.height);
+  const videoAspect = videoWidth / Math.max(1, videoHeight);
+  if (videoAspect > frameAspect) {
+    const height = rect.width / videoAspect;
+    return { x: 0, y: (rect.height - height) / 2, width: rect.width, height };
+  }
+  const width = rect.height * videoAspect;
+  return { x: (rect.width - width) / 2, y: 0, width, height: rect.height };
+}
+function findRecordedCursorPoint(rect) {
+  if (!cursorScanContext || browserVideo.readyState < 2 || !browserVideo.videoWidth || !browserVideo.videoHeight) return null;
+  const videoBox = videoBoxForFrame(rect);
+  const scanWidth = cursorScanWidth;
+  const scanHeight = Math.max(1, Math.round(scanWidth * browserVideo.videoHeight / browserVideo.videoWidth));
+  if (cursorScanCanvas.width !== scanWidth || cursorScanCanvas.height !== scanHeight) {
+    cursorScanCanvas.width = scanWidth;
+    cursorScanCanvas.height = scanHeight;
+  }
+  let imageData;
+  try {
+    cursorScanContext.drawImage(browserVideo, 0, 0, scanWidth, scanHeight);
+    imageData = cursorScanContext.getImageData(0, 0, scanWidth, scanHeight).data;
+  } catch (error) {
+    return null;
+  }
+  const total = scanWidth * scanHeight;
+  const mask = new Uint8Array(total);
+  for (let index = 0; index < total; index += 1) {
+    const offset = index * 4;
+    const r = imageData[offset];
+    const g = imageData[offset + 1];
+    const b = imageData[offset + 2];
+    if (b > 155 && g > 85 && g < 215 && r < 165 && b - r > 60 && b - g > 28) mask[index] = 1;
+  }
+  const visited = new Uint8Array(total);
+  const previous = detectedCursorPoint
+    ? {
+        x: ((detectedCursorPoint.x - videoBox.x) / Math.max(1, videoBox.width)) * scanWidth,
+        y: ((detectedCursorPoint.y - videoBox.y) / Math.max(1, videoBox.height)) * scanHeight,
+      }
+    : null;
+  let best = null;
+  for (let start = 0; start < total; start += 1) {
+    if (!mask[start] || visited[start]) continue;
+    const stack = [start];
+    visited[start] = 1;
+    let count = 0;
+    let sumX = 0;
+    let sumY = 0;
+    let minX = scanWidth;
+    let minY = scanHeight;
+    let maxX = 0;
+    let maxY = 0;
+    while (stack.length) {
+      const current = stack.pop();
+      const x = current % scanWidth;
+      const y = Math.floor(current / scanWidth);
+      count += 1;
+      sumX += x;
+      sumY += y;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+      const neighbors = [current - 1, current + 1, current - scanWidth, current + scanWidth];
+      for (const next of neighbors) {
+        if (next < 0 || next >= total || visited[next] || !mask[next]) continue;
+        const nx = next % scanWidth;
+        if (Math.abs(nx - x) > 1) continue;
+        visited[next] = 1;
+        stack.push(next);
+      }
+    }
+    const width = maxX - minX + 1;
+    const height = maxY - minY + 1;
+    if (count < 4 || count > 180 || width < 2 || height < 2 || width > 22 || height > 22) continue;
+    const cx = sumX / count;
+    const cy = sumY / count;
+    const aspectPenalty = Math.abs(width - height) * 2.8;
+    const continuityPenalty = previous ? Math.hypot(cx - previous.x, cy - previous.y) * 1.8 : 0;
+    const score = count - aspectPenalty - continuityPenalty;
+    if (!best || score > best.score) best = { x: cx, y: cy, score };
+  }
+  if (best) {
+    detectedCursorPoint = {
+      x: videoBox.x + (best.x / scanWidth) * videoBox.width,
+      y: videoBox.y + (best.y / scanHeight) * videoBox.height,
+    };
+    detectedCursorAt = performance.now();
+    return detectedCursorPoint;
+  }
+  if (detectedCursorPoint && performance.now() - detectedCursorAt < 350) return detectedCursorPoint;
+  return null;
+}
+function cueIndexForTime(time) {
+  let index = 0;
+  for (let nextIndex = 0; nextIndex < personaTimeline.length; nextIndex += 1) {
+    if (Number(personaTimeline[nextIndex].sourceTime || 0) <= time) index = nextIndex;
+    else break;
+  }
+  return index;
+}
+function pointFromAction(actionPoint, rect) {
+  if (!actionPoint) return null;
+  const sourceX = Number(actionPoint.x);
+  const sourceY = Number(actionPoint.y);
+  if (!Number.isFinite(sourceX) || !Number.isFinite(sourceY)) return null;
+  const videoBox = videoBoxForFrame(rect);
+  const sourceWidth = browserVideo.videoWidth || 1280;
+  const sourceHeight = browserVideo.videoHeight || 800;
+  return {
+    x: clamp(videoBox.x + (sourceX / sourceWidth) * videoBox.width, 0, rect.width),
+    y: clamp(videoBox.y + (sourceY / sourceHeight) * videoBox.height, 0, rect.height),
+  };
+}
+function pointFromRecordedCursor(recordedPoint, rect) {
+  return pointFromAction(recordedPoint, rect);
+}
+function fallbackPointForCue(cue, rect) {
+  const index = Math.max(0, personaTimeline.indexOf(cue));
+  return {
+    x: rect.width * (0.38 + Math.sin(index * 1.37) * 0.2),
+    y: rect.height * (0.48 + Math.cos(index * 1.11) * 0.18),
+  };
+}
+function visualPointForCue(cue, rect) {
+  return pointFromAction(cue?.actionPoint, rect) || fallbackPointForCue(cue, rect);
+}
+function tooltipPointForTime(time) {
+  const rect = frame.getBoundingClientRect();
+  if (!personaTimeline.length) return null;
+  let previous = personaTimeline[0];
+  let next = personaTimeline[personaTimeline.length - 1];
+  for (let index = 0; index < personaTimeline.length; index += 1) {
+    const cue = personaTimeline[index];
+    if (Number(cue.sourceTime || 0) <= time) previous = cue;
+    if (Number(cue.sourceTime || 0) >= time) {
+      next = cue;
+      break;
+    }
+  }
+  const prevPoint = visualPointForCue(previous, rect);
+  const nextPoint = visualPointForCue(next, rect);
+  const prevTime = Number(previous.sourceTime || 0);
+  const nextTime = Number(next.sourceTime || prevTime);
+  if (!prevPoint || !nextPoint || nextTime <= prevTime) return prevPoint || nextPoint || fallbackPointForCue(previous, rect);
+  const raw = clamp((time - prevTime) / (nextTime - prevTime), 0, 1);
+  const eased = raw * raw * (3 - 2 * raw);
+  return {
+    x: prevPoint.x + (nextPoint.x - prevPoint.x) * eased,
+    y: prevPoint.y + (nextPoint.y - prevPoint.y) * eased,
+  };
+}
+function pointForTime(time) {
+  const rect = frame.getBoundingClientRect();
+  if (!personaTimeline.length) return null;
+  const cue = personaTimeline[cueIndexForTime(time)] || personaTimeline[activeIndex] || personaTimeline[0];
+  const embeddedRecordedPoint = pointFromRecordedCursor(cue?.recordedCursorPoint, rect);
+  if (embeddedRecordedPoint) return embeddedRecordedPoint;
+  const recordedPoint = findRecordedCursorPoint(rect);
+  if (recordedPoint) return recordedPoint;
+  return tooltipPointForTime(time);
+}
+function recordTrailPoint(point, color) {
+  const now = performance.now();
+  const last = trailSamples[trailSamples.length - 1];
+  if (!last || Math.hypot(point.x - last.x, point.y - last.y) > 4) {
+    trailSamples.push({ x: point.x, y: point.y, color, time: now });
+  }
+  trailSamples = trailSamples.filter((sample) => now - sample.time < 900).slice(-24);
+}
+function smoothTrailPath(samples) {
+  if (samples.length < 2) return "";
+  let d = `M ${samples[0].x.toFixed(1)} ${samples[0].y.toFixed(1)}`;
+  for (let index = 1; index < samples.length; index += 1) {
+    d += ` L ${samples[index].x.toFixed(1)} ${samples[index].y.toFixed(1)}`;
+  }
+  return d;
+}
+function drawTrail() {
+  trailSvg.replaceChildren();
+  if (trailSamples.length < 2) return;
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+  gradient.setAttribute("id", "trail-gradient-main");
+  gradient.setAttribute("x1", "0");
+  gradient.setAttribute("x2", "1");
+  const start = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  start.setAttribute("offset", "0%");
+  start.setAttribute("stop-color", trailSamples[0].color);
+  start.setAttribute("stop-opacity", "0");
+  const end = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  end.setAttribute("offset", "100%");
+  end.setAttribute("stop-color", trailSamples[trailSamples.length - 1].color);
+  end.setAttribute("stop-opacity", ".9");
+  gradient.append(start, end);
+  defs.appendChild(gradient);
+  trailSvg.appendChild(defs);
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", smoothTrailPath(trailSamples));
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "url(#trail-gradient-main)");
+  path.setAttribute("stroke-width", "4.5");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-linejoin", "round");
+  trailSvg.appendChild(path);
+}
+function renderLyrics(index) {
+  lyricList.replaceChildren();
+  lyricCount.textContent = `${index + 1}/${personaTimeline.length || 1}`;
+  for (let offset = -1; offset <= 1; offset += 1) {
+    const nextIndex = index + offset;
+    if (nextIndex < 0 || nextIndex >= personaTimeline.length) continue;
+    const cue = personaTimeline[nextIndex];
+    const row = document.createElement("button");
+    row.type = "button";
+    row.className = `lyric-row${offset === 0 ? " is-current" : ""}`;
+    row.addEventListener("click", () => jumpToCue(nextIndex));
+    const step = document.createElement("div");
+    step.className = "lyric-step";
+    step.textContent = `STEP ${String(nextIndex + 1).padStart(2, "0")}`;
+    if (offset === 0) {
+      const dot = document.createElement("span");
+      dot.className = "lyric-step-dot";
+      step.appendChild(dot);
+    }
+    const text = document.createElement("div");
+    text.className = "lyric-text";
+    text.textContent = offset === 0 ? `"${cue.thinkAloud || cue.thought || ""}"` : (cue.thinkAloud || cue.thought || "");
+    row.append(step, text);
+    lyricList.appendChild(row);
+  }
+}
+function renderTimeline() {
+  timelineSvg.replaceChildren();
+  timelineTicks.replaceChildren();
+  if (!personaTimeline.length) return;
+  const total = personaTimeline.length - 1 || 1;
+  const points = personaTimeline.map((cue, index) => {
+    const x = (index / total) * 100;
+    const confidence = Number(cue.confidence || 0.65);
+    const y = 80 - confidence * 50;
+    return { x, y };
+  });
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const fillGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+  fillGradient.setAttribute("id", "spark-fill");
+  fillGradient.setAttribute("x1", "0");
+  fillGradient.setAttribute("y1", "0");
+  fillGradient.setAttribute("x2", "0");
+  fillGradient.setAttribute("y2", "1");
+  const fillStart = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  fillStart.setAttribute("offset", "0%");
+  fillStart.setAttribute("stop-color", "var(--hud-color)");
+  fillStart.setAttribute("stop-opacity", ".26");
+  const fillEnd = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  fillEnd.setAttribute("offset", "100%");
+  fillEnd.setAttribute("stop-color", "var(--hud-color)");
+  fillEnd.setAttribute("stop-opacity", "0");
+  fillGradient.append(fillStart, fillEnd);
+  defs.appendChild(fillGradient);
+  points.slice(0, -1).forEach((point, index) => {
+    const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    gradient.setAttribute("id", `timeline-segment-${index}`);
+    gradient.setAttribute("gradientUnits", "userSpaceOnUse");
+    gradient.setAttribute("x1", String(point.x));
+    gradient.setAttribute("x2", String(points[index + 1].x));
+    gradient.setAttribute("y1", String(point.y));
+    gradient.setAttribute("y2", String(points[index + 1].y));
+    const start = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    start.setAttribute("offset", "0%");
+    start.setAttribute("stop-color", "rgba(255,255,255,.38)");
+    const end = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    end.setAttribute("offset", "100%");
+    end.setAttribute("stop-color", "var(--hud-color)");
+    gradient.append(start, end);
+    defs.appendChild(gradient);
+  });
+  timelineSvg.appendChild(defs);
+  const baseline = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  baseline.setAttribute("x1", "0");
+  baseline.setAttribute("y1", "80");
+  baseline.setAttribute("x2", "100");
+  baseline.setAttribute("y2", "80");
+  baseline.setAttribute("stroke", "rgba(255,255,255,.16)");
+  baseline.setAttribute("stroke-width", ".5");
+  timelineSvg.appendChild(baseline);
+  const area = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  area.setAttribute("points", `0,86 ${points.map((point) => `${point.x},${point.y}`).join(" ")} 100,86`);
+  area.setAttribute("fill", "url(#spark-fill)");
+  area.setAttribute("opacity", ".85");
+  timelineSvg.appendChild(area);
+  points.slice(0, -1).forEach((point, index) => {
+    const next = points[index + 1];
+    const segment = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    segment.setAttribute("x1", String(point.x));
+    segment.setAttribute("y1", String(point.y));
+    segment.setAttribute("x2", String(next.x));
+    segment.setAttribute("y2", String(next.y));
+    segment.setAttribute("stroke", `url(#timeline-segment-${index})`);
+    segment.setAttribute("class", "timeline-segment");
+    segment.dataset.index = String(index);
+    timelineSvg.appendChild(segment);
+  });
+  personaTimeline.forEach((cue, index) => {
+    const tick = document.createElement("button");
+    tick.type = "button";
+    tick.className = "timeline-tick";
+    tick.style.left = `${(index / total) * 100}%`;
+    tick.setAttribute("aria-label", `Step ${index + 1}`);
+    tick.addEventListener("click", () => jumpToCue(index));
+    const bar = document.createElement("span");
+    tick.appendChild(bar);
+    timelineTicks.appendChild(tick);
+  });
+}
+function updateTimelineState(index) {
+  [...timelineTicks.children].forEach((tick, tickIndex) => {
+    tick.classList.toggle("is-current", tickIndex === index);
+    tick.classList.toggle("is-past", tickIndex < index);
+  });
+  [...timelineSvg.querySelectorAll(".timeline-segment")].forEach((segment) => {
+    const segmentIndex = Number(segment.dataset.index || 0);
+    segment.classList.toggle("is-current", segmentIndex === Math.max(0, index - 1));
+    segment.classList.toggle("is-future", segmentIndex >= index);
+  });
+}
+function placeCursorOverlay(cue, point, pulse = false) {
+  if (!cue || !point) {
+    cursorGroup.classList.remove("is-visible");
+    recordedCursorScrub.classList.remove("is-visible");
+    return;
+  }
+  const rect = frame.getBoundingClientRect();
+  point = {
+    x: clamp(point.x, 10, Math.max(10, rect.width - 10)),
+    y: clamp(point.y, 10, Math.max(10, rect.height - 10)),
+  };
+  cursorGroup.style.left = `${point.x}px`;
+  cursorGroup.style.top = `${point.y}px`;
+  cursorGroup.classList.add("is-visible");
+  recordedCursorScrub.classList.toggle("is-visible", Boolean(cue.recordedCursorPoint));
+  cursorTooltip.textContent = cue.thinkAloud || cue.thought || "";
+  cursorTooltip.classList.toggle("is-hidden", !rightCollapsed);
+  cursorTooltip.classList.toggle("is-left", point.x > rect.width - 460);
+  cursorTooltip.classList.toggle("is-up", point.y > rect.height - 160);
+  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
+  recordTrailPoint(point, color);
+  drawTrail();
+  if (pulse || String(cue.actionType || "").includes("click")) {
+    clickRipple.classList.remove("is-on");
+    void clickRipple.offsetWidth;
+    clickRipple.classList.add("is-on");
+  }
+}
+function renderCue(index, pulse = false) {
+  if (!personaTimeline.length) return;
+  activeIndex = clamp(index, 0, personaTimeline.length - 1);
+  const cue = personaTimeline[activeIndex];
+  setSyncColor(cue);
+  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
+  const emotionLabel = cue.actorEmotionLabel || cue.actorEmotion || cue.plutchikEmotion || "Emotion";
+  emotionChip.textContent = emotionLabel;
+  if (cue.avatar) topbarAvatar.src = cue.avatar;
+  topbarAvatar.alt = "Alex Rivera";
+  stepCounter.textContent = `STEP ${String(activeIndex + 1).padStart(2, "0")} / ${String(personaTimeline.length).padStart(2, "0")}`;
+  const confidence = clamp(Number(cue.confidence || 0.65), 0, 1);
+  const dash = ringCircumference * confidence;
+  confidenceRingFg.setAttribute("stroke-dasharray", `${dash} ${ringCircumference - dash}`);
+  confidenceRingFg.setAttribute("stroke", color);
+  confidenceEmotionIcon.textContent = emotionFace(cue);
+  confidenceEmotionIcon.setAttribute("aria-label", emotionLabel);
+  confidenceEmotionPill.textContent = `${emotionGlyph(cue)} ${emotionLabel}`;
+  confidenceNumber.textContent = confidence.toFixed(2);
+  currentTimeLabel.textContent = formatClock(cue.sourceTime || browserVideo.currentTime || 0);
+  durationLabel.textContent = formatClock(replayEndTime || browserVideo.duration || 0);
+  renderLyrics(activeIndex);
+  updateTimelineState(activeIndex);
+  placeCursorOverlay(cue, pointForTime(browserVideo.currentTime || cue.sourceTime || replayStartTime), pulse);
+}
+function syncOverlayToVideo() {
+  const time = browserVideo.currentTime || replayStartTime;
+  const nextIndex = cueIndexForTime(time);
+  const cueChanged = nextIndex !== activeIndex;
+  if (cueChanged) renderCue(nextIndex, true);
+  const cue = personaTimeline[activeIndex] || personaTimeline[0];
+  currentTimeLabel.textContent = formatClock(time);
+  if (cue) placeCursorOverlay(cue, pointForTime(time), false);
+  if (playing && replayEndTime && time >= replayEndTime) {
+    playing = false;
+    browserVideo.pause();
+    frame.classList.remove("is-playing");
+    playButton.textContent = "▶";
+    return;
+  }
+  if (playing) rafId = requestAnimationFrame(syncOverlayToVideo);
+}
+function jumpToCue(index) {
+  if (!personaTimeline.length) return;
+  const cue = personaTimeline[clamp(index, 0, personaTimeline.length - 1)];
+  browserVideo.currentTime = Number(cue.sourceTime || replayStartTime || 0);
+  trailSamples = [];
+  renderCue(index, true);
+}
+async function togglePlayback() {
+  playing = !playing;
+  playButton.textContent = playing ? "Ⅱ" : "▶";
+  frame.classList.toggle("is-playing", playing);
+  if (playing) {
+    if (!browserVideo.currentTime || browserVideo.currentTime < replayStartTime || browserVideo.ended || (replayEndTime && browserVideo.currentTime >= replayEndTime)) {
+      browserVideo.currentTime = replayStartTime;
+      trailSamples = [];
+    }
+    browserVideo.playbackRate = replayPlaybackRate;
+    await browserVideo.play().catch(() => {});
+    rafId = requestAnimationFrame(syncOverlayToVideo);
+  } else {
+    browserVideo.pause();
+    if (rafId) cancelAnimationFrame(rafId);
+  }
+}
+playButton.addEventListener("click", togglePlayback);
+prevButton.addEventListener("click", () => jumpToCue(activeIndex - 1));
+nextButton.addEventListener("click", () => jumpToCue(activeIndex + 1));
+darkThemeButton.addEventListener("click", () => toggleTheme("dark"));
+lightThemeButton.addEventListener("click", () => toggleTheme("light"));
+confidenceToggle.addEventListener("click", () => setConfidencePanelCollapsed(!leftCollapsed));
+thinkToggle.addEventListener("click", () => setThinkPanelCollapsed(!rightCollapsed));
+browserVideo.addEventListener("ended", () => {
+  playing = false;
+  frame.classList.remove("is-playing");
+  playButton.textContent = "▶";
+  if (rafId) cancelAnimationFrame(rafId);
+});
+browserVideo.addEventListener("loadedmetadata", () => {
+  browserVideo.currentTime = replayStartTime;
+  browserVideo.playbackRate = replayPlaybackRate;
+  durationLabel.textContent = formatClock(replayEndTime || browserVideo.duration || 0);
+  renderCue(0, false);
+});
+window.addEventListener("resize", () => renderCue(activeIndex, false));
+window.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") jumpToCue(activeIndex - 1);
+  if (event.key === "ArrowRight") jumpToCue(activeIndex + 1);
+  if (event.key === " ") {
+    event.preventDefault();
+    togglePlayback();
+  }
+});
+setTheme("dark");
+setConfidencePanelCollapsed(false);
+setThinkPanelCollapsed(false);
+renderTimeline();
+renderCue(0, false);
+</script>
+</body>
+</html>

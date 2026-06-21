@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="love emotion emoji">
+  <title>love emotion emoji</title>
+  <defs>
+    <filter id="emoji-shadow" x="-20%" y="-20%" width="140%" height="145%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F172A" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="32" r="27.5" fill="#F8FAFC" filter="url(#emoji-shadow)"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#1E293B" stroke-opacity="0.2" stroke-width="2"/>
+  <circle cx="24" cy="19" r="9" fill="#FFFFFF" opacity=".72"/>
+  <path d="M52 43l-3.6-3.4a3 3 0 014.3-4.2 3 3 0 014.3 4.2z" fill="#EF476F" opacity=".88"/>
+  <path d="M22 30l-5-5a4 4 0 016-6 4 4 0 016 6z" fill="#172033"/><path d="M42 30l-5-5a4 4 0 016-6 4 4 0 016 6z" fill="#172033"/>
+  <path d="M22 39q10 8 20 0" fill="none" stroke="#172033" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
