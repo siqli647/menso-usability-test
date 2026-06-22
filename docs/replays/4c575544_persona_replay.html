@@ -116,10 +116,17 @@ body[data-theme="light"] .persona-replay-shell::after { opacity: .12; }
   background: var(--panel-bg);
   color: var(--text-strong);
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 800;
   line-height: 1;
   backdrop-filter: blur(12px);
+}
+.brand-back-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .brand-mark {
   display: grid;
@@ -255,7 +262,7 @@ body[data-theme="light"] .lens-focus::before {
   flex: 0 0 auto;
   object-fit: cover;
   background: rgba(255,255,255,.12);
-  box-shadow: 0 0 0 2px var(--hud-color), 0 0 0 4px rgba(10,15,28,.72), 0 0 16px color-mix(in srgb, var(--hud-color) 35%, transparent);
+  box-shadow: 0 0 0 2px var(--hud-color), 0 0 16px color-mix(in srgb, var(--hud-color) 35%, transparent);
 }
 .persona-name { color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.15; }
 .persona-type { color: var(--text-faint); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
@@ -596,7 +603,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
   <div class="replay-wrap">
     <header class="brand-strip">
       <div class="brand-left">
-        <a class="brand-back" href="../reports/4c575544_journey.html" aria-label="Back to report">←</a>
+        <a class="brand-back" href="../reports/4c575544_journey.html" aria-label="Back to report"><svg class="brand-back-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 9 12l6 6"></path><path d="M10 12h10"></path></svg></a>
         <div class="brand-mark"><img class="brand-mark-logo" src="../reports/menso-logo.png" alt="Menso"></div>
         <div>
           <div class="brand-title">Persona Replay</div>
