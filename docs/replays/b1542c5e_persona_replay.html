@@ -143,6 +143,9 @@ body[data-theme="light"] .persona-replay-shell::after { opacity: .12; }
   object-fit: contain;
   filter: drop-shadow(0 8px 18px rgba(37, 99, 235, .24));
 }
+.brand-mark-logo.is-dark-logo { display: none; }
+body[data-theme="dark"] .brand-mark-logo.is-light-logo { display: none; }
+body[data-theme="dark"] .brand-mark-logo.is-dark-logo { display: block; }
 .brand-title { color: var(--brand-text); font-size: 15px; font-weight: 650; letter-spacing: 0; }
 .brand-subtitle {
   color: var(--brand-sub);
@@ -608,7 +611,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
     <header class="brand-strip">
       <div class="brand-left">
         <a class="brand-back" href="../reports/b1542c5e_journey.html" aria-label="Back to report"><svg class="brand-back-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 9 12l6 6"></path><path d="M10 12h10"></path></svg></a>
-        <div class="brand-mark"><img class="brand-mark-logo" src="../reports/menso-logo.png" alt="Menso"></div>
+        <div class="brand-mark"><img class="brand-mark-logo is-light-logo" src="../reports/menso-logo.png" alt="Menso"><img class="brand-mark-logo is-dark-logo" src="../reports/menso-logo-dark.png" alt="Menso"></div>
         <div>
           <div class="brand-title">Persona Replay</div>
           <div class="brand-subtitle">Session / HTTPS://WWW.SCRIBELY.SITE / Observer Mode</div>
