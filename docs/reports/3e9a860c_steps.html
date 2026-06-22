@@ -93,7 +93,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="step-meta"><span class="emotion-pill" style="background:#B9E4FF33;color:#111827;border:1px solid #B9E4FF">Fear</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Select Option</span></div>
         <p class="think-aloud"><strong>Think aloud:</strong> The URL is in — I can see the config panel with style and paper options. I need to scroll down to find the Generate Notes button and actually run this. Let me also check if there&#39;s a way to select &#39;Detailed&#39; mode for better output quality.</p>
         <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
-        <div class="verdict-bar warning">UI friction: configuration and the Generate CTA are visually separated enough that Jordan has to scan/scroll to continue.</div>
+        <div class="verdict-bar neutral">Instrumentation caveat: scroll/offscreen language in this trace is not counted as product friction because the probe can re-index targets between steps.</div>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">06</span><span class="step-title">Attempt — Click</span></div>
@@ -103,7 +103,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="step-meta"><span class="emotion-pill" style="background:#FFF5D233;color:#111827;border:1px solid #FFF5D2">Joy</span><span class="conf-label">Confidence</span><span class="conf-value">0.82</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
         <p class="think-aloud"><strong>Think aloud:</strong> Good — Detailed mode is selected. The URL is in. Now I just need to hit Generate Notes and see what comes out. It&#39;s offscreen but I can click it directly.</p>
         <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
-        <div class="verdict-bar warning">UI friction: Detailed mode is selected, but the primary Generate action is offscreen; high-intent users need a persistent action area.</div>
+        <div class="verdict-bar neutral">Instrumentation caveat: the offscreen target note is treated as probe noise; the real product signal here is that Detailed mode supports Jordan's quality expectation.</div>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">07</span><span class="step-title">Attempt — Click</span></div>
@@ -143,7 +143,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
         <p class="think-aloud"><strong>Think aloud:</strong> The URL is already in the field and I&#39;m logged in. I need to actually generate the revision sheet — I see a &#39;Generate Notes&#39; button listed as offscreen. Let me click it directly.</p>
         <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
-        <div class="verdict-bar warning">UX friction: Jordan still has to rely on an offscreen/direct action path; keep Generate visible beside the current source/config summary.</div>
+        <div class="verdict-bar neutral">Instrumentation caveat: direct/offscreen click language is excluded from product scoring; this step is kept as raw trace context only.</div>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">11</span><span class="step-title">Attempt — Wait</span></div>
@@ -173,7 +173,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.52</span><span class="conf-label">Action</span><span class="conf-value">Scroll Up</span></div>
         <p class="think-aloud"><strong>Think aloud:</strong> The page scrolled to the footer — the notes output must be above. I see &#39;SAVE NOTES&#39; is offscreen above, which means the content was generated. Let me scroll up to actually review what was produced.</p>
         <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
-        <div class="verdict-bar warning">UI friction: after generation, Jordan lands around the footer/output boundary and has to scroll to re-orient; result anchoring is weak.</div>
+        <div class="verdict-bar neutral">Instrumentation caveat: footer/scroll positioning is excluded from product scoring unless reproduced in a real browser session.</div>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">14</span><span class="step-title">Attempt — Click</span></div>
@@ -183,7 +183,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.38</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
         <p class="think-aloud"><strong>Think aloud:</strong> I can see the notes were generated — there&#39;s a &#39;SAVE NOTES&#39; button offscreen above and I&#39;ve already scrolled through content about sensory memory, STM, LTM, rehearsal. The revision sheet content looks solid. Now I need to find the flashcard generation option to complete my evaluation.</p>
         <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
-        <div class="verdict-bar warning">UX friction: Save Notes and flashcard generation are discoverable only after searching; next actions should sit beside the output.</div>
+        <div class="verdict-bar warning">UX friction: Save Notes and flashcard generation should be packaged as one Study Pack workflow rather than separate surfaces.</div>
       </div>
       <div class="step-card">
         <div class="step-head"><span class="step-num">15</span><span class="step-title">Attempt — Click</span></div>

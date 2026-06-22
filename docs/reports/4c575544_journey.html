@@ -63,19 +63,19 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
       <div class="right-col">
         <h2>Final Verdict</h2>
         <div class="verdict-card">
-          <div class="verdict-badge">Preflight And Recovery Failure</div>
-          <div class="verdict-title">Daniel exposes the most important UX risk: unsupported YouTube sources are discovered too late and the UI gives no graceful recovery path.</div>
+          <div class="verdict-badge">Transcript Failure, No Recovery Path</div>
+          <div class="verdict-title">Daniel is the P0 acceptance case: a plausible classroom video fails after the user invests time, with no path to recover.</div>
           <div class="verdict-points">
-            &bull; The submitted educational video looked reasonable from the user's perspective.<br>
-            &bull; Transcript/caption eligibility should be checked before processing, waiting, or quota spend.<br>
-            &bull; The error state should stay near the URL field and offer direct recovery actions.<br>
-            &bull; Quota/credit handling must be explicit when generation fails for source eligibility reasons.
+            &bull; Crash Course Chemistry is a reasonable source choice for a teacher, so the failure feels like a product reliability issue.<br>
+            &bull; Transcript/caption eligibility must be checked before processing, waiting, or quota spend.<br>
+            &bull; Promo pressure and unrelated sample previews add trust debt before the critical failure happens.<br>
+            &bull; The failure state needs retry logic, manual transcript paste/upload, alternate-source guidance, and credit protection.
           </div>
           <div class="verdict-conf-label">Final Confidence</div>
           <div class="verdict-conf-number">0.31</div>
         </div>
         <h2>UX/UI Frictions</h2>
-        <div class="insight-card"><div class="insight-title">1. No source eligibility preflight.</div><div class="insight-text">Check transcript/caption availability immediately after URL entry and show supported/unsupported status before generation starts.</div></div><div class="insight-card"><div class="insight-title">2. Error state appears too late and in the wrong place.</div><div class="insight-text">Keep the error attached to the URL field and preserve the form instead of pushing the user toward the footer.</div></div><div class="insight-card"><div class="insight-title">3. Recovery actions are missing.</div><div class="insight-text">Offer paste transcript, upload file, choose alternate video, or retry with a clear reason why retry may work.</div></div><div class="insight-card"><div class="insight-title">4. Credit handling is ambiguous.</div><div class="insight-text">State whether failed transcript runs consume quota and protect credits for unsupported-source failures.</div></div><div class="insight-card"><div class="insight-title">Replay evidence</div><div class="insight-text"><a href="../replays/4c575544_persona_replay.html">Open synced replay</a></div></div>
+        <div class="insight-card"><div class="insight-title">1. No transcript/caption preflight.</div><div class="insight-text">Detect transcript availability immediately after URL entry and block unsupported videos before generation starts or quota is at risk.</div></div><div class="insight-card"><div class="insight-title">2. Failure state has no recovery panel.</div><div class="insight-text">Attach the error to the URL field and offer retry, paste transcript, upload transcript, choose another video, and contact support with source context.</div></div><div class="insight-card"><div class="insight-title">3. Sample preview increases failure confusion.</div><div class="insight-text">Separate Sample style from Your result so Daniel does not interpret Cloud Platforms content as evidence that the chemistry video was processed incorrectly.</div></div><div class="insight-card"><div class="insight-title">4. Credit and quota safety are unclear.</div><div class="insight-text">Explicitly state whether failed transcript runs consume generations and protect credits for unsupported-source failures.</div></div><div class="insight-card"><div class="insight-title">Replay evidence</div><div class="insight-text"><a href="../replays/4c575544_persona_replay.html">Open synced replay</a></div></div>
       </div>
     </div>
   </div>
