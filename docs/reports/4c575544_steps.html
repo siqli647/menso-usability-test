@@ -19,7 +19,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .step-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;}
 .step-head{display:flex;align-items:baseline;gap:10px;}.step-num{font-size:18px;font-weight:700;color:#000;}.step-title{font-size:20px;font-weight:600;color:#1E1E1E;}
-.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:cover;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
+.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:contain;background:#F8FAFC;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
 .divider{height:0.5px;background:rgba(0,0,0,0.1);width:100%;}.step-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .emotion-pill{display:inline-block;padding:4px 10px;border-radius:9999px;font-size:12px;font-weight:500;}.conf-label{font-size:13px;color:#757575;}.conf-value{font-size:13px;font-weight:600;color:#1E1E1E;}
 .think-aloud{font-size:14px;color:#1E1E1E;line-height:1.6;font-style:normal;}.verdict-bar{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5;}.verdict-bar.warning{background:#FEF3C7;color:#92400E;}.verdict-bar.positive{background:#DCFCE7;color:#166534;}.verdict-bar.risk{background:#FFE4E6;color:#9F1239;}.verdict-bar.neutral{background:#EEF2FF;color:#3730A3;}
@@ -46,51 +46,215 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
     <div class="steps-grid">
 
       <div class="step-card">
-        <div class="step-head"><span class="step-num">1</span><span class="step-title">Source Entry — Plausible Video</span></div>
+        <div class="step-head"><span class="step-num">01</span><span class="step-title">Login — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step11.png" alt="Source Entry — Plausible Video"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step1.png" alt="Step 01 Login"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#9A3412">hope</span><span class="conf-label">Confidence</span><span class="conf-value">0.55</span></div>
-        <p class="think-aloud">Daniel used a mainstream educational chemistry video, which feels like the kind of source Scribely should support.</p>
-        <div class="verdict-bar neutral">The input looked reasonable to the user; failure cannot be explained as obviously bad source choice.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.72</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> There&#39;s a promo popup straight away — Pro at 65% off. Let me close this first and get to the actual product. I need to log in and try generating notes from a YouTube link.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is willing to log in, but she wants the path to feel lightweight before she invests effort in a study tool.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">2</span><span class="step-title">Processing — Waiting Without Eligibility Signal</span></div>
+        <div class="step-head"><span class="step-num">02</span><span class="step-title">Email — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step12.png" alt="Processing — Waiting Without Eligibility Signal"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step2.png" alt="Step 02 Email"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FDE68A;color:#92400E">patience</span><span class="conf-label">Confidence</span><span class="conf-value">0.48</span></div>
-        <p class="think-aloud">The product let Daniel continue before confirming whether transcript/captions were actually available.</p>
-        <div class="verdict-bar warning">Preflight should happen before generation starts or quota/time is consumed.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.78</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Right, I can see the Login button in the top right. Let me click that and get into my account so I can start generating notes from that Crash Course Chemistry video.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is entering the account email and checking whether this feels like a normal student login rather than an obstacle.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">3</span><span class="step-title">Failure — Transcript Blocker Appears Late</span></div>
+        <div class="step-head"><span class="step-num">03</span><span class="step-title">Password — Type</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step17.png" alt="Failure — Transcript Blocker Appears Late"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step3.png" alt="Step 03 Password"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FFE4E6;color:#9F1239">frustration</span><span class="conf-label">Confidence</span><span class="conf-value">0.25</span></div>
-        <p class="think-aloud">Only after processing did Daniel learn the video could not generate a usable script because no transcript was available.</p>
-        <div class="verdict-bar risk">This is a strong friction because the user had no earlier signal and no useful fallback.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.78</span><span class="conf-label">Action</span><span class="conf-value">Type</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Right, the sign-in modal is open and I can see both email and password fields. Let me type my email first.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is entering the password; her attention is still on getting to the real note-generation workflow quickly.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">4</span><span class="step-title">Recovery Attempt — No Manual Path</span></div>
+        <div class="step-head"><span class="step-num">04</span><span class="step-title">Submit — Type</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step19.png" alt="Recovery Attempt — No Manual Path"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step4.png" alt="Step 04 Submit"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FFE4E6;color:#9F1239">blocked</span><span class="conf-label">Confidence</span><span class="conf-value">0.22</span></div>
-        <p class="think-aloud">The interface did not clearly offer paste transcript, upload notes, choose another video, or preserve credit.</p>
-        <div class="verdict-bar risk">A blocked run should immediately provide recovery actions and explain whether quota was consumed.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.74</span><span class="conf-label">Action</span><span class="conf-value">Type</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Email&#39;s in, now I need to enter my password and hit Continue to get inside.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel submits login and expects either a clear signed-in state or a concise verification step she can finish once.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">5</span><span class="step-title">Final Assessment — Preventable Failure</span></div>
+        <div class="step-head"><span class="step-num">05</span><span class="step-title">Attempt — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step21.png" alt="Final Assessment — Preventable Failure"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step5.png" alt="Step 05 Attempt"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FFE4E6;color:#9F1239">disappointment</span><span class="conf-label">Confidence</span><span class="conf-value">0.31</span></div>
-        <p class="think-aloud">Daniel could still want the product, but this failure teaches him to distrust unsupported-source handling.</p>
-        <div class="verdict-bar warning">The fix is not better notes; it is earlier eligibility detection and clear recovery.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#B9E4FF33;color:#111827;border:1px solid #B9E4FF">Fear</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Email and password are filled in — I just need to hit Continue to get into the product.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel hits the email-code gate; she can tolerate it once, but the tool has not earned much patience yet.</div>
       </div>
-
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">06</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step6.png" alt="Step 06 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFF5D233;color:#111827;border:1px solid #FFF5D2">Joy</span><span class="conf-label">Confidence</span><span class="conf-value">0.82</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I&#39;m logged in — I can see my account icon and the Dashboard is locked behind a pro plan. But first, let me get to the Generate function and paste in that Crash Course Chemistry video.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel reaches the generate page and feels a real lift: this finally looks like the promised study-note workflow.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">07</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step7.png" alt="Step 07 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.80</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Right, I&#39;m on the Generate Notes page — this is exactly what I need. I can see a URL field and it says 1/3 generations used. Let me paste in that Crash Course Chemistry link and see what comes out.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel sees an entry point for the lecture material, so trust rises because the product value is now tangible.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">08</span><span class="step-title">Input — Type</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step8.png" alt="Step 08 Input"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.76</span><span class="conf-label">Action</span><span class="conf-value">Type</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Right, the URL field is there at the bottom — let me type in that Crash Course Chemistry link now.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel scans for mode and output clues because accuracy and structure matter more than the landing-page promise.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">09</span><span class="step-title">Attempt — Select Option</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step9.png" alt="Step 09 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.62</span><span class="conf-label">Action</span><span class="conf-value">Select Option</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL is in the field and the Generate Notes button is now active — I can see it&#39;s no longer greyed out. Let me scroll down and click it to start generating the notes for this Stoichiometry video.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel tries to focus the URL area and is surprised the page does not give a crisp accepted-input signal.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">10</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step10.png" alt="Step 10 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL is in the field, Detailed mode is selected — I can see the preview on the right showing sample notes. Now I just need to hit Generate Notes and see what comes out for the Stoichiometry video.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel switches to keyboard input, hoping the form will still accept the lecture material despite weak feedback.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">11</span><span class="step-title">Attempt — Wait</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step11.png" alt="Step 11 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.64</span><span class="conf-label">Action</span><span class="conf-value">Wait</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> It&#39;s processing! &#39;Scribbling Notes... We&#39;re watching the video and catching the big ideas.&#39; That&#39;s a good sign — it&#39;s actually working on the Stoichiometry video. I just need to wait for it to finish.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel makes another input attempt; she is still optimistic enough to believe the workflow can recover.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">12</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step12.png" alt="Step 12 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.44</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Transcript not available for this video — that&#39;s a real problem. The whole point was to generate notes from that Stoichiometry Crash Course video. If it can&#39;t pull the transcript, I can&#39;t get notes for my students.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel sees the same state again and frustration starts to bite: the tool is asking for effort instead of saving time.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">13</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step13.png" alt="Step 13 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.52</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I&#39;m on the footer — the page scrolled down after that error. The error said &#39;Transcript not available for this video&#39; which is a real blocker. Let me go back to the Notes Generator and try the URL again, maybe with a slightly different format.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel tries one more route because exam-crammers will push through if the payoff looks close.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">14</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step14.png" alt="Step 14 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.38</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I&#39;m stuck at the footer after that transcript error. Let me click &#39;Notes Generator&#39; to get back to the input form and try the URL again — maybe a slightly different format will work.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel presses the apparent next action and expects generation to start; no transition now feels like a broken core path.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">15</span><span class="step-title">Inspect — Scroll Up</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step15.png" alt="Step 15 Inspect"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.34</span><span class="conf-label">Action</span><span class="conf-value">Scroll Up</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The error says &#39;Transcript not available for this video&#39; — that&#39;s the actual blocker. I&#39;ve tried Notes Generator three times already and keep landing here. Let me scroll up to see if the input form is still visible so I can try the URL again directly.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel retries under pressure, but every repeated no-op makes the product feel less trustworthy.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">16</span><span class="step-title">Attempt — Navigate To</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step16.png" alt="Step 16 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.30</span><span class="conf-label">Action</span><span class="conf-value">Navigate To</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I&#39;ve been stuck on this error for too long — &#39;Transcript not available for this video.&#39; That&#39;s a hard blocker. The product can&#39;t process the Crash Course Chemistry video I need for my students. This isn&#39;t a UI issue I can click around.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is no longer exploring; she is checking whether the generator is actually stuck.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">17</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step17.png" alt="Step 17 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#C7D2FE33;color:#111827;border:1px solid #C7D2FE">Sadness</span><span class="conf-label">Confidence</span><span class="conf-value">0.36</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Right, the URL is still there from before. The error about transcript unavailability has cleared. I see the form is back with my URL already filled in. Let me check — it says 1/3 generations used, so I still have 2 left. The previous attempts failed with &#39;Transcript not available.&#39; Let me try once more — maybe it was a temporary glitch.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel scrolls for any biology-specific notes, but the absence of real output turns frustration into disappointment.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">18</span><span class="step-title">Attempt — Wait</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step18.png" alt="Step 18 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#C7D2FE33;color:#111827;border:1px solid #C7D2FE">Sadness</span><span class="conf-label">Confidence</span><span class="conf-value">0.32</span><span class="conf-label">Action</span><span class="conf-value">Wait</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> It&#39;s processing! I can see &#39;Scribbling Notes... We&#39;re watching the video and catching the big ideas. Processing Transcript&#39; — that&#39;s actually promising. It&#39;s working this time.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel compares the screen against her exam need and still cannot find generated notes she could study from.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">19</span><span class="step-title">Attempt — Navigate To</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step19.png" alt="Step 19 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D5F5D533;color:#111827;border:1px solid #D5F5D5">Disgust</span><span class="conf-label">Confidence</span><span class="conf-value">0.40</span><span class="conf-label">Action</span><span class="conf-value">Navigate To</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Again — &#39;Transcript not available for this video.&#39; This is the second time it&#39;s failed on the same Crash Course Chemistry URL. I&#39;ve now used up more of my free quota. This is a real problem.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel rejects this run: the concept is appealing, but the workflow never proves it can turn her biology lecture into usable notes.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">20</span><span class="step-title">Decision — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step20.png" alt="Step 20 Decision"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.72</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Two failed attempts on the same Crash Course Chemistry video — &#39;Transcript not available&#39; both times. I&#39;ve burned through 1 of my 3 free generations already. The URL is definitely correct. This is a mainstream educational video with millions of views. If the product can&#39;t handle Crash Course Chemistry, it can&#39;t handle my actual use case.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is losing confidence: after trying to click, the workflow still does not prove it can complete &#39;Log in, take this educational YouTube chemistry explainer you&#39;d assign to your class (htt...&#39;.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">21</span><span class="step-title">Decision — Task Complete</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/4c575544_step21.png" alt="Step 21 Decision"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.72</span><span class="conf-label">Action</span><span class="conf-value">Task Complete</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The generate form has completely disappeared — I&#39;m just seeing the footer now. Two failed attempts on the Crash Course Chemistry video, one credit burned with no refund, and now the form isn&#39;t even visible. I&#39;ve spent way too long on this. I need to make a decision about whether this product is actually usable for my classroom needs.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Daniel is losing confidence: after trying to task_complete, the workflow still does not prove it can complete &#39;Log in, take this educational YouTube chemistry explainer you&#39;d assign to your class (htt...&#39;.</div>
+      </div>
     </div>
   </div>
   <div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>

@@ -19,7 +19,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
 .step-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;}
 .step-head{display:flex;align-items:baseline;gap:10px;}.step-num{font-size:18px;font-weight:700;color:#000;}.step-title{font-size:20px;font-weight:600;color:#1E1E1E;}
-.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:cover;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
+.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:contain;background:#F8FAFC;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
 .divider{height:0.5px;background:rgba(0,0,0,0.1);width:100%;}.step-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .emotion-pill{display:inline-block;padding:4px 10px;border-radius:9999px;font-size:12px;font-weight:500;}.conf-label{font-size:13px;color:#757575;}.conf-value{font-size:13px;font-weight:600;color:#1E1E1E;}
 .think-aloud{font-size:14px;color:#1E1E1E;line-height:1.6;font-style:normal;}.verdict-bar{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5;}.verdict-bar.warning{background:#FEF3C7;color:#92400E;}.verdict-bar.positive{background:#DCFCE7;color:#166534;}.verdict-bar.risk{background:#FFE4E6;color:#9F1239;}.verdict-bar.neutral{background:#EEF2FF;color:#3730A3;}
@@ -46,42 +46,185 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
     <div class="steps-grid">
 
       <div class="step-card">
-        <div class="step-head"><span class="step-num">1</span><span class="step-title">Google Mode — Account Handoff</span></div>
+        <div class="step-head"><span class="step-num">01</span><span class="step-title">Login — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step12.png" alt="Google Mode — Account Handoff"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step1.png" alt="Step 01 Login"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FFD5C6;color:#9A3412">focus</span><span class="conf-label">Confidence</span><span class="conf-value">0.55</span></div>
-        <p class="think-aloud">Jordan used Google mode, so the account card should not continue asking for email/password or login-vs-signup details that no longer apply.</p>
-        <div class="verdict-bar warning">Mode-specific account UI must collapse irrelevant fields; otherwise users see harness/product ambiguity before the test even starts.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.72</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> A promo popup right on landing — $2.49/mo is actually reasonable for what I need, but I want to test the product before committing. Let me close this and see what Scribely actually does.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan is willing to log in, but she wants the path to feel lightweight before she invests effort in a study tool.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">2</span><span class="step-title">Generation — Modal Cleared</span></div>
+        <div class="step-head"><span class="step-num">02</span><span class="step-title">Email — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step15.png" alt="Generation — Modal Cleared"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step2.png" alt="Step 02 Email"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#33E19B;color:#166534">progress</span><span class="conf-label">Confidence</span><span class="conf-value">0.68</span></div>
-        <p class="think-aloud">Once the modal was gone, Jordan could continue through the product flow and see generation begin.</p>
-        <div class="verdict-bar positive">The run showed the product can recover from an interruption when the task state remains intact.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.78</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Good — the modal is gone. I can see &#39;Generate&#39; in the nav and &#39;AI Flashcards&#39; and &#39;Revision Sheet&#39; buttons right in the hero area. That&#39;s exactly what I need. Let me hit &#39;Generate&#39; to start the actual workflow.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan is entering the account email and checking whether this feels like a normal student login rather than an obstacle.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">3</span><span class="step-title">Output — Revision Notes</span></div>
+        <div class="step-head"><span class="step-num">03</span><span class="step-title">Password — Click</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step17.png" alt="Output — Revision Notes"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step3.png" alt="Step 03 Password"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#33E19B;color:#166534">satisfaction</span><span class="conf-label">Confidence</span><span class="conf-value">0.78</span></div>
-        <p class="think-aloud">The notes covered the memory model with enough fidelity for Jordan to consider them useful study material.</p>
-        <div class="verdict-bar positive">Quality signal: accurate content is the strongest driver of confidence for this persona.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.78</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The Generate page is exactly what I need — URL field, style options, and I can see it&#39;s on a free plan with 3 generations. Let me paste the memory model video URL and see what happens.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan is entering the password; her attention is still on getting to the real note-generation workflow quickly.</div>
       </div>
       <div class="step-card">
-        <div class="step-head"><span class="step-num">4</span><span class="step-title">Study Pack — Flashcard Need</span></div>
+        <div class="step-head"><span class="step-num">04</span><span class="step-title">Submit — Type</span></div>
         <div class="divider"></div>
-        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step18.png" alt="Study Pack — Flashcard Need"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step4.png" alt="Step 04 Submit"></div>
         <div class="divider"></div>
-        <div class="step-meta"><span class="emotion-pill" style="background:#FDE68A;color:#92400E">evaluation</span><span class="conf-label">Confidence</span><span class="conf-value">0.72</span></div>
-        <p class="think-aloud">Jordan wanted revision notes and flashcards to feel like one output package, not two separate tools or destinations.</p>
-        <div class="verdict-bar warning">The product should turn generation completion into a visible study-pack workspace with notes, flashcards, export, and save actions together.</div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.74</span><span class="conf-label">Action</span><span class="conf-value">Type</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL field is ready — let me type the memory model video link directly.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan submits login and expects either a clear signed-in state or a concise verification step she can finish once.</div>
       </div>
-
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">05</span><span class="step-title">Attempt — Select Option</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step5.png" alt="Step 05 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#B9E4FF33;color:#111827;border:1px solid #B9E4FF">Fear</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Select Option</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL is in — I can see the config panel with style and paper options. I need to scroll down to find the Generate Notes button and actually run this. Let me also check if there&#39;s a way to select &#39;Detailed&#39; mode for better output quality.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan hits the email-code gate; she can tolerate it once, but the tool has not earned much patience yet.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">06</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step6.png" alt="Step 06 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFF5D233;color:#111827;border:1px solid #FFF5D2">Joy</span><span class="conf-label">Confidence</span><span class="conf-value">0.82</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Good — Detailed mode is selected. The URL is in. Now I just need to hit Generate Notes and see what comes out. It&#39;s offscreen but I can click it directly.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan reaches the generate page and feels a real lift: this finally looks like the promised study-note workflow.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">07</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step7.png" alt="Step 07 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#99D1B733;color:#111827;border:1px solid #99D1B7">Trust</span><span class="conf-label">Confidence</span><span class="conf-value">0.80</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Revision Sheet is selected, URL is in, mode is Detailed. Time to actually generate — hitting the Generate Notes button now.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan sees an entry point for the lecture material, so trust rises because the product value is now tangible.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">08</span><span class="step-title">Auth Return — Auth Handoff</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step8.png" alt="Step 08 Auth Return"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.60</span><span class="conf-label">Action</span><span class="conf-value">Auth Handoff</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The sign-in modal is back before Jordan can continue the generation workflow. She needs authentication to preserve the submitted URL and continue without losing context.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">The sign-in modal returns after the generation attempt, exposing a continuity risk: authentication can interrupt the task and make the user re-establish context.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">09</span><span class="step-title">Input — Type</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step9.png" alt="Step 09 Input"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.62</span><span class="conf-label">Action</span><span class="conf-value">Type</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I&#39;m logged in now — I can see &#39;April Chen&#39; in the header and 1/3 generations used. The URL field is empty though, so I need to re-enter the YouTube link before generating.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan tries to focus the URL area and is surprised the page does not give a crisp accepted-input signal.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">10</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step10.png" alt="Step 10 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#D9CBFF33;color:#111827;border:1px solid #D9CBFF">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.58</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL is already in the field and I&#39;m logged in. I need to actually generate the revision sheet — I see a &#39;Generate Notes&#39; button listed as offscreen. Let me click it directly.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan switches to keyboard input, hoping the form will still accept the lecture material despite weak feedback.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">11</span><span class="step-title">Attempt — Wait</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step11.png" alt="Step 11 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.64</span><span class="conf-label">Action</span><span class="conf-value">Wait</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> It&#39;s processing — &#39;Scribbling Notes... Processing Transcript.&#39; The generation is actually running. I just need to wait for it to finish.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan makes another input attempt; she is still optimistic enough to believe the workflow can recover.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">12</span><span class="step-title">Attempt — Navigate To</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step12.png" alt="Step 12 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.44</span><span class="conf-label">Action</span><span class="conf-value">Navigate To</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The revision sheet generated — &#39;Memory Models in Skill Acquisition&#39; with all the key components: STSS, STM, LTM, chunking, selective attention. This is exactly the multi-store model content I need. And I can see there&#39;s a direct link to &#39;AI Flashcards&#39; with the same URL pre-loaded. That&#39;s the next thing I need to test.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan sees the same state again and frustration starts to bite: the tool is asking for effort instead of saving time.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">13</span><span class="step-title">Inspect — Scroll Up</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step13.png" alt="Step 13 Inspect"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FF967133;color:#111827;border:1px solid #FF9671">Anticipation</span><span class="conf-label">Confidence</span><span class="conf-value">0.52</span><span class="conf-label">Action</span><span class="conf-value">Scroll Up</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The page scrolled to the footer — the notes output must be above. I see &#39;SAVE NOTES&#39; is offscreen above, which means the content was generated. Let me scroll up to actually review what was produced.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan tries one more route because exam-crammers will push through if the payoff looks close.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">14</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step14.png" alt="Step 14 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.38</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> I can see the notes were generated — there&#39;s a &#39;SAVE NOTES&#39; button offscreen above and I&#39;ve already scrolled through content about sensory memory, STM, LTM, rehearsal. The revision sheet content looks solid. Now I need to find the flashcard generation option to complete my evaluation.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan presses the apparent next action and expects generation to start; no transition now feels like a broken core path.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">15</span><span class="step-title">Attempt — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step15.png" alt="Step 15 Attempt"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.34</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The revision sheet is solid — Multi-Store Memory Model, Sensory Memory, STM, LTM, Rehearsal, all correctly structured. Now I need to check the AI Flashcards output before deciding. There&#39;s a direct link with the URL pre-loaded.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan retries under pressure, but every repeated no-op makes the product feel less trustworthy.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">16</span><span class="step-title">Decision — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step16.png" alt="Step 16 Decision"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#FFC5D333;color:#111827;border:1px solid #FFC5D3">Anger</span><span class="conf-label">Confidence</span><span class="conf-value">0.30</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The URL is already pre-filled from the revision sheet flow. 10 cards, medium difficulty, Q/A — that&#39;s a solid default for tutee materials. I&#39;ll just hit Create Flashcards and see what comes out.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan is no longer exploring; she is checking whether the generator is actually stuck.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">17</span><span class="step-title">Decision — Click</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step17.png" alt="Step 17 Decision"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#C7D2FE33;color:#111827;border:1px solid #C7D2FE">Sadness</span><span class="conf-label">Confidence</span><span class="conf-value">0.36</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> Flashcards generated — &#39;Memory Models in Skill Acquisition&#39;, 10 cards, Q/A format. First card asks about the two main memory models and gives Atkinson &amp; Shiffrin plus Craik &amp; Lockhart. That&#39;s accurate and directly relevant. Let me flip through a couple more to check quality before deciding.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan scrolls for any biology-specific notes, but the absence of real output turns frustration into disappointment.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-head"><span class="step-num">18</span><span class="step-title">Decision — Task Complete</span></div>
+        <div class="divider"></div>
+        <div class="step-imgs-grid"><img class="step-img single" src="scribely/3e9a860c_step18.png" alt="Step 18 Decision"></div>
+        <div class="divider"></div>
+        <div class="step-meta"><span class="emotion-pill" style="background:#C7D2FE33;color:#111827;border:1px solid #C7D2FE">Sadness</span><span class="conf-label">Confidence</span><span class="conf-value">0.32</span><span class="conf-label">Action</span><span class="conf-value">Task Complete</span></div>
+        <p class="think-aloud"><strong>Think aloud:</strong> The answer side shows Atkinson &amp; Shiffrin plus Craik &amp; Lockhart — that&#39;s exactly right for the multi-store model topic. I&#39;ve now seen both a revision sheet and flashcard output. This is enough to make my adoption call.</p>
+        <p class="think-aloud"><strong>URL/context:</strong> https://www.scribely.site/</p>
+        <div class="verdict-bar neutral">Jordan compares the screen against her exam need and still cannot find generated notes she could study from.</div>
+      </div>
     </div>
   </div>
   <div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
