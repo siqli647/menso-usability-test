@@ -7,100 +7,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6}
-.page{max-width:1120px;margin:0 auto;padding:36px 24px 56px}
-.brand{display:flex;align-items:center;margin-bottom:30px}
+.page{max-width:980px;margin:0 auto;padding:40px 24px 64px}
+.brand{display:flex;align-items:center;margin-bottom:34px}
 .brand-logo{width:44px;height:44px;object-fit:contain;display:block}
-.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:24px}
+.hero{background:#fff;border:1px solid #f0f0f0;border-radius:28px;padding:44px;position:relative;overflow:hidden;margin-bottom:22px}
 .hero::after{content:'';position:absolute;right:-120px;top:-120px;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,rgba(33,69,243,.16),rgba(33,69,243,0));pointer-events:none}
 .eyebrow{display:inline-flex;padding:6px 12px;border:1px solid rgba(33,69,243,.18);border-radius:999px;color:#2145f3;background:#eef2ff;font-size:12px;font-weight:700;margin-bottom:16px}
 h1{font-family:'Raleway',sans-serif;font-size:46px;line-height:1.08;margin-bottom:12px;letter-spacing:-.03em}
 .subtitle{max-width:760px;color:#666;font-size:16px}
-.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.nav a{display:inline-flex;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.16);padding:9px 14px;border-radius:12px;font-size:13px;font-weight:700}
-.section{margin-top:24px}
-.section h2{font-size:20px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{display:flex;flex-direction:column;gap:16px;background:#fff;border:1px solid #f0f0f0;border-radius:22px;padding:22px;text-decoration:none;color:inherit;transition:transform .18s,box-shadow .18s,border-color .18s}
-.card:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.08);border-color:#2145f3}
-.persona-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-.persona-name{font-size:22px;font-weight:800;letter-spacing:-.02em}
-.persona-role{color:#666;font-size:13px;margin-top:4px}
-.badge{font-size:12px;font-weight:800;color:#fff;background:#2145f3;border-radius:8px;padding:4px 9px;white-space:nowrap}
-.meta{display:flex;flex-wrap:wrap;gap:8px}
-.pill{font-size:12px;color:#666;background:#f6f6f6;border-radius:999px;padding:5px 10px}
-.desc{font-size:14px;color:#4f4f4f}
-.cta{margin-top:auto;font-size:13px;font-weight:800;color:#2145f3}
-.card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
-.card-actions .cta{margin-top:0}
-.card-actions .secondary{color:#666}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.insight{background:#fff;border:1px solid #f0f0f0;border-radius:18px;padding:18px}
-.insight strong{display:block;font-size:14px;margin-bottom:6px}
-.insight p{font-size:13px;color:#5f5f5f}
-.footer{text-align:center;color:#999;font-size:12px;margin-top:32px}
-@media(max-width:900px){.grid,.insights{grid-template-columns:1fr}.hero{padding:30px}h1{font-size:34px}}
+.persona-links{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.persona-link{display:flex;align-items:center;justify-content:center;min-height:92px;text-decoration:none;color:#2145f3;background:#eef2ff;border:1px solid rgba(33,69,243,.22);border-radius:18px;font-size:22px;font-weight:800;letter-spacing:-.02em;transition:transform .18s,box-shadow .18s,border-color .18s,background .18s}
+.persona-link:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(33,69,243,.12);border-color:#2145f3;background:#f4f6ff}
+.footer{text-align:center;color:#999;font-size:12px;margin-top:30px}
+@media(max-width:760px){.hero{padding:30px}h1{font-size:34px}.persona-links{grid-template-columns:1fr}.persona-link{min-height:72px}}
 </style>
 </head>
 <body>
 <main class="page">
   <div class="brand"><img class="brand-logo" src="menso-brand-logo.png" alt="Menso"></div>
-
   <section class="hero">
     <div class="eyebrow">Scribely synthetic usability study</div>
     <h1>Three user lenses for Scribely's study workflow.</h1>
-    <p class="subtitle">Menso reviewed Test 1A, Test 1B, and the strongest historical no-transcript failure run. Each persona now has its own PainBase-format report with Cover, Step Details, and Journey &amp; Conclusion pages.</p>
-    <div class="nav">
-      <a href="reports/b1542c5e.html">Alex Cover</a>
-      <a href="replays/b1542c5e_persona_replay.html">Alex Replay</a>
-      <a href="reports/3e9a860c.html">Jordan Cover</a>
-      <a href="replays/3e9a860c_persona_replay.html">Jordan Replay</a>
-      <a href="reports/4c575544.html">Daniel Cover</a>
-      <a href="replays/4c575544_persona_replay.html">Daniel Replay</a>
+    <p class="subtitle">Open a persona report. Each report includes Cover, Step Details, Journey &amp; Conclusion, and replay links inside the report navigation.</p>
+    <div class="persona-links" aria-label="Persona reports">
+      <a class="persona-link" href="reports/b1542c5e.html">Alex Rivera</a>
+      <a class="persona-link" href="reports/3e9a860c.html">Jordan Kim</a>
+      <a class="persona-link" href="reports/4c575544.html">Daniel Okafor</a>
     </div>
   </section>
-
-  <section class="section">
-    <h2>Persona Reports</h2>
-    <div class="grid">
-      <a class="card" href="reports/b1542c5e.html">
-        <div class="persona-top">
-          <div><div class="persona-name">Alex Rivera</div><div class="persona-role">Test 1A · undergraduate biology student</div></div>
-          <span class="badge">ISFJ</span>
-        </div>
-        <div class="meta"><span class="pill">Successful notes</span><span class="pill">Trust recovery</span><span class="pill">Save paywall</span></div>
-        <p class="desc">Alex eventually received useful biology notes, but the first-run sample mismatch and locked Save Notes action created trust debt before the product proved value.</p>
-        <div class="card-actions"><div class="cta">Open Alex report -></div><div class="cta secondary">Replay included</div></div>
-      </a>
-      <a class="card" href="reports/3e9a860c.html">
-        <div class="persona-top">
-          <div><div class="persona-name">Jordan Kim</div><div class="persona-role">Test 1B · graduate tutor and study creator</div></div>
-          <span class="badge">ENTJ</span>
-        </div>
-        <div class="meta"><span class="pill">Revision sheet</span><span class="pill">Flashcards</span><span class="pill">Workflow split</span></div>
-        <p class="desc">Jordan generated accurate study material for the multi-store memory model, but the experience still felt split between handoff, generation, and output management.</p>
-        <div class="card-actions"><div class="cta">Open Jordan report -></div><div class="cta secondary">Replay included</div></div>
-      </a>
-      <a class="card" href="reports/4c575544.html">
-        <div class="persona-top">
-          <div><div class="persona-name">Daniel Okafor</div><div class="persona-role">Historical best no-transcript run · chemistry teacher</div></div>
-          <span class="badge">ENFJ</span>
-        </div>
-        <div class="meta"><span class="pill">Transcript blocker</span><span class="pill">No preflight</span><span class="pill">Credit risk</span></div>
-        <p class="desc">Daniel uncovered the highest-confidence friction: unsupported YouTube captions are detected too late, with no graceful recovery path.</p>
-        <div class="card-actions"><div class="cta">Open Daniel report -></div><div class="cta secondary">Replay included</div></div>
-      </a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>Cross-Persona Takeaways</h2>
-    <div class="insights">
-      <div class="insight"><strong>Preflight source eligibility before spend.</strong><p>No-caption videos should be detected before generation starts. Show transcript availability, explain unsupported cases, and offer manual transcript paste or alternate-source recovery before consuming quota.</p></div>
-      <div class="insight"><strong>Make output the next screen.</strong><p>Successful runs still need a stronger completion state. After generation, anchor the user to the result and keep notes, flashcards, save, and export in one study-pack workspace.</p></div>
-      <div class="insight"><strong>Reduce trust debt before upgrade pressure.</strong><p>Wrong samples, irrelevant account fields, and early paywalls reduce confidence before value is durable. The product should prove source match and output quality before pushing plan gates.</p></div>
-    </div>
-  </section>
-
   <div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
 </main>
 </body>
