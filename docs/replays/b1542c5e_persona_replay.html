@@ -32,7 +32,7 @@ html {
   --live-dot: #fb7185;
 }
 body[data-theme="light"] {
-  --app-bg: radial-gradient(1200px 600px at 20% -10%, #e9ecff 0%, #f5f6fb 55%, #eef0f7 100%);
+  --app-bg: #fbfdff;
   --grid-color: rgba(15,23,42,0.45);
   --brand-text: rgba(15,23,42,0.92);
   --brand-sub: rgba(15,23,42,0.45);
@@ -73,6 +73,17 @@ body {
   opacity: .06;
   pointer-events: none;
 }
+.persona-replay-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(15,23,42,.22) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0;
+  pointer-events: none;
+}
+body[data-theme="light"] .persona-replay-shell::before { opacity: .12; }
+body[data-theme="light"] .persona-replay-shell::after { opacity: .12; }
 .replay-wrap {
   position: relative;
   z-index: 1;
@@ -81,6 +92,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   min-height: 0;
 }
 .brand-strip {
@@ -88,10 +100,27 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
+  width: min(1480px, calc(100vw - 48px), calc((100vh - 116px) * 1.6));
   margin-bottom: 16px;
   color: var(--brand-text);
 }
 .brand-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-back {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  color: var(--text-strong);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
 .brand-mark {
   display: grid;
   place-items: center;
@@ -157,8 +186,9 @@ body {
 body[data-theme="light"] .theme-button.is-active { background: rgba(15,23,42,0.08); }
 .broadcast-stage {
   position: relative;
-  width: 100%;
-  flex: 1;
+  width: min(1480px, calc(100vw - 48px), calc((100vh - 116px) * 1.6));
+  aspect-ratio: 16 / 10;
+  flex: 0 0 auto;
   min-height: 0;
   overflow: hidden;
   border-radius: 18px;
@@ -247,9 +277,10 @@ body[data-theme="light"] .lens-focus::before {
   white-space: nowrap;
 }
 body[data-theme="light"] .emotion-chip {
-  border-color: color-mix(in srgb, var(--hud-color) 58%, #0f172a 42%);
-  background: color-mix(in srgb, var(--hud-color) 26%, #ffffff 74%);
-  color: color-mix(in srgb, var(--hud-color) 30%, #0f172a 70%);
+  border-color: color-mix(in srgb, var(--hud-color) 42%, #0f172a 58%);
+  background: color-mix(in srgb, var(--hud-color) 38%, #ffffff 62%);
+  color: #0f172a;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08), 0 8px 24px rgba(15,23,42,.08);
 }
 .emotion-chip::before {
   content: "";
@@ -287,12 +318,18 @@ body[data-theme="light"] .think-lyric-panel { background: rgba(255,255,255,.28);
   margin: 0;
   background: transparent;
   color: inherit;
-  cursor: pointer;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
 }
+.panel-toggle:active,
+.is-dragging .panel-toggle { cursor: grabbing; }
 .panel-toggle, .panel-toggle * { white-space: nowrap; }
 .confidence-card .panel-toggle { padding: 10px 12px 6px; }
 .think-lyric-panel .panel-toggle { padding: 12px 16px 8px; }
 .panel-toggle .hud-kicker { pointer-events: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#confidenceToggleGlyph,
+#thinkToggleGlyph { font-size: 16px; font-weight: 900; letter-spacing: 0; line-height: 1; min-width: 16px; text-align: center; }
 .panel-meta { display: inline-flex; align-items: center; gap: 8px; }
 .confidence-body { padding: 0 16px 16px; }
 .confidence-body-main { display: grid; place-items: center; }
@@ -332,10 +369,11 @@ body[data-theme="light"] .think-lyric-panel { background: rgba(255,255,255,.28);
   white-space: nowrap;
 }
 body[data-theme="light"] .confidence-emotion-pill {
-  border-color: color-mix(in srgb, var(--hud-color) 58%, #0f172a 42%);
-  background: color-mix(in srgb, var(--hud-color) 26%, #ffffff 74%);
-  color: color-mix(in srgb, var(--hud-color) 30%, #0f172a 70%);
-  font-weight: 800;
+  border-color: color-mix(in srgb, var(--hud-color) 42%, #0f172a 58%);
+  background: color-mix(in srgb, var(--hud-color) 40%, #ffffff 60%);
+  color: #0f172a;
+  font-weight: 850;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08), 0 6px 18px rgba(15,23,42,.10);
 }
 .lyric-list { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 12px; }
 .lyric-row { width: 100%; border: 0; padding: 0; background: transparent; text-align: left; opacity: .58; transition: opacity .18s ease; cursor: pointer; }
@@ -531,7 +569,8 @@ body[data-theme="dark"] .recorded-cursor-scrub {
 @media (max-width: 900px) {
   .persona-replay-shell { padding: 12px; }
   .replay-wrap { width: calc(100vw - 24px); height: calc(100vh - 24px); }
-  .brand-strip { align-items: flex-start; flex-direction: column; }
+  .brand-strip { align-items: flex-start; flex-direction: column; width: calc(100vw - 24px); }
+  .broadcast-stage { width: calc(100vw - 24px); }
   .topbar-inner { flex-wrap: wrap; align-items: flex-start; }
   .task-title { order: 4; width: 100%; text-align: left; }
   .confidence-card { left: 12px; top: 112px; width: 190px; }
@@ -550,6 +589,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
   <div class="replay-wrap">
     <header class="brand-strip">
       <div class="brand-left">
+        <a class="brand-back" href="../reports/b1542c5e_journey.html" aria-label="Back to report">←</a>
         <div class="brand-mark"><img class="brand-mark-logo" src="../reports/menso-logo.png" alt="Menso"></div>
         <div>
           <div class="brand-title">Persona Replay</div>
@@ -561,7 +601,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
           <button id="darkThemeButton" class="theme-button is-active" type="button">Dark</button>
           <button id="lightThemeButton" class="theme-button" type="button">Light</button>
         </div>
-        <span class="live-dot"></span> Live Observer
+
       </div>
     </header>
 
@@ -583,7 +623,6 @@ body[data-theme="dark"] .recorded-cursor-scrub {
           <div id="taskTitle" class="task-title">Task / Generate handwritten notes from a biology lecture</div>
           <div class="emotion-chip" id="emotionChip">Emotion</div>
           <div class="step-counter" id="stepCounter">STEP 01 / 01</div>
-          <a class="hud-link" href="../reports/b1542c5e_journey.html" target="_blank" rel="noreferrer">Open report</a>
         </div>
       </div>
 
@@ -636,7 +675,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
           <div class="transport-buttons">
             <button id="prevButton" class="transport-btn" type="button" aria-label="Previous step">&#9664;</button>
             <button id="playButton" class="play-btn" type="button" aria-label="Play replay">&#9654;</button>
-            <button id="nextButton" class="transport-btn" type="button" aria-label="Next step">&#9654;</button>
+            <button id="nextButton" class="transport-btn" type="button" aria-label="Next step">&#8250;</button>
           </div>
           <div class="timeline">
             <svg id="timelineSvg" class="timeline-svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
@@ -741,7 +780,8 @@ function emotionFace(cue) {
   const label = cueEmotionKey(cue);
   if (label.includes("joy") || label.includes("delight") || label.includes("ecstasy") || label.includes("serenity")) return "😊";
   if (label.includes("trust") || label.includes("admiration") || label.includes("acceptance") || label.includes("love")) return "🙂";
-  if (label.includes("interest") || label.includes("anticipation") || label.includes("optimism") || label.includes("vigilance")) return "✨";
+  if (label.includes("anticipation") || label.includes("vigilance")) return "👀";
+  if (label.includes("interest") || label.includes("optimism")) return "🙂";
   if (label.includes("annoy") || label.includes("anger") || label.includes("rage") || label.includes("aggress")) return "😒";
   if (label.includes("disgust") || label.includes("loathing") || label.includes("contempt")) return "😖";
   if (label.includes("sad") || label.includes("grief") || label.includes("remorse") || label.includes("pensiveness")) return "😔";
@@ -771,8 +811,62 @@ function setConfidencePanelCollapsed(collapsed) {
   confidenceToggle.setAttribute("aria-expanded", String(!leftCollapsed));
   confidenceToggleGlyph.textContent = leftCollapsed ? "+" : "-";
 }
+function consumePanelDragClick(panel) {
+  if (panel.dataset.skipClick === "true") {
+    delete panel.dataset.skipClick;
+    return true;
+  }
+  return false;
+}
+function makePanelDraggable(panel, handle) {
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
+  let moved = false;
+  handle.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    const panelRect = panel.getBoundingClientRect();
+    const frameRect = frame.getBoundingClientRect();
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    startLeft = panelRect.left - frameRect.left;
+    startTop = panelRect.top - frameRect.top;
+    moved = false;
+    panel.classList.add("is-dragging");
+    handle.setPointerCapture(pointerId);
+  });
+  handle.addEventListener("pointermove", (event) => {
+    if (pointerId !== event.pointerId) return;
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+    if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+    if (!moved) return;
+    event.preventDefault();
+    const frameRect = frame.getBoundingClientRect();
+    const maxLeft = Math.max(12, frameRect.width - panel.offsetWidth - 12);
+    const maxTop = Math.max(12, frameRect.height - panel.offsetHeight - 12);
+    panel.style.left = `${clamp(startLeft + dx, 12, maxLeft)}px`;
+    panel.style.top = `${clamp(startTop + dy, 12, maxTop)}px`;
+    panel.style.right = "auto";
+  });
+  function stopDrag(event) {
+    if (pointerId !== event.pointerId) return;
+    if (moved) {
+      panel.dataset.skipClick = "true";
+      window.setTimeout(() => delete panel.dataset.skipClick, 120);
+    }
+    panel.classList.remove("is-dragging");
+    try { handle.releasePointerCapture(pointerId); } catch (_) {}
+    pointerId = null;
+  }
+  handle.addEventListener("pointerup", stopDrag);
+  handle.addEventListener("pointercancel", stopDrag);
+}
 function setSyncColor(cue) {
-  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
+  const color = cueEmotionColor(cue);
   document.documentElement.style.setProperty("--hud-color", color);
   document.documentElement.style.setProperty("--hud-ink", contrastInk(color));
 }
@@ -1151,7 +1245,7 @@ function renderCue(index, pulse = false) {
   confidenceRingFg.setAttribute("stroke", color);
   confidenceEmotionIcon.textContent = emotionFace(cue);
   confidenceEmotionIcon.setAttribute("aria-label", emotionLabel);
-  confidenceEmotionPill.textContent = `${emotionGlyph(cue)} ${emotionLabel}`;
+  confidenceEmotionPill.textContent = emotionLabel;
   confidenceNumber.textContent = confidence.toFixed(2);
   currentTimeLabel.textContent = formatClock(cue.sourceTime || browserVideo.currentTime || 0);
   durationLabel.textContent = formatClock(replayEndTime || browserVideo.duration || 0);
@@ -1205,8 +1299,22 @@ prevButton.addEventListener("click", () => jumpToCue(activeIndex - 1));
 nextButton.addEventListener("click", () => jumpToCue(activeIndex + 1));
 darkThemeButton.addEventListener("click", () => toggleTheme("dark"));
 lightThemeButton.addEventListener("click", () => toggleTheme("light"));
-confidenceToggle.addEventListener("click", () => setConfidencePanelCollapsed(!leftCollapsed));
-thinkToggle.addEventListener("click", () => setThinkPanelCollapsed(!rightCollapsed));
+confidenceToggle.addEventListener("click", (event) => {
+  if (consumePanelDragClick(confidencePanel)) {
+    event.preventDefault();
+    return;
+  }
+  setConfidencePanelCollapsed(!leftCollapsed);
+});
+thinkToggle.addEventListener("click", (event) => {
+  if (consumePanelDragClick(thinkPanel)) {
+    event.preventDefault();
+    return;
+  }
+  setThinkPanelCollapsed(!rightCollapsed);
+});
+makePanelDraggable(confidencePanel, confidenceToggle);
+makePanelDraggable(thinkPanel, thinkToggle);
 browserVideo.addEventListener("ended", () => {
   playing = false;
   frame.classList.remove("is-playing");
