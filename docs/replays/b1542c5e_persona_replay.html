@@ -605,7 +605,7 @@ body[data-theme="dark"] .recorded-cursor-scrub {
 }
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 <main class="persona-replay-shell">
   <div class="replay-wrap">
     <header class="brand-strip">
@@ -619,8 +619,8 @@ body[data-theme="dark"] .recorded-cursor-scrub {
       </div>
       <div class="live-observer">
         <div class="theme-toggle" id="themeToggle" aria-label="Theme">
-          <button id="darkThemeButton" class="theme-button is-active" type="button">Dark</button>
-          <button id="lightThemeButton" class="theme-button" type="button">Light</button>
+          <button id="darkThemeButton" class="theme-button" type="button">Dark</button>
+          <button id="lightThemeButton" class="theme-button is-active" type="button">Light</button>
         </div>
 
       </div>
@@ -1357,7 +1357,7 @@ window.addEventListener("keydown", (event) => {
     togglePlayback();
   }
 });
-setTheme("dark");
+setTheme("light");
 setConfidencePanelCollapsed(false);
 setThinkPanelCollapsed(false);
 renderTimeline();
