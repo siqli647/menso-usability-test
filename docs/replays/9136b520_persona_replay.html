@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Persona Replay - Ari Morgan</title>
+<style>
+* { box-sizing: border-box; }
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+:root {
+  --hud-color: #ff9e6d;
+  --hud-ink: #ffffff;
+  --app-bg: radial-gradient(1200px 600px at 20% -10%, #1b1f3a 0%, #07090f 55%, #04060b 100%);
+  --grid-color: rgba(255,255,255,0.6);
+  --brand-text: rgba(255,255,255,0.92);
+  --brand-sub: rgba(255,255,255,0.40);
+  --panel-bg: rgba(10,15,28,0.72);
+  --panel-border: rgba(255,255,255,0.10);
+  --divider: rgba(255,255,255,0.10);
+  --text-strong: #ffffff;
+  --text-body: rgba(255,255,255,0.92);
+  --text-sub: rgba(255,255,255,0.78);
+  --text-faint: rgba(255,255,255,0.62);
+  --track-dim: rgba(255,255,255,0.22);
+  --track-mid: rgba(255,255,255,0.65);
+  --stage-shadow: 0 30px 120px -20px rgba(0,0,0,0.9);
+  --stage-ring: rgba(255,255,255,0.10);
+  --live-dot: #fb7185;
+}
+body[data-theme="light"] {
+  --app-bg: #fbfdff;
+  --grid-color: rgba(15,23,42,0.45);
+  --brand-text: rgba(15,23,42,0.92);
+  --brand-sub: rgba(15,23,42,0.45);
+  --panel-bg: rgba(255,255,255,0.78);
+  --panel-border: rgba(15,23,42,0.10);
+  --divider: rgba(15,23,42,0.10);
+  --text-strong: #0f172a;
+  --text-body: rgba(15,23,42,0.85);
+  --text-sub: rgba(15,23,42,0.60);
+  --text-faint: rgba(15,23,42,0.40);
+  --track-dim: rgba(15,23,42,0.18);
+  --track-mid: rgba(15,23,42,0.55);
+  --stage-shadow: 0 30px 80px -24px rgba(15,23,42,0.25);
+  --stage-ring: rgba(15,23,42,0.10);
+  --live-dot: #ef4444;
+}
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--app-bg);
+  color: var(--text-strong);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.persona-replay-shell {
+  position: relative;
+  height: 100vh;
+  padding: 24px;
+  overflow: hidden;
+}
+.persona-replay-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: .06;
+  pointer-events: none;
+}
+.persona-replay-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(15,23,42,.22) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+  opacity: 0;
+  pointer-events: none;
+}
+body[data-theme="light"] .persona-replay-shell::before { opacity: .12; }
+body[data-theme="light"] .persona-replay-shell::after { opacity: .12; }
+.replay-wrap {
+  position: relative;
+  z-index: 1;
+  width: min(1480px, calc(100vw - 48px));
+  height: calc(100vh - 48px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+}
+.brand-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  width: min(1480px, calc(100vw - 48px), calc((100vh - 116px) * 1.6));
+  margin-bottom: 16px;
+  color: var(--brand-text);
+}
+.brand-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-back {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel-bg);
+  color: var(--text-strong);
+  text-decoration: none;
+  line-height: 1;
+}
+.brand-back-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  overflow: visible;
+}
+.brand-mark-logo {
+  display: block;
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 18px rgba(37, 99, 235, .24));
+}
+.brand-mark-logo.is-dark-logo { display: none; }
+body[data-theme="dark"] .brand-mark-logo.is-light-logo { display: none; }
+body[data-theme="dark"] .brand-mark-logo.is-dark-logo { display: block; }
+.brand-title { color: var(--brand-text); font-size: 15px; font-weight: 650; letter-spacing: 0; }
+.brand-subtitle {
+  color: var(--brand-sub);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.live-observer, .microcopy, .hud-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--brand-sub);
+}
+.live-observer { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.live-dot { width: 7px; height: 7px; border-radius: 999px; background: var(--live-dot); box-shadow: 0 0 14px var(--live-dot); animation: livePulse 1.4s ease-in-out infinite; }
+@keyframes livePulse { 50% { opacity: .45; } }
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--panel-bg);
+}
+.theme-button {
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-faint);
+  padding: 5px 9px;
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.theme-button.is-active {
+  background: rgba(255,255,255,0.10);
+  color: var(--text-strong);
+}
+body[data-theme="light"] .theme-button.is-active { background: rgba(15,23,42,0.08); }
+.broadcast-stage {
+  position: relative;
+  width: min(1480px, calc(100vw - 48px), calc((100vh - 116px) * 1.6));
+  aspect-ratio: 16 / 10;
+  flex: 0 0 auto;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: #0b1020;
+  box-shadow: var(--stage-shadow);
+  border: 0;
+}
+.product-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #fff;
+  display: block;
+}
+.broadcast-topbar,
+.bottom-transport {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  border-color: var(--panel-border);
+  background: var(--panel-bg);
+}
+.broadcast-topbar { top: 0; border-bottom: 1px solid var(--panel-border); }
+.topbar-inner {
+  display: grid;
+  grid-template-columns: minmax(210px, 260px) 1px minmax(260px, 1fr) 210px 116px;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 10px 18px;
+}
+.persona-tag { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.topbar-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 0 0 2px var(--hud-color), 0 0 16px color-mix(in srgb, var(--hud-color) 35%, transparent);
+}
+.persona-name { color: var(--text-strong); font-size: 13px; font-weight: 750; line-height: 1.15; }
+.persona-type { color: var(--text-faint); font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 190px; }
+.topbar-divider { width: 1px; height: 28px; background: var(--divider); justify-self: stretch; }
+.task-title { min-width: 0; text-align: center; color: var(--text-sub); font-size: 12.5px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.emotion-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid color-mix(in srgb, var(--hud-color) 60%, transparent);
+  background: color-mix(in srgb, var(--hud-color) 18%, transparent);
+  color: var(--hud-color);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  justify-content: center;
+  justify-self: end;
+  width: max-content;
+  max-width: 210px;
+  min-width: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body[data-theme="light"] .emotion-chip {
+  border-color: color-mix(in srgb, var(--hud-color) 42%, #0f172a 58%);
+  background: color-mix(in srgb, var(--hud-color) 38%, #ffffff 62%);
+  color: #0f172a;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08), 0 8px 24px rgba(15,23,42,.08);
+}
+.emotion-chip::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hud-color);
+  box-shadow: 0 0 10px var(--hud-color), 0 0 2px var(--hud-color);
+}
+.step-counter { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; color: var(--text-sub); letter-spacing: .12em; white-space: nowrap; text-align: right; }
+.confidence-card,
+.think-lyric-panel {
+  position: absolute;
+  top: 68px;
+  z-index: 30;
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+}
+.confidence-card { left: 20px; width: 190px; padding: 0; background: rgba(10,15,28,.18); }
+body[data-theme="light"] .confidence-card { background: rgba(255,255,255,.22); }
+.confidence-card.is-collapsed { width: 190px; }
+.confidence-card.is-collapsed .confidence-body { display: none; }
+.think-lyric-panel { right: 20px; width: 320px; padding: 0; background: rgba(10,15,28,.22); }
+body[data-theme="light"] .think-lyric-panel { background: rgba(255,255,255,.28); }
+.think-lyric-panel.is-collapsed { width: 320px; }
+.think-lyric-panel.is-collapsed .lyric-list { display: none; }
+.panel-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.panel-toggle {
+  display: flex; width: 100%; align-items: center; justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+.panel-toggle:active,
+.is-dragging .panel-toggle { cursor: grabbing; }
+.panel-toggle, .panel-toggle * { white-space: nowrap; }
+.confidence-card .panel-toggle { padding: 10px 12px 6px; }
+.think-lyric-panel .panel-toggle { padding: 12px 16px 8px; }
+.panel-toggle .hud-kicker { pointer-events: none; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+#confidenceToggleGlyph,
+#thinkToggleGlyph { font-size: 16px; font-weight: 900; letter-spacing: 0; line-height: 1; min-width: 16px; text-align: center; }
+.panel-meta { display: inline-flex; align-items: center; gap: 8px; }
+.confidence-body { padding: 0 16px 16px; }
+.confidence-body-main { display: grid; place-items: center; }
+.confidence-ring { width: 106px; height: 106px; }
+.confidence-emotion-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--text-strong);
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--hud-color) 35%, transparent));
+}
+.confidence-number {
+  margin-top: 8px;
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-strong);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--hud-color) 45%, transparent);
+}
+.confidence-divider { height: 1px; margin: 12px 0; background: var(--divider); }
+.confidence-emotion-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.confidence-emotion-pill {
+  border: 1px solid color-mix(in srgb, var(--hud-color) 45%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--hud-color) 14%, transparent);
+  color: var(--hud-color);
+  padding: 2px 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+body[data-theme="light"] .confidence-emotion-pill {
+  border-color: color-mix(in srgb, var(--hud-color) 42%, #0f172a 58%);
+  background: color-mix(in srgb, var(--hud-color) 40%, #ffffff 60%);
+  color: #0f172a;
+  font-weight: 650;
+  box-shadow: 0 0 0 1px rgba(15,23,42,.08), 0 6px 18px rgba(15,23,42,.10);
+}
+.lyric-list { display: flex; flex-direction: column; gap: 10px; padding: 0 16px 12px; }
+.lyric-row { width: 100%; border: 0; padding: 0; background: transparent; text-align: left; opacity: .58; transition: opacity .18s ease; cursor: pointer; }
+.lyric-row.is-current { opacity: 1; }
+.lyric-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 9.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.lyric-row.is-current .lyric-step { color: var(--hud-color); }
+.lyric-step-dot { width: 4px; height: 4px; border-radius: 999px; background: var(--hud-color); box-shadow: 0 0 8px var(--hud-color); }
+.lyric-text { margin-top: 4px; color: var(--text-sub); font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lyric-row.is-current .lyric-text { color: var(--text-strong); white-space: normal; font-size: 14px; font-weight: 650; text-shadow: 0 0 18px color-mix(in srgb, var(--hud-color) 30%, transparent); }
+.cursor-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 24;
+  pointer-events: none;
+}
+.mouse-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.cursor-group {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transition: opacity .16s ease;
+}
+.cursor-group.is-visible { opacity: 1; }
+.recorded-cursor-scrub {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background: rgba(246, 248, 252, .54);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 0 18px rgba(15,23,42,.12), inset 0 0 18px rgba(255,255,255,.32);
+}
+.recorded-cursor-scrub.is-visible { opacity: .96; }
+body[data-theme="dark"] .recorded-cursor-scrub {
+  background: rgba(15, 23, 42, .34);
+  box-shadow: 0 0 18px rgba(0,0,0,.24), inset 0 0 18px rgba(255,255,255,.12);
+}
+.menso-cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 24px;
+  height: 31px;
+  transform: translate(-2px, -2px);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.42));
+}
+.menso-cursor path {
+  fill: var(--hud-color);
+  stroke: #fff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.cursor-tooltip {
+  position: absolute;
+  left: 30px;
+  top: 28px;
+  width: max-content;
+  max-width: min(420px, 34vw);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  background: rgba(10,15,28,.9);
+  color: #fff;
+  padding: 8px 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.42;
+  white-space: normal;
+  word-break: break-word;
+  box-shadow: 0 14px 34px rgba(0,0,0,.32), 0 0 18px color-mix(in srgb, var(--hud-color) 24%, transparent);
+}
+.cursor-tooltip.is-hidden { display: none; }
+.cursor-tooltip.is-left { left: auto; right: 8px; transform: translateX(-20px); }
+.cursor-tooltip.is-up { top: auto; bottom: 8px; transform: translateY(-20px); }
+.cursor-tooltip.is-left.is-up { transform: translate(-20px, -20px); }
+.click-ripple {
+  position: absolute;
+  left: 11px;
+  top: 14px;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  border: 2px solid var(--hud-color);
+  opacity: 0;
+}
+.click-ripple.is-on { animation: prPulse 600ms ease-out forwards; }
+@keyframes prPulse {
+  0% { transform: translate(-50%, -50%) scale(.4); opacity: .9; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+.bottom-transport { bottom: 0; border-top: 1px solid var(--panel-border); }
+.transport-inner { display: flex; align-items: center; gap: 18px; padding: 12px 18px; }
+.transport-buttons { display: flex; align-items: center; gap: 8px; }
+.transport-btn, .play-btn {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-body);
+  cursor: pointer;
+}
+.transport-btn { width: 36px; height: 36px; }
+.play-btn {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  background: color-mix(in srgb, var(--hud-color) 72%, transparent);
+  color: #111827;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--hud-color) 42%, transparent);
+}
+.timeline { position: relative; flex: 1; height: 48px; }
+.timeline-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.timeline-segment { stroke-width: 1.05; stroke-linecap: round; transition: opacity .16s ease, stroke-width .16s ease; }
+.timeline-segment.is-future { opacity: .34; }
+.timeline-segment.is-current { stroke-width: 1.45; filter: drop-shadow(0 0 5px var(--hud-color)); }
+.timeline-ticks { position: absolute; inset: 0; }
+.timeline-tick {
+  position: absolute;
+  bottom: 8px;
+  width: 28px;
+  height: 38px;
+  transform: translateX(-50%);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.timeline-tick span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--track-dim);
+}
+.timeline-tick.is-past span { background: var(--hud-color); box-shadow: 0 0 6px var(--hud-color); }
+.timeline-tick.is-current span { width: 4px; height: 28px; background: var(--hud-color); box-shadow: 0 0 14px var(--hud-color); }
+.time-readout {
+  min-width: 128px;
+  text-align: right;
+  color: var(--text-body);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: .08em;
+}
+.time-readout strong { color: var(--hud-color); }
+.hud-link {
+  color: var(--text-body);
+  text-decoration: none;
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.footer-hint {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+}
+@media (max-width: 900px) {
+  .persona-replay-shell { padding: 12px; }
+  .replay-wrap { width: calc(100vw - 24px); height: calc(100vh - 24px); }
+  .brand-strip { align-items: flex-start; flex-direction: column; width: calc(100vw - 24px); }
+  .broadcast-stage { width: calc(100vw - 24px); }
+  .topbar-inner { grid-template-columns: minmax(0, 1fr); align-items: flex-start; gap: 8px; }
+  .persona-tag, .task-title, .emotion-chip, .step-counter { grid-column: 1; }
+  .topbar-divider { display: none; }
+  .task-title { width: 100%; text-align: left; }
+  .emotion-chip { justify-self: start; max-width: 100%; }
+  .step-counter { text-align: left; }
+  .confidence-card { left: 12px; top: 112px; width: 190px; }
+  .confidence-card.is-collapsed { width: 190px; }
+  .think-lyric-panel { right: 12px; top: 112px; width: min(300px, calc(100% - 176px)); }
+  .think-lyric-panel.is-collapsed { width: min(300px, calc(100% - 176px)); }
+  .confidence-ring { width: 82px; height: 82px; }
+  .cursor-tooltip { max-width: 260px; }
+  .transport-inner { gap: 10px; padding: 10px; }
+  .time-readout { display: none; }
+}
+</style>
+</head>
+<body data-theme="light">
+<main class="persona-replay-shell">
+  <div class="replay-wrap">
+    <header class="brand-strip">
+      <div class="brand-left">
+        <a class="brand-back" href="../reports/9136b520_journey.html" aria-label="Back to report"><svg class="brand-back-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 9 12l6 6"></path><path d="M10 12h10"></path></svg></a>
+        <div class="brand-mark"><img class="brand-mark-logo is-light-logo" src="../reports/menso-logo.png" alt="Menso"><img class="brand-mark-logo is-dark-logo" src="../reports/menso-logo-dark.png" alt="Menso"></div>
+        <div>
+          <div class="brand-title">Persona Replay</div>
+          <div class="brand-subtitle">Session / HTTPS://WWW.DODOFORM.COM / Observer Mode</div>
+        </div>
+      </div>
+      <div class="live-observer">
+        <div class="theme-toggle" id="themeToggle" aria-label="Theme">
+          <button id="darkThemeButton" class="theme-button" type="button">Dark</button>
+          <button id="lightThemeButton" class="theme-button is-active" type="button">Light</button>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="broadcast-stage" id="frame" aria-label="Persona replay for Ari Morgan">
+      <video id="browserVideo" class="product-video" src="../videos/9136b520.webm" preload="metadata" muted playsinline></video>
+
+      <div class="broadcast-topbar">
+        <div class="topbar-inner">
+          <div class="persona-tag">
+            <img id="topbarAvatar" class="topbar-avatar" src="../replay-persona-assets/avatars/p01-confident.png" alt="Ari Morgan">
+            <div>
+              <div class="persona-name">Ari Morgan</div>
+              <div class="persona-type">Customer feedback workflow owner</div>
+            </div>
+          </div>
+          <div class="topbar-divider"></div>
+          <div id="taskTitle" class="task-title">Task / Use Google sign-in for the provided Google account when prompted.</div>
+          <div class="emotion-chip" id="emotionChip">Emotion</div>
+          <div class="step-counter" id="stepCounter">STEP 01 / 01</div>
+        </div>
+      </div>
+
+      <aside class="confidence-card">
+        <button id="confidenceToggle" class="panel-toggle" type="button" aria-expanded="true">
+          <span class="hud-kicker">Confidence</span>
+          <span class="hud-kicker" id="confidenceToggleGlyph">-</span>
+        </button>
+        <div class="confidence-body">
+          <div class="confidence-body-main">
+            <svg class="confidence-ring" viewBox="0 0 108 108" aria-hidden="true">
+              <circle cx="54" cy="54" r="42" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="6"></circle>
+              <circle id="confidenceRingFg" cx="54" cy="54" r="42" fill="none" stroke="var(--hud-color)" stroke-width="6" stroke-linecap="round" stroke-dasharray="0 264" transform="rotate(-90 54 54)"></circle>
+              <foreignObject x="39" y="39" width="30" height="30">
+                <div id="confidenceEmotionIcon" class="confidence-emotion-icon" role="img" aria-label=""></div>
+              </foreignObject>
+            </svg>
+          </div>
+          <div class="confidence-number" id="confidenceNumber">0.00</div>
+          <div class="confidence-divider"></div>
+          <div class="confidence-emotion-row">
+            <span class="hud-kicker">Emotion</span>
+            <span class="confidence-emotion-pill" id="confidenceEmotionPill">Emotion</span>
+          </div>
+        </div>
+      </aside>
+
+      <aside class="think-lyric-panel">
+        <button id="thinkToggle" class="panel-toggle" type="button" aria-expanded="true">
+          <span class="hud-kicker">Think Aloud</span>
+          <span class="hud-kicker panel-meta"><span id="lyricCount">0/0</span><span id="thinkToggleGlyph">-</span></span>
+        </button>
+        <div class="lyric-list" id="lyricList"></div>
+      </aside>
+
+      <div class="cursor-layer" aria-hidden="true">
+        <svg id="evidence-cinematic-path" class="mouse-trail"></svg>
+        <div id="cursorGroup" class="cursor-group">
+          <div id="recordedCursorScrub" class="recorded-cursor-scrub"></div>
+          <div id="clickRipple" class="click-ripple"></div>
+          <svg id="mensoCursor" class="menso-cursor" viewBox="0 0 44 58" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 6 4 Q 2 2 3 8 L 6 48 Q 7 53 11 50 L 17 41 Q 19 39 22 39 L 36 39 Q 40 38 37 35 L 9 8 Q 7 5 6 4 Z"></path>
+          </svg>
+          <div id="cursorTooltip" class="cursor-tooltip"></div>
+        </div>
+      </div>
+
+      <div class="bottom-transport">
+        <div class="transport-inner">
+          <div class="transport-buttons">
+            <button id="prevButton" class="transport-btn" type="button" aria-label="Previous step">&#8249;</button>
+            <button id="playButton" class="play-btn" type="button" aria-label="Play replay">&#9654;</button>
+            <button id="nextButton" class="transport-btn" type="button" aria-label="Next step">&#8250;</button>
+          </div>
+          <div class="timeline">
+            <svg id="timelineSvg" class="timeline-svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+            <div id="timelineTicks" class="timeline-ticks"></div>
+          </div>
+          <div class="time-readout"><strong id="currentTimeLabel">00:00</strong> / <span id="durationLabel">00:00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-hint">
+      <span class="microcopy">Press left/right to step / Space to play or pause / click ticks to jump</span>
+      <span class="microcopy">Persona Replay / Observer Mode</span>
+    </div>
+  </div>
+</main>
+<script>
+const personaTimeline = [{"step": 1, "moment": "Login", "sourceTime": 8.0, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.7, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "DodoForm landing page. I see 'Collect with a form' and 'Sign in' — I need to sign in first to create a form. Let me hit Sign in.", "url": "https://www.dodoform.com/", "actionType": "click", "actionTarget": 29, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step1.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 2, "moment": "Email", "sourceTime": 8.0, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "annoyance", "actorEmotionLabel": "Annoyance", "actorEmotionColor": "#f59e0b", "emotionIcon": "../emotion-emojis/annoyance.svg", "confidence": 0.86, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "I reached the product login page while this run is configured for Google account state. I need the user to complete Google sign-in before I can evaluate the product.", "url": "https://www.dodoform.com/login", "actionType": "auth_handoff", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step2.png", "avatar": "../replay-persona-assets/avatars/p01-frustrated.png"}, {"step": 3, "moment": "Password", "sourceTime": 8.0, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.8, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "The product is still generating output, so I need to wait for the result instead of exploring away or stopping early.", "url": "https://www.dodoform.com/dashboard/forms/new", "actionType": "wait", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step3.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 4, "moment": "Submit", "sourceTime": 8.48, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.8, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "The product is still generating output, so I need to wait for the result instead of exploring away or stopping early.", "url": "https://www.dodoform.com/dashboard/forms/new", "actionType": "wait", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step4.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 5, "moment": "Attempt", "sourceTime": 11.31, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.82, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "The product is still generating output, so I need to wait for the result instead of exploring away or stopping early.", "url": "https://www.dodoform.com/dashboard/forms/new", "actionType": "wait", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step5.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 6, "moment": "Attempt", "sourceTime": 14.14, "duration": 3.0, "plutchikEmotion": "trust", "plutchikLabel": "Trust", "mensoEmotionLabel": "Confident interested", "color": "#99D1B7", "actorEmotion": "anticipation", "actorEmotionLabel": "Anticipation", "actorEmotionColor": "#FFAB8D", "emotionIcon": "../emotion-emojis/anticipation.svg", "confidence": 0.7, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "The prompt text is already in the box and Generate form is now active. Clicking it now.", "url": "https://www.dodoform.com/dashboard/forms/new", "actionType": "click", "actionTarget": 1, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step6.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 7, "moment": "Inspect", "sourceTime": 16.96, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.6, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "The form generated — I can see 'Customer feedback and NPS follow-up form for a' as the title, and 'Customer Name' and 'Work Email' fields are already there. The AI prompt with the MENSO-DODO-GOOGLE-20260626-1900 marker is visible in the editor. Status shows 'Saved' and Save now is disabled — that means it autosaved. Let me scroll down to check all the fields that were generated.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step7.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 8, "moment": "Inspect", "sourceTime": 19.79, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.55, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "Form is generated — I can see Customer Name and Work Email fields. Need to scroll down to check if NPS score, urgency, at-risk segmentation fields are all there.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step8.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 9, "moment": "Inspect", "sourceTime": 22.62, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.55, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "I see Customer Name and Work Email fields — need to scroll down to check if NPS score, urgency, at-risk segmentation, and follow-up fields are all there.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step9.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 10, "moment": "Inspect", "sourceTime": 25.45, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.55, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "Form is generated and autosaved. I can see Customer Name, Work Email, Company fields. Need to scroll down to verify NPS score, urgency, at-risk segmentation, follow-up fields, and the run marker in the title.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step10.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 11, "moment": "Inspect", "sourceTime": 28.27, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "interest", "actorEmotionLabel": "Interest", "actorEmotionColor": "#FFD5C6", "emotionIcon": "../emotion-emojis/interest.svg", "confidence": 0.55, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "I've been scrolling and the form fields are visible — Customer Name, Work Email, Company, Account Tier. I need to check the form title for the run marker and see NPS/urgency/follow-up fields. Let me scroll up to check the title first.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_up", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step11.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 12, "moment": "Attempt", "sourceTime": 31.1, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "trust", "actorEmotionLabel": "Trust", "actorEmotionColor": "#33E19B", "emotionIcon": "../emotion-emojis/trust.svg", "confidence": 0.82, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "The run marker is right there in the title — MENSO-DODO-GOOGLE-20260626-1900. And I can see all the fields I need: Customer Name, Work Email, Company, Account Tier, NPS Score, reason, Product Area, Urgency, follow-up toggle, best contact time. This actually covers everything. Save now is disabled which means it autosaved. Let me click Preview to see the full form output.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "click", "actionTarget": 2, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step12.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 13, "moment": "Inspect", "sourceTime": 33.93, "duration": 3.0, "plutchikEmotion": "anticipation", "plutchikLabel": "Anticipation", "mensoEmotionLabel": "Confident interested", "color": "#FF9671", "actorEmotion": "trust", "actorEmotionLabel": "Trust", "actorEmotionColor": "#33E19B", "emotionIcon": "../emotion-emojis/trust.svg", "confidence": 0.72, "thought": "Ari is evaluating whether this step moves them closer to 'Use Google sign-in for the provided Google account when prompted. Create a NEW DodoForm f...'.", "thinkAloud": "The form title shows the run marker right there — MENSO-DODO-GOOGLE-20260626-1900. Preview tab is active, I can see Customer Name field. Save now is disabled which means it autosaved. Let me scroll down in the preview to check NPS, urgency, follow-up, and the at-risk segmentation fields.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step13.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 14, "moment": "Inspect", "sourceTime": 36.76, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "trust", "actorEmotionLabel": "Trust", "actorEmotionColor": "#33E19B", "emotionIcon": "../emotion-emojis/trust.svg", "confidence": 0.72, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "The preview is showing Customer Name, Work Email, Company — all the basics. I can see the form title has the MENSO-DODO-GOOGLE-20260626-1900 marker. There's a 'Preview submit' button offscreen. Let me scroll down in the preview to check the NPS and at-risk fields, then I have enough to decide.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "scroll_down", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step14.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}, {"step": 15, "moment": "Decision", "sourceTime": 39.58, "duration": 3.0, "plutchikEmotion": "fear", "plutchikLabel": "Fear", "mensoEmotionLabel": "Confused/questioning", "color": "#B9E4FF", "actorEmotion": "trust", "actorEmotionLabel": "Trust", "actorEmotionColor": "#33E19B", "emotionIcon": "../emotion-emojis/trust.svg", "confidence": 0.88, "thought": "Ari is cautious here because the page state adds uncertainty before the product value is proven.", "thinkAloud": "Decision: try. I have enough visible product evidence to finish this evaluation.", "url": "https://www.dodoform.com/dashboard/forms/298ab877-e27f-4ecc-92d5-1db2e817d5f3", "actionType": "task_complete", "actionTarget": null, "actionPoint": null, "screenshotPath": "/static/screenshots/9136b520_step15.png", "avatar": "../replay-persona-assets/avatars/p01-confident.png"}];
+const browserVideo = document.getElementById("browserVideo");
+const frame = document.getElementById("frame");
+const trailSvg = document.getElementById("evidence-cinematic-path");
+const cursorGroup = document.getElementById("cursorGroup");
+const cursorTooltip = document.getElementById("cursorTooltip");
+const recordedCursorScrub = document.getElementById("recordedCursorScrub");
+const clickRipple = document.getElementById("clickRipple");
+const topbarAvatar = document.getElementById("topbarAvatar");
+const emotionChip = document.getElementById("emotionChip");
+const stepCounter = document.getElementById("stepCounter");
+const confidenceRingFg = document.getElementById("confidenceRingFg");
+const confidenceEmotionIcon = document.getElementById("confidenceEmotionIcon");
+const confidenceEmotionPill = document.getElementById("confidenceEmotionPill");
+const confidenceNumber = document.getElementById("confidenceNumber");
+const confidencePanel = document.querySelector(".confidence-card");
+const confidenceToggle = document.getElementById("confidenceToggle");
+const confidenceToggleGlyph = document.getElementById("confidenceToggleGlyph");
+const thinkPanel = document.querySelector(".think-lyric-panel");
+const thinkToggle = document.getElementById("thinkToggle");
+const thinkToggleGlyph = document.getElementById("thinkToggleGlyph");
+const lyricList = document.getElementById("lyricList");
+const lyricCount = document.getElementById("lyricCount");
+const timelineSvg = document.getElementById("timelineSvg");
+const timelineTicks = document.getElementById("timelineTicks");
+const currentTimeLabel = document.getElementById("currentTimeLabel");
+const durationLabel = document.getElementById("durationLabel");
+const playButton = document.getElementById("playButton");
+const prevButton = document.getElementById("prevButton");
+const nextButton = document.getElementById("nextButton");
+const darkThemeButton = document.getElementById("darkThemeButton");
+const lightThemeButton = document.getElementById("lightThemeButton");
+let activeIndex = 0;
+let playing = false;
+let leftCollapsed = false;
+let rightCollapsed = false;
+let rafId = null;
+let trailSamples = [];
+let detectedCursorPoint = null;
+let detectedCursorAt = 0;
+const cursorScanCanvas = document.createElement("canvas");
+const cursorScanContext = cursorScanCanvas.getContext("2d", { willReadFrequently: true });
+const cursorScanWidth = 420;
+const replayPlaybackRate = 9;
+const replayStartTime = personaTimeline.length ? Math.max(0, Number(personaTimeline[0].sourceTime || 0)) : 0;
+const replayEndTime = personaTimeline.length
+  ? Math.max(...personaTimeline.map((cue) => Number(cue.sourceTime || 0))) + 8
+  : 0;
+const ringCircumference = 2 * Math.PI * 42;
+
+function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+function formatClock(seconds) {
+  const safe = Math.max(0, Number(seconds || 0));
+  const mins = Math.floor(safe / 60);
+  const secs = Math.floor(safe % 60);
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+function hexToRgb(hex) {
+  const clean = String(hex || "").replace("#", "");
+  if (!/^[0-9a-fA-F]{6}$/.test(clean)) return { r: 255, g: 158, b: 109 };
+  return { r: parseInt(clean.slice(0, 2), 16), g: parseInt(clean.slice(2, 4), 16), b: parseInt(clean.slice(4, 6), 16) };
+}
+function contrastInk(hex) {
+  const rgb = hexToRgb(hex);
+  const luminance = (0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b) / 255;
+  return luminance < 0.55 ? "#FFFFFF" : "#111827";
+}
+function cueEmotionKey(cue) {
+  return String(cue.plutchikEmotion || cue.actorEmotion || cue.mensoEmotionLabel || cue.actorEmotionLabel || "").toLowerCase();
+}
+function cueEmotionLabel(cue) {
+  return cue.plutchikLabel || cue.plutchikEmotion || cue.actorEmotionLabel || cue.actorEmotion || "Emotion";
+}
+function cueEmotionColor(cue) {
+  return cue.color || cue.actorEmotionColor || "#ff9e6d";
+}
+function emotionGlyph(cue) {
+  const label = cueEmotionKey(cue);
+  if (label.includes("joy") || label.includes("trust") || label.includes("delight")) return "+";
+  if (label.includes("anger") || label.includes("frustrat") || label.includes("disgust")) return "!";
+  if (label.includes("fear") || label.includes("surprise") || label.includes("confus")) return "?";
+  return ">";
+}
+function emotionFace(cue) {
+  const label = cueEmotionKey(cue);
+  if (label.includes("joy") || label.includes("delight") || label.includes("ecstasy") || label.includes("serenity")) return "😊";
+  if (label.includes("trust") || label.includes("admiration") || label.includes("acceptance") || label.includes("love")) return "🙂";
+  if (label.includes("anticipation") || label.includes("vigilance")) return "👀";
+  if (label.includes("interest") || label.includes("optimism")) return "🙂";
+  if (label.includes("annoy") || label.includes("anger") || label.includes("rage") || label.includes("aggress")) return "😒";
+  if (label.includes("disgust") || label.includes("loathing") || label.includes("contempt")) return "😖";
+  if (label.includes("sad") || label.includes("grief") || label.includes("remorse") || label.includes("pensiveness")) return "😔";
+  if (label.includes("fear") || label.includes("terror") || label.includes("apprehension")) return "😟";
+  if (label.includes("surprise") || label.includes("amazement") || label.includes("awe") || label.includes("distraction")) return "😮";
+  if (label.includes("confus")) return "🤔";
+  return "🙂";
+}
+function setTheme(theme) {
+  document.body.dataset.theme = theme;
+  darkThemeButton.classList.toggle("is-active", theme === "dark");
+  lightThemeButton.classList.toggle("is-active", theme === "light");
+}
+function toggleTheme(theme) {
+  setTheme(theme);
+}
+function setThinkPanelCollapsed(collapsed) {
+  rightCollapsed = collapsed;
+  thinkPanel.classList.toggle("is-collapsed", rightCollapsed);
+  thinkToggle.setAttribute("aria-expanded", String(!rightCollapsed));
+  thinkToggleGlyph.textContent = rightCollapsed ? "+" : "-";
+  cursorTooltip.classList.toggle("is-hidden", !rightCollapsed);
+}
+function setConfidencePanelCollapsed(collapsed) {
+  leftCollapsed = collapsed;
+  confidencePanel.classList.toggle("is-collapsed", leftCollapsed);
+  confidenceToggle.setAttribute("aria-expanded", String(!leftCollapsed));
+  confidenceToggleGlyph.textContent = leftCollapsed ? "+" : "-";
+}
+function consumePanelDragClick(panel) {
+  if (panel.dataset.skipClick === "true") {
+    delete panel.dataset.skipClick;
+    return true;
+  }
+  return false;
+}
+function makePanelDraggable(panel, handle) {
+  let pointerId = null;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
+  let moved = false;
+  handle.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0) return;
+    const panelRect = panel.getBoundingClientRect();
+    const frameRect = frame.getBoundingClientRect();
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startY = event.clientY;
+    startLeft = panelRect.left - frameRect.left;
+    startTop = panelRect.top - frameRect.top;
+    moved = false;
+    panel.classList.add("is-dragging");
+    handle.setPointerCapture(pointerId);
+  });
+  handle.addEventListener("pointermove", (event) => {
+    if (pointerId !== event.pointerId) return;
+    const dx = event.clientX - startX;
+    const dy = event.clientY - startY;
+    if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+    if (!moved) return;
+    event.preventDefault();
+    const frameRect = frame.getBoundingClientRect();
+    const maxLeft = Math.max(12, frameRect.width - panel.offsetWidth - 12);
+    const maxTop = Math.max(12, frameRect.height - panel.offsetHeight - 12);
+    panel.style.left = `${clamp(startLeft + dx, 12, maxLeft)}px`;
+    panel.style.top = `${clamp(startTop + dy, 12, maxTop)}px`;
+    panel.style.right = "auto";
+  });
+  function stopDrag(event) {
+    if (pointerId !== event.pointerId) return;
+    if (moved) {
+      panel.dataset.skipClick = "true";
+      window.setTimeout(() => delete panel.dataset.skipClick, 120);
+    }
+    panel.classList.remove("is-dragging");
+    try { handle.releasePointerCapture(pointerId); } catch (_) {}
+    pointerId = null;
+  }
+  handle.addEventListener("pointerup", stopDrag);
+  handle.addEventListener("pointercancel", stopDrag);
+}
+function setSyncColor(cue) {
+  const color = cueEmotionColor(cue);
+  document.documentElement.style.setProperty("--hud-color", color);
+  document.documentElement.style.setProperty("--hud-ink", contrastInk(color));
+}
+function videoBoxForFrame(rect) {
+  const videoWidth = browserVideo.videoWidth || 1280;
+  const videoHeight = browserVideo.videoHeight || 800;
+  const frameAspect = rect.width / Math.max(1, rect.height);
+  const videoAspect = videoWidth / Math.max(1, videoHeight);
+  if (videoAspect > frameAspect) {
+    const height = rect.width / videoAspect;
+    return { x: 0, y: (rect.height - height) / 2, width: rect.width, height };
+  }
+  const width = rect.height * videoAspect;
+  return { x: (rect.width - width) / 2, y: 0, width, height: rect.height };
+}
+function findRecordedCursorPoint(rect) {
+  if (!cursorScanContext || browserVideo.readyState < 2 || !browserVideo.videoWidth || !browserVideo.videoHeight) return null;
+  const videoBox = videoBoxForFrame(rect);
+  const scanWidth = cursorScanWidth;
+  const scanHeight = Math.max(1, Math.round(scanWidth * browserVideo.videoHeight / browserVideo.videoWidth));
+  if (cursorScanCanvas.width !== scanWidth || cursorScanCanvas.height !== scanHeight) {
+    cursorScanCanvas.width = scanWidth;
+    cursorScanCanvas.height = scanHeight;
+  }
+  let imageData;
+  try {
+    cursorScanContext.drawImage(browserVideo, 0, 0, scanWidth, scanHeight);
+    imageData = cursorScanContext.getImageData(0, 0, scanWidth, scanHeight).data;
+  } catch (error) {
+    return null;
+  }
+  const total = scanWidth * scanHeight;
+  const mask = new Uint8Array(total);
+  for (let index = 0; index < total; index += 1) {
+    const offset = index * 4;
+    const r = imageData[offset];
+    const g = imageData[offset + 1];
+    const b = imageData[offset + 2];
+    if (b > 155 && g > 85 && g < 215 && r < 165 && b - r > 60 && b - g > 28) mask[index] = 1;
+  }
+  const visited = new Uint8Array(total);
+  const previous = detectedCursorPoint
+    ? {
+        x: ((detectedCursorPoint.x - videoBox.x) / Math.max(1, videoBox.width)) * scanWidth,
+        y: ((detectedCursorPoint.y - videoBox.y) / Math.max(1, videoBox.height)) * scanHeight,
+      }
+    : null;
+  let best = null;
+  for (let start = 0; start < total; start += 1) {
+    if (!mask[start] || visited[start]) continue;
+    const stack = [start];
+    visited[start] = 1;
+    let count = 0;
+    let sumX = 0;
+    let sumY = 0;
+    let minX = scanWidth;
+    let minY = scanHeight;
+    let maxX = 0;
+    let maxY = 0;
+    while (stack.length) {
+      const current = stack.pop();
+      const x = current % scanWidth;
+      const y = Math.floor(current / scanWidth);
+      count += 1;
+      sumX += x;
+      sumY += y;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+      const neighbors = [current - 1, current + 1, current - scanWidth, current + scanWidth];
+      for (const next of neighbors) {
+        if (next < 0 || next >= total || visited[next] || !mask[next]) continue;
+        const nx = next % scanWidth;
+        if (Math.abs(nx - x) > 1) continue;
+        visited[next] = 1;
+        stack.push(next);
+      }
+    }
+    const width = maxX - minX + 1;
+    const height = maxY - minY + 1;
+    if (count < 4 || count > 180 || width < 2 || height < 2 || width > 22 || height > 22) continue;
+    const cx = sumX / count;
+    const cy = sumY / count;
+    const aspectPenalty = Math.abs(width - height) * 2.8;
+    const continuityPenalty = previous ? Math.hypot(cx - previous.x, cy - previous.y) * 1.8 : 0;
+    const score = count - aspectPenalty - continuityPenalty;
+    if (!best || score > best.score) best = { x: cx, y: cy, score };
+  }
+  if (best) {
+    detectedCursorPoint = {
+      x: videoBox.x + (best.x / scanWidth) * videoBox.width,
+      y: videoBox.y + (best.y / scanHeight) * videoBox.height,
+    };
+    detectedCursorAt = performance.now();
+    return detectedCursorPoint;
+  }
+  if (detectedCursorPoint && performance.now() - detectedCursorAt < 350) return detectedCursorPoint;
+  return null;
+}
+function cueIndexForTime(time) {
+  let index = 0;
+  for (let nextIndex = 0; nextIndex < personaTimeline.length; nextIndex += 1) {
+    if (Number(personaTimeline[nextIndex].sourceTime || 0) <= time) index = nextIndex;
+    else break;
+  }
+  return index;
+}
+function pointFromAction(actionPoint, rect) {
+  if (!actionPoint) return null;
+  const sourceX = Number(actionPoint.x);
+  const sourceY = Number(actionPoint.y);
+  if (!Number.isFinite(sourceX) || !Number.isFinite(sourceY)) return null;
+  const videoBox = videoBoxForFrame(rect);
+  const sourceWidth = browserVideo.videoWidth || 1280;
+  const sourceHeight = browserVideo.videoHeight || 800;
+  return {
+    x: clamp(videoBox.x + (sourceX / sourceWidth) * videoBox.width, 0, rect.width),
+    y: clamp(videoBox.y + (sourceY / sourceHeight) * videoBox.height, 0, rect.height),
+  };
+}
+function pointFromRecordedCursor(recordedPoint, rect) {
+  return pointFromAction(recordedPoint, rect);
+}
+function fallbackPointForCue(cue, rect) {
+  const index = Math.max(0, personaTimeline.indexOf(cue));
+  return {
+    x: rect.width * (0.38 + Math.sin(index * 1.37) * 0.2),
+    y: rect.height * (0.48 + Math.cos(index * 1.11) * 0.18),
+  };
+}
+function visualPointForCue(cue, rect) {
+  return pointFromAction(cue?.actionPoint, rect) || fallbackPointForCue(cue, rect);
+}
+function tooltipPointForTime(time) {
+  const rect = frame.getBoundingClientRect();
+  if (!personaTimeline.length) return null;
+  let previous = personaTimeline[0];
+  let next = personaTimeline[personaTimeline.length - 1];
+  for (let index = 0; index < personaTimeline.length; index += 1) {
+    const cue = personaTimeline[index];
+    if (Number(cue.sourceTime || 0) <= time) previous = cue;
+    if (Number(cue.sourceTime || 0) >= time) {
+      next = cue;
+      break;
+    }
+  }
+  const prevPoint = visualPointForCue(previous, rect);
+  const nextPoint = visualPointForCue(next, rect);
+  const prevTime = Number(previous.sourceTime || 0);
+  const nextTime = Number(next.sourceTime || prevTime);
+  if (!prevPoint || !nextPoint || nextTime <= prevTime) return prevPoint || nextPoint || fallbackPointForCue(previous, rect);
+  const raw = clamp((time - prevTime) / (nextTime - prevTime), 0, 1);
+  const eased = raw * raw * (3 - 2 * raw);
+  return {
+    x: prevPoint.x + (nextPoint.x - prevPoint.x) * eased,
+    y: prevPoint.y + (nextPoint.y - prevPoint.y) * eased,
+  };
+}
+function pointForTime(time) {
+  const rect = frame.getBoundingClientRect();
+  if (!personaTimeline.length) return null;
+  const cue = personaTimeline[cueIndexForTime(time)] || personaTimeline[activeIndex] || personaTimeline[0];
+  const embeddedRecordedPoint = pointFromRecordedCursor(cue?.recordedCursorPoint, rect);
+  if (embeddedRecordedPoint) return embeddedRecordedPoint;
+  const recordedPoint = findRecordedCursorPoint(rect);
+  if (recordedPoint) return recordedPoint;
+  return tooltipPointForTime(time);
+}
+function recordTrailPoint(point, color) {
+  const now = performance.now();
+  const last = trailSamples[trailSamples.length - 1];
+  if (!last || Math.hypot(point.x - last.x, point.y - last.y) > 4) {
+    trailSamples.push({ x: point.x, y: point.y, color, time: now });
+  }
+  trailSamples = trailSamples.filter((sample) => now - sample.time < 900).slice(-24);
+}
+function smoothTrailPath(samples) {
+  if (samples.length < 2) return "";
+  let d = `M ${samples[0].x.toFixed(1)} ${samples[0].y.toFixed(1)}`;
+  for (let index = 1; index < samples.length; index += 1) {
+    d += ` L ${samples[index].x.toFixed(1)} ${samples[index].y.toFixed(1)}`;
+  }
+  return d;
+}
+function drawTrail() {
+  trailSvg.replaceChildren();
+  if (trailSamples.length < 2) return;
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+  gradient.setAttribute("id", "trail-gradient-main");
+  gradient.setAttribute("x1", "0");
+  gradient.setAttribute("x2", "1");
+  const start = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  start.setAttribute("offset", "0%");
+  start.setAttribute("stop-color", trailSamples[0].color);
+  start.setAttribute("stop-opacity", "0");
+  const end = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  end.setAttribute("offset", "100%");
+  end.setAttribute("stop-color", trailSamples[trailSamples.length - 1].color);
+  end.setAttribute("stop-opacity", ".9");
+  gradient.append(start, end);
+  defs.appendChild(gradient);
+  trailSvg.appendChild(defs);
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", smoothTrailPath(trailSamples));
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "url(#trail-gradient-main)");
+  path.setAttribute("stroke-width", "4.5");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-linejoin", "round");
+  trailSvg.appendChild(path);
+}
+function renderLyrics(index) {
+  lyricList.replaceChildren();
+  lyricCount.textContent = `${index + 1}/${personaTimeline.length || 1}`;
+  for (let offset = -1; offset <= 1; offset += 1) {
+    const nextIndex = index + offset;
+    if (nextIndex < 0 || nextIndex >= personaTimeline.length) continue;
+    const cue = personaTimeline[nextIndex];
+    const row = document.createElement("button");
+    row.type = "button";
+    row.className = `lyric-row${offset === 0 ? " is-current" : ""}`;
+    row.addEventListener("click", () => jumpToCue(nextIndex));
+    const step = document.createElement("div");
+    step.className = "lyric-step";
+    step.textContent = `STEP ${String(nextIndex + 1).padStart(2, "0")}`;
+    if (offset === 0) {
+      const dot = document.createElement("span");
+      dot.className = "lyric-step-dot";
+      step.appendChild(dot);
+    }
+    const text = document.createElement("div");
+    text.className = "lyric-text";
+    text.textContent = offset === 0 ? `"${cue.thinkAloud || cue.thought || ""}"` : (cue.thinkAloud || cue.thought || "");
+    row.append(step, text);
+    lyricList.appendChild(row);
+  }
+}
+function renderTimeline() {
+  timelineSvg.replaceChildren();
+  timelineTicks.replaceChildren();
+  if (!personaTimeline.length) return;
+  const total = personaTimeline.length - 1 || 1;
+  const points = personaTimeline.map((cue, index) => {
+    const x = (index / total) * 100;
+    const confidence = Number(cue.confidence || 0.65);
+    const y = 80 - confidence * 50;
+    return { x, y };
+  });
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  const fillGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+  fillGradient.setAttribute("id", "spark-fill");
+  fillGradient.setAttribute("x1", "0");
+  fillGradient.setAttribute("y1", "0");
+  fillGradient.setAttribute("x2", "0");
+  fillGradient.setAttribute("y2", "1");
+  const fillStart = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  fillStart.setAttribute("offset", "0%");
+  fillStart.setAttribute("stop-color", "var(--hud-color)");
+  fillStart.setAttribute("stop-opacity", ".26");
+  const fillEnd = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  fillEnd.setAttribute("offset", "100%");
+  fillEnd.setAttribute("stop-color", "var(--hud-color)");
+  fillEnd.setAttribute("stop-opacity", "0");
+  fillGradient.append(fillStart, fillEnd);
+  defs.appendChild(fillGradient);
+  points.slice(0, -1).forEach((point, index) => {
+    const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    gradient.setAttribute("id", `timeline-segment-${index}`);
+    gradient.setAttribute("gradientUnits", "userSpaceOnUse");
+    gradient.setAttribute("x1", String(point.x));
+    gradient.setAttribute("x2", String(points[index + 1].x));
+    gradient.setAttribute("y1", String(point.y));
+    gradient.setAttribute("y2", String(points[index + 1].y));
+    const start = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    start.setAttribute("offset", "0%");
+    start.setAttribute("stop-color", "rgba(255,255,255,.38)");
+    const end = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    end.setAttribute("offset", "100%");
+    end.setAttribute("stop-color", "var(--hud-color)");
+    gradient.append(start, end);
+    defs.appendChild(gradient);
+  });
+  timelineSvg.appendChild(defs);
+  const baseline = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  baseline.setAttribute("x1", "0");
+  baseline.setAttribute("y1", "80");
+  baseline.setAttribute("x2", "100");
+  baseline.setAttribute("y2", "80");
+  baseline.setAttribute("stroke", "rgba(255,255,255,.16)");
+  baseline.setAttribute("stroke-width", ".5");
+  timelineSvg.appendChild(baseline);
+  const area = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  area.setAttribute("points", `0,86 ${points.map((point) => `${point.x},${point.y}`).join(" ")} 100,86`);
+  area.setAttribute("fill", "url(#spark-fill)");
+  area.setAttribute("opacity", ".85");
+  timelineSvg.appendChild(area);
+  points.slice(0, -1).forEach((point, index) => {
+    const next = points[index + 1];
+    const segment = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    segment.setAttribute("x1", String(point.x));
+    segment.setAttribute("y1", String(point.y));
+    segment.setAttribute("x2", String(next.x));
+    segment.setAttribute("y2", String(next.y));
+    segment.setAttribute("stroke", `url(#timeline-segment-${index})`);
+    segment.setAttribute("class", "timeline-segment");
+    segment.dataset.index = String(index);
+    timelineSvg.appendChild(segment);
+  });
+  personaTimeline.forEach((cue, index) => {
+    const tick = document.createElement("button");
+    tick.type = "button";
+    tick.className = "timeline-tick";
+    tick.style.left = `${(index / total) * 100}%`;
+    tick.setAttribute("aria-label", `Step ${index + 1}`);
+    tick.addEventListener("click", () => jumpToCue(index));
+    const bar = document.createElement("span");
+    tick.appendChild(bar);
+    timelineTicks.appendChild(tick);
+  });
+}
+function updateTimelineState(index) {
+  [...timelineTicks.children].forEach((tick, tickIndex) => {
+    tick.classList.toggle("is-current", tickIndex === index);
+    tick.classList.toggle("is-past", tickIndex < index);
+  });
+  [...timelineSvg.querySelectorAll(".timeline-segment")].forEach((segment) => {
+    const segmentIndex = Number(segment.dataset.index || 0);
+    segment.classList.toggle("is-current", segmentIndex === Math.max(0, index - 1));
+    segment.classList.toggle("is-future", segmentIndex >= index);
+  });
+}
+function placeCursorOverlay(cue, point, pulse = false) {
+  if (!cue || !point) {
+    cursorGroup.classList.remove("is-visible");
+    recordedCursorScrub.classList.remove("is-visible");
+    return;
+  }
+  const rect = frame.getBoundingClientRect();
+  point = {
+    x: clamp(point.x, 10, Math.max(10, rect.width - 10)),
+    y: clamp(point.y, 10, Math.max(10, rect.height - 10)),
+  };
+  cursorGroup.style.left = `${point.x}px`;
+  cursorGroup.style.top = `${point.y}px`;
+  cursorGroup.classList.add("is-visible");
+  recordedCursorScrub.classList.toggle("is-visible", Boolean(cue.recordedCursorPoint));
+  cursorTooltip.textContent = cue.thinkAloud || cue.thought || "";
+  cursorTooltip.classList.toggle("is-hidden", !rightCollapsed);
+  cursorTooltip.classList.toggle("is-left", point.x > rect.width - 460);
+  cursorTooltip.classList.toggle("is-up", point.y > rect.height - 160);
+  const color = cue.actorEmotionColor || cue.color || "#ff9e6d";
+  recordTrailPoint(point, color);
+  drawTrail();
+  if (pulse || String(cue.actionType || "").includes("click")) {
+    clickRipple.classList.remove("is-on");
+    void clickRipple.offsetWidth;
+    clickRipple.classList.add("is-on");
+  }
+}
+function renderCue(index, pulse = false) {
+  if (!personaTimeline.length) return;
+  activeIndex = clamp(index, 0, personaTimeline.length - 1);
+  const cue = personaTimeline[activeIndex];
+  setSyncColor(cue);
+  const color = cueEmotionColor(cue);
+  const emotionLabel = cueEmotionLabel(cue);
+  emotionChip.textContent = emotionLabel;
+  if (cue.avatar) topbarAvatar.src = cue.avatar;
+  topbarAvatar.alt = "Ari Morgan";
+  stepCounter.textContent = `STEP ${String(activeIndex + 1).padStart(2, "0")} / ${String(personaTimeline.length).padStart(2, "0")}`;
+  const confidence = clamp(Number(cue.confidence || 0.65), 0, 1);
+  const dash = ringCircumference * confidence;
+  confidenceRingFg.setAttribute("stroke-dasharray", `${dash} ${ringCircumference - dash}`);
+  confidenceRingFg.setAttribute("stroke", color);
+  confidenceEmotionIcon.textContent = emotionFace(cue);
+  confidenceEmotionIcon.setAttribute("aria-label", emotionLabel);
+  confidenceEmotionPill.textContent = emotionLabel;
+  confidenceNumber.textContent = confidence.toFixed(2);
+  currentTimeLabel.textContent = formatClock(cue.sourceTime || browserVideo.currentTime || 0);
+  durationLabel.textContent = formatClock(replayEndTime || browserVideo.duration || 0);
+  renderLyrics(activeIndex);
+  updateTimelineState(activeIndex);
+  placeCursorOverlay(cue, pointForTime(browserVideo.currentTime || cue.sourceTime || replayStartTime), pulse);
+}
+function syncOverlayToVideo() {
+  const time = browserVideo.currentTime || replayStartTime;
+  const nextIndex = cueIndexForTime(time);
+  const cueChanged = nextIndex !== activeIndex;
+  if (cueChanged) renderCue(nextIndex, true);
+  const cue = personaTimeline[activeIndex] || personaTimeline[0];
+  currentTimeLabel.textContent = formatClock(time);
+  if (cue) placeCursorOverlay(cue, pointForTime(time), false);
+  if (playing && replayEndTime && time >= replayEndTime) {
+    playing = false;
+    browserVideo.pause();
+    frame.classList.remove("is-playing");
+    playButton.textContent = "▶";
+    return;
+  }
+  if (playing) rafId = requestAnimationFrame(syncOverlayToVideo);
+}
+function jumpToCue(index) {
+  if (!personaTimeline.length) return;
+  const cue = personaTimeline[clamp(index, 0, personaTimeline.length - 1)];
+  browserVideo.currentTime = Number(cue.sourceTime || replayStartTime || 0);
+  trailSamples = [];
+  renderCue(index, true);
+}
+async function togglePlayback() {
+  playing = !playing;
+  playButton.textContent = playing ? "⏸" : "▶";
+  frame.classList.toggle("is-playing", playing);
+  if (playing) {
+    if (!browserVideo.currentTime || browserVideo.currentTime < replayStartTime || browserVideo.ended || (replayEndTime && browserVideo.currentTime >= replayEndTime)) {
+      browserVideo.currentTime = replayStartTime;
+      trailSamples = [];
+    }
+    browserVideo.playbackRate = replayPlaybackRate;
+    await browserVideo.play().catch(() => {});
+    rafId = requestAnimationFrame(syncOverlayToVideo);
+  } else {
+    browserVideo.pause();
+    if (rafId) cancelAnimationFrame(rafId);
+  }
+}
+playButton.addEventListener("click", togglePlayback);
+prevButton.addEventListener("click", () => jumpToCue(activeIndex - 1));
+nextButton.addEventListener("click", () => jumpToCue(activeIndex + 1));
+darkThemeButton.addEventListener("click", () => toggleTheme("dark"));
+lightThemeButton.addEventListener("click", () => toggleTheme("light"));
+confidenceToggle.addEventListener("click", (event) => {
+  if (consumePanelDragClick(confidencePanel)) {
+    event.preventDefault();
+    return;
+  }
+  setConfidencePanelCollapsed(!leftCollapsed);
+});
+thinkToggle.addEventListener("click", (event) => {
+  if (consumePanelDragClick(thinkPanel)) {
+    event.preventDefault();
+    return;
+  }
+  setThinkPanelCollapsed(!rightCollapsed);
+});
+makePanelDraggable(confidencePanel, confidenceToggle);
+makePanelDraggable(thinkPanel, thinkToggle);
+browserVideo.addEventListener("ended", () => {
+  playing = false;
+  frame.classList.remove("is-playing");
+  playButton.textContent = "▶";
+  if (rafId) cancelAnimationFrame(rafId);
+});
+browserVideo.addEventListener("loadedmetadata", () => {
+  browserVideo.currentTime = replayStartTime;
+  browserVideo.playbackRate = replayPlaybackRate;
+  durationLabel.textContent = formatClock(replayEndTime || browserVideo.duration || 0);
+  renderCue(0, false);
+});
+window.addEventListener("resize", () => renderCue(activeIndex, false));
+window.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") jumpToCue(activeIndex - 1);
+  if (event.key === "ArrowRight") jumpToCue(activeIndex + 1);
+  if (event.key === " ") {
+    event.preventDefault();
+    togglePlayback();
+  }
+});
+setTheme("light");
+setConfidencePanelCollapsed(false);
+setThinkPanelCollapsed(false);
+renderTimeline();
+renderCue(0, false);
+</script>
+</body>
+</html>
