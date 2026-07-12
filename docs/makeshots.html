@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Menso synthetic usability report for Makeshots' first screenshot-set workflow and credit boundary.">
+  <title>Makeshots Activation Report | Menso</title>
+  <link rel="stylesheet" href="assets/founder-report.css">
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to report</a>
+  <header class="shell topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>MENSO</div>
+    <div class="report-label">Synthetic usability report · 11 July 2026</div>
+  </header>
+
+  <main id="report" class="shell">
+    <section class="hero">
+      <div class="eyebrow">Makeshots · First screenshot-set workflow</div>
+      <h1>The builder works. The first proof arrives after the credit decision.</h1>
+      <p class="lede">A synthetic product builder configured a screenshot set from login through Review in 13 steps. The flow stayed clear, but the persona stopped at <strong>try</strong> when the zero-credit account could not complete a first generation.</p>
+      <div class="meta">
+        <span class="pill">Persona: Jordan Alvarez</span>
+        <span class="pill">Mainstream product builder</span>
+        <span class="pill">Run: 40da299f</span>
+        <span class="pill">Product version: 2026-07-11</span>
+      </div>
+    </section>
+
+    <div class="verdict-strip" aria-label="Executive verdict">
+      <span class="verdict">Decision: Try</span>
+      <div class="verdict-copy">The configuration journey demonstrated value and reached Review; the persona withheld adoption because the first complete output required a credit before the product's aha moment.</div>
+    </div>
+
+    <section class="metrics" aria-label="Test summary">
+      <div class="metric"><div class="metric-value">13</div><div class="metric-label">Steps to Review</div></div>
+      <div class="metric"><div class="metric-value">1</div><div class="metric-label">Credit boundary</div></div>
+      <div class="metric"><div class="metric-value">0</div><div class="metric-label">Credits available</div></div>
+      <div class="metric"><div class="metric-value">27s</div><div class="metric-label">Evidence replay</div></div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-frame">
+      <div class="section-heading">
+        <div class="section-index">01 · Test frame</div>
+        <div><h2 id="makeshots-frame">Create one app-store screenshot set</h2><p class="section-intro">Jordan's job was to configure a single set using an uploaded screenshot, reach Review, and stop before any paid generation.</p></div>
+      </div>
+      <div class="frame-grid">
+        <div class="frame-card"><strong>Real job</strong><span>Turn one raw app screenshot into a configured store screenshot set.</span></div>
+        <div class="frame-card"><strong>Observed path</strong><span>Login → app → upload → quantity → style → size → Review.</span></div>
+        <div class="frame-card"><strong>Account state</strong><span>Provided free account with a zero-credit balance.</span></div>
+        <div class="frame-card"><strong>Safety boundary</strong><span>No generation, upgrade, payment, import, or deletion.</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-evidence">
+      <div class="section-heading">
+        <div class="section-index">02 · Evidence</div>
+        <div><h2 id="makeshots-evidence">A clear configuration flow ending at a hard boundary</h2><p class="section-intro">The replay confirms the upload and configuration steps. The Review screenshot captures the moment the persona connected “1 credit” with a zero-credit balance.</p></div>
+      </div>
+      <div class="media-grid">
+        <figure class="media-card">
+          <video controls playsinline preload="metadata" poster="assets/founder-reports/makeshots/credit-wall.png">
+            <source src="assets/founder-reports/makeshots/replay.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <figcaption class="media-caption">27-second evidence replay from the real browser workflow.</figcaption>
+        </figure>
+        <div class="image-stack">
+          <figure class="media-card"><img src="assets/founder-reports/makeshots/upload-works.png" alt="Uploaded screenshot visible inside the Makeshots configuration workflow"><figcaption class="media-caption">After upload, the screenshot thumbnail remained visible and the remaining choices were understandable.</figcaption></figure>
+          <figure class="media-card"><img src="assets/founder-reports/makeshots/credit-wall.png" alt="Makeshots Review step showing one credit required and a zero-credit account"><figcaption class="media-caption">The first complete generation sat behind a one-credit requirement while the account balance was zero.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-findings">
+      <div class="section-heading">
+        <div class="section-index">03 · Journey findings</div>
+        <div><h2 id="makeshots-findings">The main workflow is not the problem</h2><p class="section-intro">The opportunity is to protect first-use continuity at the upload requirement and the credit boundary.</p></div>
+      </div>
+      <div class="findings">
+        <article class="finding">
+          <span class="priority positive">Strength</span>
+          <h3>The configured path stayed understandable</h3>
+          <p><b>Observed:</b> Jordan selected an app, uploaded the supplied image, chose quantity, style, and size, then reached Review without navigation recovery.</p>
+          <p><b>Keep:</b> The guided sequence, visible upload thumbnail, and focused Review step.</p>
+        </article>
+        <article class="finding">
+          <span class="priority high">P1 · First value</span>
+          <h3>Payment pressure arrives before proof</h3>
+          <p><b>Observed:</b> The account had zero credits and Review stated that the selected size used one credit. Jordan stopped rather than crossing an unavailable paid boundary.</p>
+          <div class="quote">“That's my stopping point — I'm not clicking Review copy since that would burn a credit I don't have.”</div>
+          <p><b>Recommendation:</b> Let a new user see one complete result, or a faithful watermarked preview, before asking for a credit decision.</p>
+        </article>
+        <article class="finding">
+          <span class="priority medium">P2 · Guardrail</span>
+          <h3>Skipping upload can silently discard setup</h3>
+          <p><b>Observed:</b> In an earlier same-day pass, configuration did not persist when the screenshot step was skipped. The successful pass worked once the required image was uploaded.</p>
+          <p><b>Implication:</b> A first-time user can interpret the reset as product failure instead of a missing prerequisite.</p>
+          <p><b>Recommendation:</b> Block continuation with a specific upload-required message and retain already-entered configuration.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-priority">
+      <div class="section-heading">
+        <div class="section-index">04 · What to do first</div>
+        <div><h2 id="makeshots-priority">Move the aha moment ahead of the commitment</h2></div>
+      </div>
+      <div class="split">
+        <div class="panel"><h3>Preserve</h3><ul class="clean-list"><li>Linear guided setup.</li><li>Immediate upload confirmation.</li><li>Clear quantity, style, and size choices.</li><li>A focused final review screen.</li></ul></div>
+        <div class="panel"><h3>Priority order</h3><ol class="priority-list"><li>Provide one free or watermarked first output.</li><li>Make screenshot upload visibly required before advancing.</li><li>Preserve configuration when a prerequisite is missing.</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-limits">
+      <div class="section-heading">
+        <div class="section-index">05 · Limits</div>
+        <div><h2 id="makeshots-limits">The generation itself was intentionally not tested</h2></div>
+      </div>
+      <div class="note"><strong>Single synthetic run with supporting same-day evidence.</strong> The primary session used a free account with zero credits and stopped at Review by design. Output quality, generation time, export, paid conversion, and post-payment recovery were not tested. The automated journey summary labeled the flow “Adopt,” while the persona's direct final statement was “try”; this founder-facing report follows the direct decision and visible evidence.</div>
+    </section>
+
+    <section class="section" aria-labelledby="makeshots-method">
+      <div class="section-heading">
+        <div class="section-index">06 · Method</div>
+        <div><h2 id="makeshots-method">Evidence before opinion</h2></div>
+      </div>
+      <div class="method">
+        <div class="method-step"><b>Run a real task</b><span>A synthetic persona operates the live web product under explicit constraints.</span></div>
+        <div class="method-step"><b>Capture behavior</b><span>Clicks, visible states, screenshots, replay, and think-aloud evidence are preserved.</span></div>
+        <div class="method-step"><b>Prioritize the journey</b><span>Findings separate product behavior, business rules, and test boundaries.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><div class="footer-row"><span>Generated by Menso · AI Synthetic User Testing</span><span>Report ID: makeshots-40da299f · 2026-07-11</span></div></footer>
+</body>
+</html>

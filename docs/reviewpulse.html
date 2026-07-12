@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Menso synthetic usability report for ReviewPulse's manual add-customer workflow.">
+  <title>ReviewPulse Add-Customer Report | Menso</title>
+  <link rel="stylesheet" href="assets/founder-report.css">
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to report</a>
+  <header class="shell topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>MENSO</div>
+    <div class="report-label">Synthetic usability report · 11 July 2026</div>
+  </header>
+
+  <main id="report" class="shell">
+    <section class="hero">
+      <div class="eyebrow">ReviewPulse · Add first customer</div>
+      <h1>The core action was fast. Confirmation was too quiet.</h1>
+      <p class="lede">A synthetic small-business owner manually added one customer in eight steps and finished with an <strong>adopt</strong> decision. The flow was easy to discover; the main uncertainty appeared after submit, when the list updated without a clear success signal.</p>
+      <div class="meta">
+        <span class="pill">Persona: Jordan Alvarez</span>
+        <span class="pill">Small-business owner · ESTJ</span>
+        <span class="pill">Run: 5c842162</span>
+        <span class="pill">Product version: 2026-07-11</span>
+      </div>
+    </section>
+
+    <div class="verdict-strip" aria-label="Executive verdict">
+      <span class="verdict">Decision: Adopt</span>
+      <div class="verdict-copy">ReviewPulse made the first customer easy to add. Stronger post-submit feedback and progressive disclosure would make the same action feel safer at higher volume.</div>
+    </div>
+
+    <section class="metrics" aria-label="Test summary">
+      <div class="metric"><div class="metric-value">8</div><div class="metric-label">Steps completed</div></div>
+      <div class="metric"><div class="metric-value">1</div><div class="metric-label">Customer added</div></div>
+      <div class="metric"><div class="metric-value">0</div><div class="metric-label">Requests sent</div></div>
+      <div class="metric"><div class="metric-value">2</div><div class="metric-label">Journey frictions</div></div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-frame">
+      <div class="section-heading">
+        <div class="section-index">01 · Test frame</div>
+        <div><h2 id="reviewpulse-frame">Add exactly one customer by hand</h2><p class="section-intro">The job was to find Customers, add a single person without CSV import, verify that the record appeared, and stop without sending a review request.</p></div>
+      </div>
+      <div class="frame-grid">
+        <div class="frame-card"><strong>Real job</strong><span>Prepare the first customer record for a future Google review request.</span></div>
+        <div class="frame-card"><strong>Observed path</strong><span>Dismiss welcome → Customers → Add customer → required fields → submit → list.</span></div>
+        <div class="frame-card"><strong>Account state</strong><span>Provided trial account with no existing customers.</span></div>
+        <div class="frame-card"><strong>Safety boundary</strong><span>No CSV import, review request, billing action, upgrade, or deletion.</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-evidence">
+      <div class="section-heading">
+        <div class="section-index">02 · Evidence</div>
+        <div><h2 id="reviewpulse-evidence">A clear entry point and a subtle ending</h2><p class="section-intro">The evidence images have sensitive test-account fields masked. No social replay is included because a test-harness substitution affected the submitted email value.</p></div>
+      </div>
+      <div class="media-grid">
+        <figure class="media-card"><img src="assets/founder-reports/reviewpulse/add-customer-form.png" alt="ReviewPulse add-customer form with sensitive test data masked"><figcaption class="media-caption">The form clearly communicated the minimum rule: name plus email or phone. Optional details remained visible in the same surface.</figcaption></figure>
+        <div class="image-stack">
+          <figure class="media-card"><img src="assets/founder-reports/reviewpulse/customer-added.png" alt="ReviewPulse customer list after a customer was added, with sensitive test data masked"><figcaption class="media-caption">The customer appeared in Pending state, but no toast or banner confirmed the submit action.</figcaption></figure>
+          <figure class="media-card"><img src="assets/founder-reports/reviewpulse/journey-conclusion.png" alt="Menso journey conclusion for the ReviewPulse add-customer test"><figcaption class="media-caption">The direct persona decision was Adopt; no review request was sent.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-findings">
+      <div class="section-heading">
+        <div class="section-index">03 · Journey findings</div>
+        <div><h2 id="reviewpulse-findings">The happy path is already lightweight</h2><p class="section-intro">The improvements are about certainty and focus, not restructuring the core workflow.</p></div>
+      </div>
+      <div class="findings">
+        <article class="finding">
+          <span class="priority positive">Strength</span>
+          <h3>The first customer was easy to discover and add</h3>
+          <p><b>Observed:</b> The empty Customers page exposed a clear Add customer action. The required-field rule was understandable, and the record appeared after submit.</p>
+          <div class="quote">“The add flow was quick, no CSV needed, just name and email. Decision: adopt.”</div>
+          <p><b>Keep:</b> The visible primary action and low minimum data requirement.</p>
+        </article>
+        <article class="finding">
+          <span class="priority high">P1 · Certainty</span>
+          <h3>Submit success relied on noticing the list change</h3>
+          <p><b>Observed:</b> The interface returned to the list and showed the new row without an explicit success message.</p>
+          <p><b>Implication:</b> When adding multiple customers, a business owner may hesitate or submit twice because the system did not clearly acknowledge the action.</p>
+          <p><b>Recommendation:</b> Show a brief success message naming the added customer and keep the new row visually highlighted.</p>
+        </article>
+        <article class="finding">
+          <span class="priority medium">P2 · Focus</span>
+          <h3>Optional details compete with a 30-second task</h3>
+          <p><b>Observed:</b> Service type, date, source, and notes were all present even though the first customer required only a name and one contact method.</p>
+          <p><b>Implication:</b> The form looks heavier than the happy path actually is.</p>
+          <p><b>Recommendation:</b> Keep required fields visible and place the rest under a “More details” disclosure.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-priority">
+      <div class="section-heading">
+        <div class="section-index">04 · What to do first</div>
+        <div><h2 id="reviewpulse-priority">Make completion unmistakable</h2></div>
+      </div>
+      <div class="split">
+        <div class="panel"><h3>Preserve</h3><ul class="clean-list"><li>Prominent Add customer action.</li><li>Simple required-field rule.</li><li>Immediate return to the customer list.</li><li>Separate control for sending a request.</li></ul></div>
+        <div class="panel"><h3>Priority order</h3><ol class="priority-list"><li>Add explicit submit success feedback.</li><li>Highlight the newly added row long enough to verify it.</li><li>Collapse optional customer metadata by default.</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-limits">
+      <div class="section-heading">
+        <div class="section-index">05 · Limits</div>
+        <div><h2 id="reviewpulse-limits">A harness issue narrows the valid claims</h2></div>
+      </div>
+      <div class="note"><strong>Single synthetic run with sanitized evidence.</strong> The test harness replaced the persona's fictional email with the test-account email before submission. The screenshots in this report mask that value, and this report makes no claim about contact-value correctness. The product-side findings remain supported: the workflow completed, the new row appeared, and the persona reacted to the visible interface. No review request was sent. A clean rerun is required before producing a social replay.</div>
+    </section>
+
+    <section class="section" aria-labelledby="reviewpulse-method">
+      <div class="section-heading">
+        <div class="section-index">06 · Method</div>
+        <div><h2 id="reviewpulse-method">Evidence before opinion</h2></div>
+      </div>
+      <div class="method">
+        <div class="method-step"><b>Run a real task</b><span>A synthetic persona operates the live web product under explicit constraints.</span></div>
+        <div class="method-step"><b>Separate failure layers</b><span>Product behavior is kept distinct from harness, account, and provider issues.</span></div>
+        <div class="method-step"><b>Publish only supported claims</b><span>Contaminated evidence is masked, disclosed, or excluded rather than rewritten as product truth.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><div class="footer-row"><span>Generated by Menso · AI Synthetic User Testing</span><span>Report ID: reviewpulse-5c842162 · 2026-07-11</span></div></footer>
+</body>
+</html>

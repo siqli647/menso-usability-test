@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Menso synthetic usability report for Shipyard HQ's first-time onboarding and activation path.">
+  <title>Shipyard HQ Onboarding Report | Menso</title>
+  <link rel="stylesheet" href="assets/founder-report.css">
+</head>
+<body>
+  <a class="skip-link" href="#report">Skip to report</a>
+  <header class="shell topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>MENSO</div>
+    <div class="report-label">Synthetic usability report · 11 July 2026</div>
+  </header>
+
+  <main id="report" class="shell">
+    <section class="hero">
+      <div class="eyebrow">Shipyard HQ · First-time onboarding</div>
+      <h1>The setup was smooth. The empty dashboard delayed trust.</h1>
+      <p class="lede">A synthetic first-time builder completed Shipyard HQ's onboarding in six steps without friction, then stopped at <strong>try</strong> because the product had not yet helped them create a first launch or see meaningful data.</p>
+      <div class="meta">
+        <span class="pill">Persona: Jordan Alvarez</span>
+        <span class="pill">Mainstream builder · ESTJ</span>
+        <span class="pill">Run: f6e0a4fc</span>
+        <span class="pill">Product version: 2026-07-11</span>
+      </div>
+    </section>
+
+    <div class="verdict-strip" aria-label="Executive verdict">
+      <span class="verdict">Decision: Try</span>
+      <div class="verdict-copy">Onboarding earned confidence; activation still depends on getting the new member to a first launch and a dashboard with something real to evaluate.</div>
+    </div>
+
+    <section class="metrics" aria-label="Test summary">
+      <div class="metric"><div class="metric-value">6</div><div class="metric-label">Steps completed</div></div>
+      <div class="metric"><div class="metric-value">0</div><div class="metric-label">Blocking frictions</div></div>
+      <div class="metric"><div class="metric-value">1</div><div class="metric-label">Activation gap</div></div>
+      <div class="metric"><div class="metric-value">15s</div><div class="metric-label">Evidence replay</div></div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-frame">
+      <div class="section-heading">
+        <div class="section-index">01 · Test frame</div>
+        <div><h2 id="shipyard-frame">A new member finishing setup</h2><p class="section-intro">The job was deliberately narrow: finish the visible onboarding, enter the member area, and decide whether the first experience created enough confidence to try, adopt, or reject the product.</p></div>
+      </div>
+      <div class="frame-grid">
+        <div class="frame-card"><strong>Real job</strong><span>Finish first-time setup and understand what to do next.</span></div>
+        <div class="frame-card"><strong>Observed path</strong><span>Choose purpose → choose referral source → Finish Setup → dashboard.</span></div>
+        <div class="frame-card"><strong>Account state</strong><span>Pre-authorized test account; registration and login were out of scope.</span></div>
+        <div class="frame-card"><strong>Safety boundary</strong><span>No external connections, billing actions, paid plans, or deletion.</span></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-evidence">
+      <div class="section-heading">
+        <div class="section-index">02 · Evidence</div>
+        <div><h2 id="shipyard-evidence">The handoff from setup to value</h2><p class="section-intro">The replay shows a clean onboarding. The dashboard screenshot shows the exact moment confidence stopped growing: every performance value was still zero.</p></div>
+      </div>
+      <div class="media-grid">
+        <figure class="media-card">
+          <video controls playsinline preload="metadata" poster="assets/founder-reports/shipyardhq/dashboard-landed.png">
+            <source src="assets/founder-reports/shipyardhq/replay.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <figcaption class="media-caption">15.4-second evidence replay. The sequence is preserved; one idle dashboard segment was shortened.</figcaption>
+        </figure>
+        <div class="image-stack">
+          <figure class="media-card"><img src="assets/founder-reports/shipyardhq/onboarding-questions.png" alt="Shipyard HQ onboarding questions completed by the test persona"><figcaption class="media-caption">The onboarding questions were easy to answer and did not block progress.</figcaption></figure>
+          <figure class="media-card"><img src="assets/founder-reports/shipyardhq/dashboard-landed.png" alt="Shipyard HQ dashboard after onboarding with zero performance values"><figcaption class="media-caption">The member dashboard loaded successfully, but the all-zero state gave the persona no product proof yet.</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-findings">
+      <div class="section-heading">
+        <div class="section-index">03 · Journey findings</div>
+        <div><h2 id="shipyard-findings">Protect the smooth setup, then accelerate the first launch</h2><p class="section-intro">The strongest opportunity is after onboarding, not inside it.</p></div>
+      </div>
+      <div class="findings">
+        <article class="finding">
+          <span class="priority positive">Strength</span>
+          <h3>Six steps with no navigation friction</h3>
+          <p><b>Observed:</b> Jordan answered the visible questions, unlocked Finish Setup, and landed in the member dashboard without hesitation or recovery.</p>
+          <div class="quote">“Setup finished cleanly without any snags, which is a good sign.”</div>
+          <p><b>Keep:</b> The short setup and clear final action.</p>
+        </article>
+        <article class="finding">
+          <span class="priority medium">P2 · Personalization</span>
+          <h3>The questions collect little activation signal</h3>
+          <p><b>Observed:</b> The purpose and referral questions were easy, but felt generic and did not visibly shape the next experience.</p>
+          <p><b>Implication:</b> The flow completes, yet the answers do not appear to make the empty state more relevant.</p>
+          <p><b>Recommendation:</b> Use the selected purpose to tailor the first dashboard action.</p>
+        </article>
+        <article class="finding">
+          <span class="priority high">P1 · Activation</span>
+          <h3>All-zero data kept the decision at “try”</h3>
+          <p><b>Observed:</b> Jordan reached the dashboard, saw no launch or performance proof, and wanted to create something before trusting the numbers.</p>
+          <div class="quote">“Everything's at zero though, so I'd want to actually launch something before fully trusting the numbers. Decision: try.”</div>
+          <p><b>Recommendation:</b> Make “Create your first launch” the dominant post-setup action, supported by a short explanation or sample state.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-priority">
+      <div class="section-heading">
+        <div class="section-index">04 · What to do first</div>
+        <div><h2 id="shipyard-priority">One activation move before broader onboarding changes</h2></div>
+      </div>
+      <div class="split">
+        <div class="panel"><h3>Preserve</h3><ul class="clean-list"><li>Short, low-effort onboarding.</li><li>Clear Finish Setup control.</li><li>Direct landing in the member area.</li></ul></div>
+        <div class="panel"><h3>Priority order</h3><ol class="priority-list"><li>Turn the dashboard empty state into a first-launch path.</li><li>Connect onboarding intent to the recommended first action.</li><li>Test whether sample data helps users understand future analytics without creating false proof.</li></ol></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-limits">
+      <div class="section-heading">
+        <div class="section-index">05 · Limits</div>
+        <div><h2 id="shipyard-limits">What this report does—and does not—show</h2></div>
+      </div>
+      <div class="note"><strong>Single synthetic run.</strong> This is directional usability evidence, not a population result. The session began from an authorized account state and did not test registration, login, product submission, billing, analytics accuracy, or a completed launch. The dashboard displayed the test account holder name “Siqi”; it is not the persona name.</div>
+    </section>
+
+    <section class="section" aria-labelledby="shipyard-method">
+      <div class="section-heading">
+        <div class="section-index">06 · Method</div>
+        <div><h2 id="shipyard-method">Evidence before opinion</h2></div>
+      </div>
+      <div class="method">
+        <div class="method-step"><b>Run a real task</b><span>A synthetic persona operates the live web product under explicit constraints.</span></div>
+        <div class="method-step"><b>Capture behavior</b><span>Clicks, visible states, screenshots, replay, and think-aloud evidence are preserved.</span></div>
+        <div class="method-step"><b>Prioritize the journey</b><span>Findings separate what worked, what reduced confidence, and what to fix first.</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell"><div class="footer-row"><span>Generated by Menso · AI Synthetic User Testing</span><span>Report ID: shipyardhq-f6e0a4fc · 2026-07-11</span></div></footer>
+</body>
+</html>
