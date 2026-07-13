@@ -40,6 +40,29 @@ const products = [
     title: 'First-time builder',
     mbti: 'ESTJ',
     description: 'Jordan is a mainstream first-time builder evaluating whether Shipyard HQ can get a newly onboarded member to a first launch and a dashboard they can trust.',
+    personas: [
+      {
+        name: 'Jordan Alvarez',
+        role: 'First-time builder',
+        segment: 'Mainstream',
+        status: 'Tested',
+        description: 'Finishes onboarding and checks whether the first dashboard makes the next launch action clear.',
+      },
+      {
+        name: 'Amara Okafor',
+        role: 'Repeat indie founder',
+        segment: 'Adjacent',
+        status: 'Planned',
+        description: 'Has launched before and needs a repeatable path from product submission to ranking, proof, and traction analytics.',
+      },
+      {
+        name: 'Kenji Sato',
+        role: 'Developer-tool maker',
+        segment: 'High-potential',
+        status: 'Planned',
+        description: 'Launches an API or developer tool and judges whether focused discovery produces attributable builder interest.',
+      },
+    ],
     details: [
       ['Segment', 'Mainstream first-time builder'],
       ['Context', 'A new member reaches the product dashboard after onboarding.'],
@@ -83,6 +106,29 @@ const products = [
     title: 'Product builder',
     mbti: 'ESTJ',
     description: 'Jordan is a pragmatic product builder checking whether one screenshot can become a usable product visual without losing work at the generation boundary.',
+    personas: [
+      {
+        name: 'Jordan Alvarez',
+        role: 'Product builder',
+        segment: 'Mainstream',
+        status: 'Tested',
+        description: 'Turns one raw app screen into a configured store screenshot set and evaluates the first-generation boundary.',
+      },
+      {
+        name: 'Sofia Marin',
+        role: 'Solo app founder',
+        segment: 'Adjacent',
+        status: 'Planned',
+        description: 'Needs designer-quality App Store and Play Store screenshots without hiring a designer or opening a full design tool.',
+      },
+      {
+        name: 'Lukas Weber',
+        role: 'Localization growth lead',
+        segment: 'High-potential',
+        status: 'Planned',
+        description: 'Ships multiple apps and markets, checking size coverage, language variants, previews, and export confidence at scale.',
+      },
+    ],
     details: [
       ['Segment', 'Mainstream product builder'],
       ['Context', 'A first-time evaluator prepares one product screenshot for a generated visual.'],
@@ -125,6 +171,29 @@ const products = [
     title: 'Small-business owner',
     mbti: 'ESTJ',
     description: 'Jordan is a small-business owner evaluating whether a manual customer entry can be completed quickly and understood with confidence.',
+    personas: [
+      {
+        name: 'Jordan Alvarez',
+        role: 'Small-business owner',
+        segment: 'Mainstream',
+        status: 'Tested',
+        description: 'Adds the first customer manually and checks whether the completion state is clear enough to continue.',
+      },
+      {
+        name: 'Aisha Thompson',
+        role: 'Service operations manager',
+        segment: 'Adjacent',
+        status: 'Planned',
+        description: 'Moves completed-job customers into a reliable SMS and email follow-up workflow without adding manual admin work.',
+      },
+      {
+        name: 'Victor Chen',
+        role: 'Multi-location reputation lead',
+        segment: 'High-potential',
+        status: 'Planned',
+        description: 'Needs location-level automation, analytics, team access, and CRM or API control across a growing operation.',
+      },
+    ],
     details: [
       ['Segment', 'Mainstream small-business owner'],
       ['Context', 'A first-time evaluator adds one customer through the manual customer workflow.'],
@@ -168,7 +237,7 @@ const nav = (product, active) => {
     : `<a href="${html(`${product.slug}_journey.html#evidence-limit`)}" title="No clean replay was captured for this run">Replay unavailable</a>`;
   return `<div class="header">
     <div class="logo" aria-label="Menso"><div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div><span class="logo-text">Menso</span></div>
-    <nav class="page-nav"><a href="index.html">All Personas</a><a href="${product.slug}.html"${active === 'cover' ? ' class="active"' : ''}>Cover</a><a href="${product.slug}_steps.html"${active === 'steps' ? ' class="active"' : ''}>Step Details</a><a href="${product.slug}_journey.html"${active === 'journey' ? ' class="active"' : ''}>Journey &amp; Conclusion</a>${replay}</nav>
+    <nav class="page-nav"><a href="${product.slug}_personas.html">All Personas</a><a href="${product.slug}.html"${active === 'cover' ? ' class="active"' : ''}>Cover</a><a href="${product.slug}_steps.html"${active === 'steps' ? ' class="active"' : ''}>Step Details</a><a href="${product.slug}_journey.html"${active === 'journey' ? ' class="active"' : ''}>Journey &amp; Conclusion</a>${replay}</nav>
     <span class="header-label">Synthetic Usability Report</span>
   </div>`;
 };
@@ -180,6 +249,23 @@ const pill = (emotion) => {
   const color = emotions[emotion];
   return `<span class="emotion-pill" style="background:${color.pill};color:${color.text};border:1px solid ${color.fill}">${html(emotion)}</span>`;
 };
+
+const personaIndexStyle = `
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fafafa;color:#1e1e1e;line-height:1.6;min-height:100vh}.page{max-width:1080px;margin:0 auto;padding:42px 24px 68px}.brand{display:flex;align-items:center;gap:9px;margin-bottom:30px}.brand img{width:36px;height:36px;object-fit:contain}.brand span{font-family:'Raleway',sans-serif;font-size:20px;font-weight:700}.back{display:inline-flex;margin-bottom:18px;color:#2145f3;text-decoration:none;font-size:13px;font-weight:600}.hero{background:#fff;border:1px solid #eceef5;border-radius:24px;padding:38px;margin-bottom:20px}.eyebrow{display:inline-flex;padding:6px 12px;border-radius:999px;background:#eef2ff;color:#2145f3;font-size:12px;font-weight:700;margin-bottom:14px}h1{font-family:'Raleway',sans-serif;font-size:42px;line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}.intro{max-width:760px;color:#666;font-size:15px}.evidence-note{margin-top:18px;padding:13px 15px;border-radius:12px;background:#fff8e8;border:1px solid #f5d78d;color:#72500a;font-size:13px}.persona-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.persona-card{display:flex;flex-direction:column;min-height:276px;padding:22px;background:#fff;border:1px solid #e7eaf2;border-radius:18px;color:inherit;text-decoration:none}.persona-card.tested{border-color:#b8c5ff;box-shadow:0 10px 30px rgba(33,69,243,.08)}.persona-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}.segment{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#727987}.status{padding:5px 9px;border-radius:999px;font-size:11px;font-weight:700}.status.tested{background:#eafbf3;color:#137a49}.status.planned{background:#f2f3f6;color:#68707d}.persona-name{font-family:'Raleway',sans-serif;font-size:24px;font-weight:700;margin-bottom:3px}.persona-role{color:#2145f3;font-size:14px;font-weight:600;margin-bottom:14px}.persona-desc{color:#606774;font-size:13px;line-height:1.65}.open-report{margin-top:auto;padding-top:20px;color:#2145f3;font-size:13px;font-weight:700}.planned-note{margin-top:auto;padding-top:20px;color:#8a909b;font-size:12px}.footer{text-align:center;color:#999;font-size:12px;margin-top:28px}@media(max-width:820px){h1{font-size:34px}.hero{padding:28px}.persona-grid{grid-template-columns:1fr}.persona-card{min-height:220px}}
+`;
+
+const personaIndex = (product) => doc(`${product.product} | Product Personas`, personaIndexStyle, `<main class="page">
+  <div class="brand"><img src="menso-logo.png" alt="Menso"><span>Menso</span></div>
+  <a class="back" href="${product.slug}.html">&larr; Open completed report</a>
+  <section class="hero"><div class="eyebrow">${html(product.product)} synthetic usability study</div><h1>Three personas scoped for ${html(product.product)}.</h1><p class="intro">This is the product-specific persona view. It does not link to Menso's global report directory.</p><div class="evidence-note"><strong>Evidence status:</strong> this founder delivery currently contains one completed persona run. The two adjacent personas are planned coverage and are not presented as tested findings.</div></section>
+  <section class="persona-grid" aria-label="${html(product.product)} personas">${product.personas.map((persona) => {
+    const tested = persona.status === 'Tested';
+    const body = `<div class="persona-top"><span class="segment">${html(persona.segment)}</span><span class="status ${tested ? 'tested' : 'planned'}">${html(persona.status)}</span></div><div class="persona-name">${html(persona.name)}</div><div class="persona-role">${html(persona.role)}</div><p class="persona-desc">${html(persona.description)}</p>${tested ? '<div class="open-report">Open report &rarr;</div>' : '<div class="planned-note">No run or result is claimed for this persona yet.</div>'}`;
+    return tested ? `<a class="persona-card tested" href="${product.slug}.html">${body}</a>` : `<article class="persona-card">${body}</article>`;
+  }).join('')}</section>
+  <div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</main>`);
 
 const cover = (product) => doc(`${product.product} - Jordan Alvarez | Usability Test Report`, styles.cover, `${nav(product, 'cover')}
   <div class="cover-content">
@@ -209,9 +295,11 @@ const journey = (product) => doc(`${product.product} - Jordan Alvarez | Journey 
   <div class="content"><div class="two-col"><div class="left-col"><h2>Emotion Journey</h2>${chart(product)}<table class="journey-table"><thead><tr><th>Step</th><th>Moment</th><th>Emotion</th><th>Conf.</th><th>Think Aloud / Trigger</th></tr></thead><tbody>${product.journey.map(([moment, emotion, confidence, note], index) => `<tr><td><strong>${String(index + 1).padStart(2, '0')}</strong></td><td>${html(moment)}</td><td>${pill(emotion)}</td><td>${html(confidence)}</td><td style="color:#757575">${html(note)}</td></tr>`).join('')}</tbody></table></div><div class="right-col"><h2>Final Verdict</h2><div class="verdict-card"><div class="verdict-badge">${html(product.decision)}</div><div class="verdict-title">${html(product.decisionTitle)}</div><div class="verdict-points">${product.decisionPoints.map((point) => `&bull; ${html(point)}`).join('<br>')}</div><div class="verdict-conf-label">Final Confidence</div><div class="verdict-conf-number">${html(product.confidence)}</div></div><h2>UX/UI Frictions</h2>${product.insights.map(([title, text]) => `<div class="insight-card"><div class="insight-title">${html(title)}</div><div class="insight-text">${html(text)}</div></div>`).join('')}<div class="insight-card" id="evidence-limit"><div class="insight-title">Evidence limitation</div><div class="insight-text">${product.replay ? `<a href="${html(product.replay)}">Open interactive replay</a>` : 'No clean replay was captured for this run. Screenshots are privacy-masked, and the harness substituted its test-account email; contact accuracy is not asserted.'}</div></div></div></div></div><div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>`);
 
 for (const product of products) {
+  if (product.personas.length !== 3) throw new Error(`${product.slug} must define exactly three product-scoped personas`);
+  writeFileSync(join(docs, `${product.slug}_personas.html`), personaIndex(product));
   writeFileSync(join(docs, `${product.slug}.html`), cover(product));
   writeFileSync(join(docs, `${product.slug}_steps.html`), steps(product));
   writeFileSync(join(docs, `${product.slug}_journey.html`), journey(product));
 }
 
-console.log(`Rebuilt ${products.length} reports with the established cover, step, and journey templates.`);
+console.log(`Rebuilt ${products.length} product persona indexes and reports with the established templates.`);
