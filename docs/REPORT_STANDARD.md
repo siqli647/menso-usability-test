@@ -37,6 +37,9 @@ A report is eligible only when:
 ## 4. Public artifact rules
 
 - Founder-delivery reports may be hosted at an unlisted GitHub Pages URL after sensitive-data review.
+- An `All Personas` navigation item must be product-scoped. It must link to the current product's three-persona index and must never link to the global report directory.
+- The product persona index must distinguish completed runs from planned or untested personas. A persona without a completed evidence-backed run cannot be presented as a tested result.
+- Public and founder-facing copy must state the actual completed-run count; a three-persona index does not turn one completed run into a three-persona study.
 - An unlisted report URL does not grant permission to promote the test publicly on X.
 - X publication remains blocked until the manifest has `public_consent: confirmed` or `not_required`.
 - ReviewPulse-style contaminated runs must disclose the harness limitation and exclude unsupported claims; social replay stays withheld until a clean rerun.
