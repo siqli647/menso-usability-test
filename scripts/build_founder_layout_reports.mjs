@@ -229,6 +229,76 @@ const products = [
       ['3. Keep the required path short.', 'The name-plus-email-or-phone requirement is a strong, low-effort entry point for small-business owners.'],
     ],
   },
+  {
+    slug: 'naxely',
+    product: 'Naxely',
+    url: 'naxely.com',
+    personaName: 'Sam Rivera',
+    title: 'Operations lead',
+    mbti: 'ISTJ',
+    description: 'Sam is a methodical operations lead evaluating whether one customer spreadsheet can become a saved, reviewable report that is ready to share with the team.',
+    personas: [
+      {
+        name: 'Sam Rivera',
+        role: 'Operations lead',
+        segment: 'Mainstream',
+        status: 'Tested',
+        description: 'Uploads one customer spreadsheet, corrects its column mapping, generates a report, and checks whether the saved output is trustworthy enough to share.',
+      },
+      {
+        name: 'Maya Chen',
+        role: 'Customer success manager',
+        segment: 'Adjacent',
+        status: 'Planned',
+        description: 'Needs a repeatable weekly path from customer exports to clear account-health summaries for a cross-functional team.',
+      },
+      {
+        name: 'Luis Ortega',
+        role: 'Revenue operations analyst',
+        segment: 'High-potential',
+        status: 'Planned',
+        description: 'Works with larger, messier exports and needs dependable field semantics, validation, and output verification before distribution.',
+      },
+    ],
+    details: [
+      ['Segment', 'Mainstream operations lead'],
+      ['Context', 'A first-time evaluator uses a Menso-owned test account and a synthetic 10-row customer spreadsheet.'],
+      ['Workflow', 'Upload the spreadsheet, map columns, configure one report, generate it, and inspect the saved result.'],
+      ['Success Criteria', 'A report entry saved as Done with 10 rows and an available PDF download action.'],
+    ],
+    confidence: '0.93',
+    stepCount: '17',
+    insightCount: '3',
+    frictions: '3',
+    replay: 'replays/0d79a59a_persona_replay.html',
+    decision: 'Completed',
+    decisionTitle: 'The workflow completed; the evidence loop did not.',
+    decisionPoints: [
+      'Sam completed the upload, column mapping, configuration, generation, download, and dashboard-return sequence in one workflow.',
+      'The independent verifier confirmed completion at 0.93 confidence; the dashboard showed Customer Overview Report, 10 rows, and Done.',
+      'No Try, Adopt, or Reject decision was collected. The completed preview appeared blank, and the downloaded PDF contents were not independently inspected.',
+    ],
+    steps: [
+      ['Review column mapping', 'column-mapping.png', 'Concern', '0.75', 'Monthly_spend contains numeric values, but Naxely classified it as a Date. I need to correct that before I can trust the report.'],
+      ['Inspect completed report', 'blank-preview.png', 'Concern', '0.60', 'The report says completed and shows 10 rows, but the preview area is blank. I need visible output before I can trust the file.'],
+      ['Confirm saved result', 'dashboard-done.png', 'Trust', '0.78', 'The dashboard now lists Customer Overview Report with 10 rows and Done. That confirms the workflow produced a saved artifact.'],
+    ],
+    journey: [
+      ['Start report', 'Interest', '0.60', 'The empty dashboard offers a clear Create Report action.'],
+      ['Upload data', 'Anticipation', '0.70', 'The CSV upload begins the exact workflow Sam came to evaluate.'],
+      ['Map columns', 'Concern', '0.75', 'A numeric spend field is classified as a Date and needs correction.'],
+      ['Configure report', 'Concern', '0.60', 'Next remains disabled without identifying the unmarked required date range.'],
+      ['Generate report', 'Anticipation', '0.60', 'The product shows generation stages inside its stated 30–90 second window.'],
+      ['Inspect output', 'Concern', '0.60', 'The completed state and row count are visible, but the preview itself appears blank.'],
+      ['Dashboard evidence', 'Trust', '0.78', 'The saved report appears as Done with 10 rows.'],
+    ],
+    insights: [
+      ['1. Validate semantic column types before mapping is accepted.', 'Naxely classified monthly_spend as a Date despite numeric sample values. Warn on semantic mismatches and explain the suggested correction before users generate a misleading report.'],
+      ['2. Explain exactly why Next is disabled.', 'Mark the date range as required and attach an inline blocker message to the disabled action. Sam had to infer the requirement through trial and error.'],
+      ['3. Make completed output reviewable before download.', 'Render a real preview, or show a durable preview-loading or failure state. A Completed badge and row count do not replace visible evidence that the report contains usable content.'],
+    ],
+    evidenceLimit: 'One synthetic run was observed on July 13, 2026, using a Menso-owned test account and synthetic sample data. The report preview appeared blank, the downloaded PDF contents were not independently inspected, and no explicit adoption decision was collected.',
+  },
 ];
 
 const nav = (product, active) => {
@@ -244,6 +314,8 @@ const nav = (product, active) => {
 
 const doc = (title, style, body) => `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${html(title)}</title><style>${style}</style></head><body>${body}</body></html>\n`;
+
+const personaNameOf = (product) => product.personaName || 'Jordan Alvarez';
 
 const pill = (emotion) => {
   const color = emotions[emotion];
@@ -267,15 +339,15 @@ const personaIndex = (product) => doc(`${product.product} | Product Personas`, p
   <div class="footer">Generated by Menso &middot; AI Synthetic User Testing</div>
 </main>`);
 
-const cover = (product) => doc(`${product.product} - Jordan Alvarez | Usability Test Report`, styles.cover, `${nav(product, 'cover')}
+const cover = (product) => doc(`${product.product} - ${personaNameOf(product)} | Usability Test Report`, styles.cover, `${nav(product, 'cover')}
   <div class="cover-content">
     <div class="url-pill">${html(product.url)}</div>
-    <div class="persona-hero"><div class="persona-name-block"><div class="persona-name">Jordan Alvarez</div><div class="persona-title-row"><span class="persona-title">${html(product.title)}</span><span class="mbti-badge">${html(product.mbti)}</span></div></div><div class="persona-desc">${html(product.description)}</div></div>
+    <div class="persona-hero"><div class="persona-name-block"><div class="persona-name">${html(personaNameOf(product))}</div><div class="persona-title-row"><span class="persona-title">${html(product.title)}</span><span class="mbti-badge">${html(product.mbti)}</span></div></div><div class="persona-desc">${html(product.description)}</div></div>
     <div class="persona-details">${product.details.map(([label, value]) => `<div class="detail-card"><div class="detail-label">${html(label)}</div><div class="detail-value">${html(value)}</div></div>`).join('')}</div>
     <div class="stats-row"><div class="stat-card green"><div class="stat-number">${product.confidence}</div><div class="stat-label">Final Confidence</div></div><div class="stat-card dark"><div class="stat-number">${product.stepCount}</div><div class="stat-label">Steps Taken</div></div><div class="stat-card yellow"><div class="stat-number">${product.insightCount}</div><div class="stat-label">Product Insights</div></div><div class="stat-card red"><div class="stat-number">${product.frictions}</div><div class="stat-label">Friction Points</div></div></div>
   </div><div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>`);
 
-const steps = (product) => doc(`${product.product} - Jordan Alvarez | Step Details`, styles.steps, `${nav(product, 'steps')}
+const steps = (product) => doc(`${product.product} - ${personaNameOf(product)} | Step Details`, styles.steps, `${nav(product, 'steps')}
   <div class="content"><div class="steps-grid">${product.steps.map(([title, image, emotion, confidence, note], index) => `<div class="step-card"><div class="step-head"><span class="step-num">${String(index + 1).padStart(2, '0')}</span><span class="step-title">${html(title)}</span></div><div class="divider"></div><div class="step-imgs-grid"><img class="step-img single" src="assets/founder-reports/${product.slug}/${html(image)}" alt="${html(`${product.product}: ${title}`)}"></div><div class="divider"></div><div class="step-meta">${pill(emotion)}<span class="conf-label">Confidence</span><span class="conf-value">${html(confidence)}</span></div><p class="think-aloud"><strong>Think aloud:</strong> ${html(note)}</p></div>`).join('')}</div></div><div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>`);
 
 const chart = (product) => {
@@ -291,8 +363,8 @@ const chart = (product) => {
   return `<div><p class="chart-subtitle">Bubble size = emotion intensity. Color = emotion type.</p><div class="chart-legend"><div class="chart-legend-item"><span class="chart-legend-dot" style="background:#FFD5C6"></span>Interest</div><div class="chart-legend-item"><span class="chart-legend-dot" style="background:#FFAB8D"></span>Anticipation</div><div class="chart-legend-item"><span class="chart-legend-dot" style="background:#33E19B"></span>Trust</div><div class="chart-legend-item"><span class="chart-legend-dot" style="background:#f59e0b"></span>Concern</div></div><div class="chart-container"><svg viewBox="0 0 780 275" xmlns="http://www.w3.org/2000/svg"><line x1="64" y1="185" x2="740" y2="185" stroke="#F3F3F3" stroke-width="1"/><text x="54" y="189" text-anchor="end" font-size="10" fill="#B3B3B3" font-family="Inter">0.2</text><line x1="64" y1="150" x2="740" y2="150" stroke="#F3F3F3" stroke-width="1"/><text x="54" y="154" text-anchor="end" font-size="10" fill="#B3B3B3" font-family="Inter">0.4</text><line x1="64" y1="114" x2="740" y2="114" stroke="#F3F3F3" stroke-width="1"/><text x="54" y="118" text-anchor="end" font-size="10" fill="#B3B3B3" font-family="Inter">0.6</text><line x1="64" y1="79" x2="740" y2="79" stroke="#F3F3F3" stroke-width="1"/><text x="54" y="83" text-anchor="end" font-size="10" fill="#B3B3B3" font-family="Inter">0.8</text><line x1="64" y1="44" x2="740" y2="44" stroke="#F3F3F3" stroke-width="1"/><text x="54" y="48" text-anchor="end" font-size="10" fill="#B3B3B3" font-family="Inter">1.0</text><line x1="64" y1="34" x2="64" y2="220" stroke="#E8E8E8" stroke-width="1"/><polyline points="${line}" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-dasharray="5,4"/>${dots}${labels}</svg></div></div>`;
 };
 
-const journey = (product) => doc(`${product.product} - Jordan Alvarez | Journey & Conclusion`, styles.journey, `${nav(product, 'journey')}
-  <div class="content"><div class="two-col"><div class="left-col"><h2>Emotion Journey</h2>${chart(product)}<table class="journey-table"><thead><tr><th>Step</th><th>Moment</th><th>Emotion</th><th>Conf.</th><th>Think Aloud / Trigger</th></tr></thead><tbody>${product.journey.map(([moment, emotion, confidence, note], index) => `<tr><td><strong>${String(index + 1).padStart(2, '0')}</strong></td><td>${html(moment)}</td><td>${pill(emotion)}</td><td>${html(confidence)}</td><td style="color:#757575">${html(note)}</td></tr>`).join('')}</tbody></table></div><div class="right-col"><h2>Final Verdict</h2><div class="verdict-card"><div class="verdict-badge">${html(product.decision)}</div><div class="verdict-title">${html(product.decisionTitle)}</div><div class="verdict-points">${product.decisionPoints.map((point) => `&bull; ${html(point)}`).join('<br>')}</div><div class="verdict-conf-label">Final Confidence</div><div class="verdict-conf-number">${html(product.confidence)}</div></div><h2>UX/UI Frictions</h2>${product.insights.map(([title, text]) => `<div class="insight-card"><div class="insight-title">${html(title)}</div><div class="insight-text">${html(text)}</div></div>`).join('')}<div class="insight-card" id="evidence-limit"><div class="insight-title">Evidence limitation</div><div class="insight-text">${product.replay ? `<a href="${html(product.replay)}">Open interactive replay</a>` : 'No clean replay was captured for this run. Screenshots are privacy-masked, and the harness substituted its test-account email; contact accuracy is not asserted.'}</div></div></div></div></div><div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>`);
+const journey = (product) => doc(`${product.product} - ${personaNameOf(product)} | Journey & Conclusion`, styles.journey, `${nav(product, 'journey')}
+  <div class="content"><div class="two-col"><div class="left-col"><h2>Emotion Journey</h2>${chart(product)}<table class="journey-table"><thead><tr><th>Step</th><th>Moment</th><th>Emotion</th><th>Conf.</th><th>Think Aloud / Trigger</th></tr></thead><tbody>${product.journey.map(([moment, emotion, confidence, note], index) => `<tr><td><strong>${String(index + 1).padStart(2, '0')}</strong></td><td>${html(moment)}</td><td>${pill(emotion)}</td><td>${html(confidence)}</td><td style="color:#757575">${html(note)}</td></tr>`).join('')}</tbody></table></div><div class="right-col"><h2>Final Verdict</h2><div class="verdict-card"><div class="verdict-badge">${html(product.decision)}</div><div class="verdict-title">${html(product.decisionTitle)}</div><div class="verdict-points">${product.decisionPoints.map((point) => `&bull; ${html(point)}`).join('<br>')}</div><div class="verdict-conf-label">Final Confidence</div><div class="verdict-conf-number">${html(product.confidence)}</div></div><h2>UX/UI Frictions</h2>${product.insights.map(([title, text]) => `<div class="insight-card"><div class="insight-title">${html(title)}</div><div class="insight-text">${html(text)}</div></div>`).join('')}<div class="insight-card" id="evidence-limit"><div class="insight-title">Evidence limitation</div><div class="insight-text">${product.evidenceLimit ? `${html(product.evidenceLimit)}${product.replay ? ` <a href="${html(product.replay)}">Open interactive replay</a>` : ''}` : product.replay ? `<a href="${html(product.replay)}">Open interactive replay</a>` : 'No clean replay was captured for this run. Screenshots are privacy-masked, and the harness substituted its test-account email; contact accuracy is not asserted.'}</div></div></div></div></div><div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>`);
 
 for (const product of products) {
   if (product.personas.length !== 3) throw new Error(`${product.slug} must define exactly three product-scoped personas`);
