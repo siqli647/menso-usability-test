@@ -1,0 +1,19 @@
+{
+  "name": "Alex Chen",
+  "age": 28,
+  "gender": "male",
+  "birth_city": "Seattle",
+  "current_city": "San Francisco",
+  "job_title": "Software Engineer",
+  "MBTI": "ENTP",
+  "behavior_patterns": "Early adopter, tries every new SaaS tool, impatient with slow onboarding, values efficiency over aesthetics, often skips tutorials",
+  "persona_record": "CS degree from UW, works at a Series B startup. Uses 20+ SaaS tools daily. Has strong opinions about product UX and frequently tweets about bad design patterns. Switches tools easily if something better comes along.",
+  "interests": "Rock climbing",
+  "user_type": "power user",
+  "tech_literacy": 5,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Reads all UI text instantly. Also understands Chinese from family background."
+  }
+}

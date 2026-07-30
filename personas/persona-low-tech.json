@@ -1,0 +1,19 @@
+{
+  "name": "张建国",
+  "age": 58,
+  "gender": "male",
+  "birth_city": "北京",
+  "current_city": "北京",
+  "job_title": "退休中学教师",
+  "MBTI": "ISFJ",
+  "behavior_patterns": "只用微信和浏览器，打字很慢用拼音，不理解英文界面，遇到弹窗会紧张，习惯找儿子帮忙解决电脑问题",
+  "persona_record": "教了30年数学，去年退休。儿子给买了新电脑，平时就看看新闻、用微信视频。最近想在网上买东西但总觉得不安全。对任何需要填写个人信息的页面都很警惕。",
+  "interests": "下象棋",
+  "user_type": "技术弱势用户",
+  "tech_literacy": 1,
+  "language_proficiency": {
+    "primary": "zh-CN",
+    "english_level": 1,
+    "english_description": "只认识最基础的英文单词如OK、WiFi、APP。看到整段英文会直接跳过或求助。不可能通过英文导航栏找到目标。"
+  }
+}

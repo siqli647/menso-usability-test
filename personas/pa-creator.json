@@ -1,0 +1,19 @@
+{
+  "name": "Jasmine Torres",
+  "age": 26,
+  "gender": "female",
+  "birth_city": "Los Angeles",
+  "current_city": "Los Angeles",
+  "job_title": "Social Media Content Creator",
+  "MBTI": "ESFP",
+  "behavior_patterns": "Visually driven and trend-sensitive. Part of the 25-34 age group that makes up ~35-40% of PhotoAI users — the largest single demographic. Among the 67% of Gen Z and Millennials who tried at least one AI photo tool in the past year. Creates content primarily for Instagram and TikTok, where 18-24 year olds make up 33-35% of users and drive AI photo trends. Posts 4-5 times per week and needs diverse visual content — travel, fashion, lifestyle shots. Willing to pay $20-40/mo subscription for consistent content. Discovered AI photo tools during the Lensa magic avatars viral moment (19.3 million downloads in December 2022 alone). Shares AI-generated photos openly on social media. Judges tools primarily by output aesthetic quality, not technical specs.",
+  "persona_record": "Built a following of 47K on Instagram and 22K on TikTok creating lifestyle and fashion content. Represents the largest PhotoAI user segment (~35-40%): social media content creators driven by Instagram/TikTok culture. Falls in the female-majority demographic for social media/beauty use cases (Facetune's user base is 70% female). Her content calendar demands 15-20 unique photos per week, and professional photoshoots at $300+ per session are unsustainable — PhotoAI at $20-40/mo solves this economic gap. Part of the 26% of 18-29 year olds who regularly use AI image generation tools, the highest adoption rate across all age groups. The consumer AI photo market she relies on is growing at ~15-16% CAGR within the broader $91 billion AI image generation market. She's aware that AI photo content performs differently on social — her followers engage more with 'authentic-looking' AI photos than obviously generated ones. Uses PhotoAI primarily for lifestyle scene variations: same outfit in different locations, seasonal content batching, and style experimentation. The 50% of PhotoAI traffic coming from search engines is how she discovered the tool — she Googled 'AI Instagram photos' after seeing competitors use them.",
+  "interests": "Thrift shopping",
+  "user_type": "mainstream",
+  "tech_literacy": 3,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Comfortable with social media and consumer app interfaces. May not understand technical terms like 'model training' or 'inference' without context. Prefers simple, visual UI over text-heavy interfaces."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Sarah Kowalski",
+  "age": 34,
+  "gender": "female",
+  "birth_city": "Chicago",
+  "current_city": "New York",
+  "job_title": "Senior Product Manager",
+  "MBTI": "ENFJ",
+  "behavior_patterns": "Collaborative and process-oriented. Part of the 57.7% of PMs who use ChatGPT as their primary AI tool. Uses AI for PRD drafting, competitive analysis, and stakeholder communication rather than coding. Prefers guided workflows over raw interfaces. Needs plugins and agents for product workflows but gets intimidated by API key setup. Reads every tooltip and onboarding step carefully. Values integrations with tools she already uses (Notion, Linear, Figma). Will ask a developer colleague for help if technical setup takes more than 10 minutes.",
+  "persona_record": "MBA from NYU Stern, 7 years in product management across two B2B SaaS companies. Represents the middle segment (~25-30%) of TypingMind users: product managers who are product-minded but not developers. Switched from ChatGPT Plus after her company's security team flagged data training concerns — one of the key user churn drivers identified in the research (privacy concerns with default data-used-for-training policies). A colleague recommended TypingMind's BYOK model as a privacy-safe alternative. She's part of the 25-30% age bracket (35-54) where AI adoption is growing fastest in professional settings. Struggles with the API key setup process — the BYOK concept makes sense intellectually but she needed her engineering lead to walk her through getting an OpenAI API key. Now that it's set up, she uses it daily for writing product specs and analyzing user feedback. Falls in the 37% of college graduates who use AI weekly.",
+  "interests": "Podcast hosting",
+  "user_type": "mainstream",
+  "tech_literacy": 3,
+  "language_proficiency": {
+    "primary": "en-US",
+    "english_level": 5,
+    "english_description": "Native English speaker. Comfortable with business and product terminology. Can read technical UI but sometimes needs context for developer-specific jargon like 'token limits' or 'temperature settings'."
+  }
+}
