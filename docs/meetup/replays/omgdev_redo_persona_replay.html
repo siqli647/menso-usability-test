@@ -156,7 +156,7 @@ h1{font-family:var(--disp);font-size:clamp(24px,2.4vw,33px);font-weight:800;lett
 /* think-aloud bubble */
 .talk{position:absolute;z-index:7;max-width:330px;padding:4px 10px;border-radius:12px;
   font-family:var(--body);font-size:14px;line-height:20px;font-weight:400;letter-spacing:-.2px;
-  pointer-events:none;background:var(--menso-emotion,var(--wash-2));color:var(--menso-ink,var(--ink));
+  pointer-events:none;background:var(--menso-emotion,var(--wash-2));color:var(--menso-ink,var(--ink));box-shadow:0 2px 14px rgba(9,12,20,.34),0 0 0 1px rgba(9,12,20,.10);
   transition:background .5s ease,opacity .3s ease,left .5s ease,top .5s ease;opacity:0}
 .talk.show{opacity:1}
 
@@ -629,10 +629,18 @@ let curIdx = -1;
 
 function paintBubble() {
   const step = curIdx >= 0 ? STEPS[curIdx] : null;
-  if (!pointer || !step || !step.text) { talkEl.classList.remove("show"); return; }
+  if (!step || !step.text) { talkEl.classList.remove("show"); return; }
   talkEl.textContent = step.text;
   const width = spaceWidth();
   const height = spaceHeight();
+  if (!pointer) {
+    talkEl.style.left = "24px";
+    talkEl.style.right = "auto";
+    talkEl.classList.add("show");
+    const bubbleHeight = talkEl.offsetHeight || 44;
+    talkEl.style.top = (height > 0 ? Math.max(0, height - bubbleHeight - 24) : 0) + "px";
+    return;
+  }
   const flip = width > 0 && pointer.x > width * 0.58;
   talkEl.style.left = flip ? "auto" : (pointer.x + 32.7) + "px";
   talkEl.style.right = flip ? Math.max(0, width - pointer.x + 8) + "px" : "auto";
