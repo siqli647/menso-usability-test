@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Kippy - Jordan Lee | Step Details</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);flex-shrink:0;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707;}
+.header-label{font-size:14px;font-weight:400;color:rgba(0,0,0,0.5);white-space:nowrap;}
+.page-nav{display:flex;justify-content:center;gap:0;padding:0;border-bottom:0;background:transparent;min-width:0;}
+.page-nav a{padding:8px 16px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
+.page-nav a:hover{color:#2145F3;}
+.report-footer{text-align:center;padding:24px 0;color:rgba(0,0,0,0.25);font-size:12px;flex-shrink:0;}
+@media(max-width:960px){.header{grid-template-columns:1fr;padding:16px 24px;gap:12px;}.page-nav{justify-content:flex-start;overflow:auto;width:100%;}}
+
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFAFF;color:#1E1E1E;line-height:1.6;min-height:100vh;}
+.content{max-width:1320px;margin:0 auto;padding:40px 60px;}
+.steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.step-card{background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:16px;min-width:0;overflow-wrap:anywhere;}
+.step-head{display:flex;align-items:baseline;gap:10px;}.step-num{font-size:18px;font-weight:700;color:#000;}.step-title{font-size:20px;font-weight:600;color:#1E1E1E;}
+.step-imgs-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}.step-img{width:100%;height:260px;object-fit:contain;background:#F8FAFC;border-radius:8px;border:1px solid #F3F3F3;}.step-img.single{grid-column:1/-1;}
+.divider{height:0.5px;background:rgba(0,0,0,0.1);width:100%;}.step-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.emotion-pill{display:inline-block;padding:4px 10px;border-radius:9999px;font-size:12px;font-weight:500;}.conf-label{font-size:13px;color:#757575;}.conf-value{font-size:13px;font-weight:600;color:#1E1E1E;}
+.think-aloud{font-size:14px;color:#1E1E1E;line-height:1.6;font-style:normal;}.verdict-bar{display:flex;align-items:flex-start;gap:8px;padding:8px 12px;border-radius:6px;font-size:12px;line-height:1.5;}.verdict-bar.warning{background:#FEF3C7;color:#92400E;}.verdict-bar.positive{background:#DCFCE7;color:#166534;}.verdict-bar.risk{background:#FFE4E6;color:#9F1239;}.verdict-bar.neutral{background:#EEF2FF;color:#3730A3;}
+@media(max-width:960px){.content{padding:24px 16px;}.steps-grid{grid-template-columns:1fr;}.step-img{height:200px;}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo" aria-label="Menso">
+      <div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div>
+      <span class="logo-text">Menso</span>
+    </div>
+    <nav class="page-nav"><a href="kippy.html">Cover</a><a href="kippy_steps.html" class="active">Step Details</a><a href="kippy_journey.html">Journey &amp; Conclusion</a><a href="../replays/kippy_persona_replay.html" target="_blank" rel="noreferrer">Replay</a><a href="kippy_further.html">Further Test</a></nav>
+    <span class="header-label">Synthetic Usability Report</span>
+  </div>
+  <div class="content">
+    <div class="steps-grid"><div class="step-card"><div class="step-head"><span class="step-num">01</span><span class="step-title">Home — Click</span></div><div class="divider"></div><div class="step-imgs-grid"><img class="step-img single" src="../screenshots/1fa626ae_step1.png" alt="Step 01"></div><div class="divider"></div><div class="step-meta"><span class="emotion-pill" style="background:#339AD933;color:#111827;border:1px solid #339AD9">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.3</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div><p class="think-aloud"><strong>Think aloud:</strong> Wait, this is a language learning app? I&#x27;m looking for something to automate my business tasks, not practice Italian. Let me check Use Cases or Features before I write this off.</p><p class="think-aloud"><strong>URL/context:</strong> https://kippy.ai/</p><div class="verdict-bar warning">UX friction: As a small business owner evaluating AI agents, I need the homepage to tell me within a minute whether this can take work off my plate. Instead, the product immediately presents itself as a language-learning app, which breaks my evaluation flow before I can…</div></div><div class="step-card"><div class="step-head"><span class="step-num">02</span><span class="step-title">Use Cases — Click</span></div><div class="divider"></div><div class="step-imgs-grid"><img class="step-img single" src="../screenshots/1fa626ae_step2.png" alt="Step 02"></div><div class="divider"></div><div class="step-meta"><span class="emotion-pill" style="background:#339AD933;color:#111827;border:1px solid #339AD9">Surprise</span><span class="conf-label">Confidence</span><span class="conf-value">0.75</span><span class="conf-label">Action</span><span class="conf-value">Click</span></div><p class="think-aloud"><strong>Think aloud:</strong> This is clearly a language-learning app - practicing speaking with an AI bird tutor, App Store downloads, learner testimonials. Nothing about business automation or delegating work here.</p><p class="think-aloud"><strong>URL/context:</strong> https://kippy.ai/#use-cases</p><div class="verdict-bar neutral">Conversion risk: Because all visible use cases are consumer learning scenarios, a small-business owner has no reason to continue toward signup, pricing, or setup. The product loses this audience before any conversion step can be evaluated.</div></div><div class="step-card"><div class="step-head"><span class="step-num">03</span><span class="step-title">Decision — Give Up</span></div><div class="divider"></div><div class="step-imgs-grid"><img class="step-img single" src="../screenshots/1fa626ae_step3.png" alt="Step 03"></div><div class="divider"></div><div class="step-meta"><span class="emotion-pill" style="background:#DCF5F233;color:#111827;border:1px solid #DCF5F2">Disapproval</span><span class="conf-label">Confidence</span><span class="conf-value">0.9</span><span class="conf-label">Action</span><span class="conf-value">Give Up</span></div><p class="think-aloud"><strong>Think aloud:</strong> Pronunciation Checker, Fluency Assessment, Grammar Check - this is 100% a language-learning tool. Nothing about automating my business, invoicing, scheduling, or customer emails here at all.</p><p class="think-aloud"><strong>URL/context:</strong> https://kippy.ai/#features</p><div class="verdict-bar risk">Decision recorded: could not complete the task. Since the core premise of my task (find a business workflow to try) had no corresponding product surface, I correctly stopped rather than force-fitting an evaluation, but that means the actual task - assessing a usable business workflow, its setup, and…</div></div></div>
+  </div>
+<div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</body>
+</html>

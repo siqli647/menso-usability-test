@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Long OS | Further Test — August pre-launch</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Raleway:wght@600;700;800&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+.header{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;padding:20px 60px 20px 120px;border-bottom:1px solid rgba(0,0,0,0.05);flex-shrink:0;}
+.logo{display:flex;align-items:center;gap:8px;padding:4px 10px;text-decoration:none;}
+.logo-icon{width:34px;height:34px;flex-shrink:0;}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:'Raleway',sans-serif;font-size:20px;font-weight:600;color:#070707;}
+.header-label{font-size:14px;font-weight:400;color:rgba(0,0,0,0.5);white-space:nowrap;}
+.page-nav{display:flex;justify-content:center;gap:0;padding:0;border-bottom:0;background:transparent;min-width:0;}
+.page-nav a{padding:8px 16px;text-decoration:none;color:rgba(0,0,0,0.4);font-size:13px;font-weight:500;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;}
+.page-nav a.active{color:#2145F3;border-bottom-color:#2145F3;}
+.page-nav a:hover{color:#2145F3;}
+.report-footer{text-align:center;padding:24px 0;color:rgba(0,0,0,0.25);font-size:12px;flex-shrink:0;}
+@media(max-width:960px){.header{grid-template-columns:1fr;padding:16px 24px;gap:12px;}.page-nav{justify-content:flex-start;overflow:auto;width:100%;}}
+
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#FAFAFF;color:#1E1E1E;line-height:1.6;min-height:100vh;}
+.content{max-width:1320px;margin:0 auto;padding:40px 60px;}
+.offer{background:#fff;border-radius:20px;padding:40px;display:flex;flex-direction:column;gap:28px;}
+.offer-head{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;}
+.offer-head-copy{flex:2;min-width:320px;display:flex;flex-direction:column;gap:12px;}
+.offer-eyebrow{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2145F3;}
+.offer-title{font-family:'Raleway',sans-serif;font-size:34px;font-weight:700;color:#1E1E1E;line-height:1.2;}
+.offer-lede{font-size:16px;color:rgba(0,0,0,0.66);line-height:1.6;}
+.price-card{flex:1;min-width:240px;border:1px solid #FDE68A;background:linear-gradient(180deg,#FFFBEB 0%,#FFFFFF 100%);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:6px;}
+.price-number{font-size:48px;font-weight:700;line-height:1;color:#92400E;}
+.price-label{font-size:13px;color:#B3B3B3;}
+.price-note{font-size:13px;color:#757575;line-height:1.6;margin-top:6px;}
+.offer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.offer-card{border:1px solid #F3F3F3;border-radius:12px;padding:16px;background:#fff;display:flex;flex-direction:column;gap:8px;}
+.offer-card-title{font-weight:700;font-size:15px;color:#1E1E1E;}
+.offer-card-text{font-size:13px;color:#626262;line-height:1.65;}
+.once{display:flex;align-items:flex-start;gap:10px;padding:16px 18px;border-radius:12px;background:#FEF3C7;color:#92400E;font-size:14px;line-height:1.6;}
+.once b{font-weight:700;}
+.offer-foot{display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-top:1px solid #F3F3F3;padding-top:22px;}
+.offer-cta{display:inline-block;padding:12px 22px;border-radius:9999px;background:#2145F3;color:#fff;font-size:14px;font-weight:600;text-decoration:none;}
+.offer-contact{font-size:13px;color:#757575;}.offer-contact a{color:#2145F3;text-decoration:none;font-weight:600;}
+@media(max-width:960px){.content{padding:24px 16px;}.offer{padding:24px;}.offer-grid{grid-template-columns:1fr;}.offer-title{font-size:26px;}}
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo" aria-label="Menso">
+      <div class="logo-icon"><img src="menso-logo.png" alt="Menso"></div>
+      <span class="logo-text">Menso</span>
+    </div>
+    <nav class="page-nav"><a href="longos.html">Cover</a><a href="longos_steps.html">Step Details</a><a href="longos_journey.html">Journey &amp; Conclusion</a><a href="../replays/longos_persona_replay.html" target="_blank" rel="noreferrer">Replay</a><a href="longos_further.html" class="active">Further Test</a></nav>
+    <span class="header-label">Synthetic Usability Report</span>
+  </div>
+  <div class="content">
+    <div class="offer">
+      <div class="offer-head">
+        <div class="offer-head-copy">
+          <div class="offer-eyebrow">August pre-launch · Menso</div>
+          <div class="offer-title">Now test the part a visitor never sees.</div>
+          <p class="offer-lede">This report watched Sam Carter on the public side of os.rocorgi.wang — no account, no login. That is where first impressions are made, but it is not where Long OS is won or lost. The next test goes through the login wall, with a persona you define.</p>
+        </div>
+        <div class="price-card">
+          <div class="price-number">$29</div>
+          <div class="price-label">one logged-in test, pre-launch price</div>
+          <p class="price-note">Custom persona · one login task · full replay · my written summary.</p>
+        </div>
+      </div>
+      <div class="offer-grid"><div class="offer-card"><div class="offer-card-title">You write the persona</div><div class="offer-card-text">Age, role, tech literacy, temperament, what they came to do and what would make them quit. Not a generic tester — the specific user you are unsure about.</div></div><div class="offer-card"><div class="offer-card-title">One task behind the login</div><div class="offer-card-text">Give us a test account on os.rocorgi.wang. The synthetic user signs in and runs the flow that actually matters: onboarding, first project, invite, checkout — the one where you lose people.</div></div><div class="offer-card"><div class="offer-card-title">The full record</div><div class="offer-card-text">The same three pages you are reading now, plus the interactive replay of the logged-in session: every click, every hesitation, think-aloud and emotion at each step.</div></div><div class="offer-card"><div class="offer-card-title">A written read from me</div><div class="offer-card-text">Not just the generated report. I go through the replay myself and write you the summary — what happened, what I think it means, and what I would change first.</div></div></div>
+      <div class="once"><span>⚠️</span><div><b>It runs once.</b> One persona, one task, one recorded session — not a suite, not a repeated sample. A single synthetic user tells you where one specific person got stuck; it does not give you a statistic. That is the honest limit of what $29 buys, and it is why I write the summary myself rather than leaving you with a number.</div></div>
+      <div class="offer-foot">
+        <a class="offer-cta" href="https://menso.io" target="_blank" rel="noreferrer">Start a test at menso.io</a>
+        <span class="offer-contact">Or find me at the meetup — I am running these live. On X: <a href="https://x.com/MENSO_Liu" target="_blank" rel="noreferrer">@MENSO_Liu</a></span>
+      </div>
+    </div>
+  </div>
+<div class="report-footer">Generated by Menso &middot; AI Synthetic User Testing</div>
+</body>
+</html>
