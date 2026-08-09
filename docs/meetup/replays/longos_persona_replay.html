@@ -472,7 +472,7 @@ const viewH = metaData && Number(metaData.height) > 0 ? Math.round(Number(metaDa
 /* The product name is derived from the recorded href alone — no per-customer table,
    so a product tested for the first time reads the same as an incumbent. */
 const slug = host.replace(/^(www|app|auth|account|dashboard|login|build|cloud)\./i, "").split(".")[0];
-const product = slug ? slug.charAt(0).toUpperCase() + slug.slice(1) : "";
+const product = "Long OS";
 if (product) {
   $("h1t").textContent = product + " User Test";
   document.title = "Menso · " + product + " User Test Replay";
